@@ -99,8 +99,8 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
   ativos e 41 inativos.
 - CODE (nuvem) · 19/10/2026 · pedido do Weslei: EAN com zeros à esquerda até 13 dígitos (o Superus
   perdia os zeros). 660 produtos atualizados no Bling (só o GTIN), 0 falhas · 72 testes passando.
-  Decisão do Weslei: o código (SKU) fica como está no Bling, só com os zeros corrigidos. 2 produtos
-  tinham o EAN sem zeros no código (editados no Bling): código completado com zeros.
+  Decisão do Weslei: o código (SKU) é o do Superus; só o EAN ganha os zeros. 2 produtos editados à mão
+  no Bling (código trocado pelo EAN) voltaram ao código do Superus (104495 e 103371).
 - CODE · **Etapa 2 pronta** em 19/10/2026: login (scrypt, cookie seguro, bloqueio de tentativas),
   conexão com o Bling (OAuth com state, Secret e tokens cifrados), fila de envio por etapas
   (não duplica, retoma, pausa, limite do dia), envio de teste "TESTE" + apagar testes, ligação das
