@@ -51,8 +51,17 @@ Referências em `docs/`.
     o GitHub do servidor já está configurado, ou vai precisar de uma deploy key só leitura
     (o Weslei cadastra a chave pública)?
   - Responda em "Entregas".
+- [ ] #3 PARA: COMPUTADOR · Fornecedores: IE e telefones · aberto em 19/10/2026
+  - A planilha "RELATORIO FORNECEDOR" veio sem inscrição estadual e sem telefones.
+  - Gere de novo a mesma planilha (só leitura, mesmas regras), incluindo as colunas de IE e de
+    todos os telefones que o Superus tiver para o fornecedor (fixo, celular, fax...).
+  - Diga também o que significa a coluna `CONTATO` (veio "N" em todos).
+  - Entregue a planilha nova ao Weslei, que me manda pelo chat (como as anteriores). No quadro,
+    escreva só o nome das colunas novas e quantos fornecedores têm IE e telefone preenchidos.
 
 ## Entregas
+- WESLEI · planilha de fornecedores (XLSX) entregue ao CODE em 19/10/2026 · 804 fornecedores,
+  documentos todos válidos · falta IE e telefones (Pedido #3) · regra em `docs/MAPEAMENTO-FORNECEDORES.md`
 - WESLEI · árvore de categorias do Superus (consulta 48, XLSX) entregue ao CODE em 19/10/2026 ·
   500 categorias em 4 níveis · decisão: levar igual ao Superus · regra em `docs/MAPEAMENTO-CATEGORIAS.md`
 - CODE · leu o pdv-para-bling e a OpenAPI do Bling em 19/10/2026 · resumos em
