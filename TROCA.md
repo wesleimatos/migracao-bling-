@@ -53,12 +53,11 @@ Referências em `docs/`.
   - Responda em "Entregas".
 
 ## Entregas
+- CODE · leu o pdv-para-bling e a OpenAPI do Bling em 19/10/2026 · resumos em
+  `docs/REFERENCIA-PDV-PARA-BLING.md` e `docs/REFERENCIA-API-BLING.md`
 - WESLEI · app "Migração" criado na central do Bling em 19/10/2026 · Client ID:
   `d8c1742bfda50d9d56ee88a8887b07b607c553cd` (o Client Secret nunca vai no quadro: o Weslei
   digita na tela do app, na Etapa 3) · link de retorno e permissões confirmados pelo Weslei
 
 ## Bloqueios (precisa do Weslei)
-- B1 · O CODE não consegue abrir a documentação oficial do Bling (`developer.bling.com.br`): a rede
-  da sessão na nuvem bloqueia esse endereço. Quem resolve: Weslei, liberando o domínio nas
-  configurações do ambiente da nuvem (Network access → Allowed domains). O resumo do
-  pdv-para-bling já está em `docs/REFERENCIA-PDV-PARA-BLING.md`.
+_(nenhum)_
