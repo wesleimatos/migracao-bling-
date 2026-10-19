@@ -94,6 +94,9 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
   discagem ou sem telefone (159), GTIN recusado vira o código/SKU (117), CEST recusado sai (5).
   **Migração completa, 0 erros:** 500 categorias, 800 fornecedores, 13.001 produtos, 5.859 vínculos,
   3.194 estoques · 71 testes passando · limpeza da lixeira autorizada pelo Weslei e iniciada.
+- CODE (nuvem) · 19/10/2026 · lixeira do Bling limpa: 10.098 de 10.103 apagados; 5 o Bling não deixou
+  apagar ("problemas de validação"), ficam para o Weslei ver na tela. Bling agora: 12.961 produtos
+  ativos e 41 inativos.
 - CODE · **Etapa 2 pronta** em 19/10/2026: login (scrypt, cookie seguro, bloqueio de tentativas),
   conexão com o Bling (OAuth com state, Secret e tokens cifrados), fila de envio por etapas
   (não duplica, retoma, pausa, limite do dia), envio de teste "TESTE" + apagar testes, ligação das
