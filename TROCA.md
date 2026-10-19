@@ -34,6 +34,8 @@ O app roda na **VPS** (`migra.focosaas.com.br`), como no brief: decisão confirm
     o GitHub do servidor já está configurado, ou vai precisar de uma deploy key só leitura
     (o Weslei cadastra a chave pública)?
   - Responda em "Entregas".
+  - 19/10/2026: enviado pelo CODE direto para a sessão "VPS" (pedido do Weslei), com mais 3 perguntas
+    só de olhar: Node e node:sqlite, acesso à API do Bling e se o subdomínio já existe.
 - [x] #3 PARA: COMPUTADOR · Fornecedores: IE e telefones · aberto em 19/10/2026
   - A planilha "RELATORIO FORNECEDOR" veio sem inscrição estadual e sem telefones.
   - Gere de novo a mesma planilha (só leitura, mesmas regras), incluindo as colunas de IE e de
