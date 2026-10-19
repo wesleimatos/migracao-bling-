@@ -41,6 +41,7 @@ Conferência feita em 19/10/2026:
 | DESCRICAOWEB | `descricaoCurta` | quando preenchida |
 | INATIVO | `situacao` | `N` → `A`, `S` → `I` |
 | — | `tipo` = `P`, `formato` = `S` | fixo |
+| — | `condicao` = 1 (Novo), `tipoProducao` = `T` (Terceiros), `freteGratis` = não | padrão do cadastro do Bling (prints do Weslei) |
 | EAN | `gtin` | só se for GTIN válido (8, 12, 13 ou 14 dígitos com dígito certo) |
 | TODOSEANS | `observacoes` | GTINs e códigos extras, para nada se perder |
 | PRECOVENDA | `preco` | igual |
@@ -57,22 +58,17 @@ Conferência feita em 19/10/2026:
 
 Não duplicar: `GET /produtos?codigos[]=...` (até 100 códigos por chamada) antes de criar.
 
-## Proposta para a parte fiscal (para o Weslei e a contadora)
-O Bling não guarda CST, alíquota nem CFOP no produto: ele calcula pela natureza de operação. Para
-não perder a classificação do Superus, a proposta é usar **grupos de produtos** do Bling:
-1. O Claude do computador cria no Bling 6 grupos de produtos (Pedido #5, prompt em
-   `docs/PROMPT-GRUPOS-FISCAIS.md`). A contadora configura a regra fiscal de cada um.
-2. O app liga cada produto ao grupo pelo CST de ICMS (os 2 últimos dígitos de `CSTICMS`):
-   - `00` → FISCAL 00 - TRIBUTADO 18% (7.675)
-   - `60` → FISCAL 60 - ICMS ST (5.126), menos os que têm PIS/COFINS `04` ou `06`, que vão para
-     FISCAL 60 - ICMS ST + PIS/COFINS ZERO (8)
-   - `90` → FISCAL 90 - ICMS OUTROS (152)
-   - `41` → FISCAL 41 - ICMS NAO TRIBUTADO (37)
-   - `20` → FISCAL 20 - ICMS COM REDUCAO (2)
-   - sem CST → sem grupo, listado no relatório (1)
+## Parte fiscal: grupos de produtos do Bling (decisão do Weslei, 19/10/2026)
+O Bling não guarda CST, alíquota nem CFOP no produto: ele calcula pela natureza de operação,
+com regras por grupo de produtos. A conta já tem os grupos **"SEM ST"** e **"COM ST"**. O app liga
+cada produto pelo CST de ICMS (os 2 últimos dígitos de `CSTICMS`) em `tributacao.grupoProduto`:
+- `00` → **SEM ST** (7.675)
+- `60` → **COM ST** (5.134, incluindo 8 com PIS/COFINS 04 ou 06)
+- `90`, `41`, `20` e sem CST → **SEM ST** (192), e saem numa lista para a contadora conferir
+  (entre eles, 27 com CST 90 e CFOP de ST 5403/5405)
 
 ## Decisões do Weslei (19/10/2026)
-- **Só a loja Oiapoque.** Um depósito no Bling, com o estoque desta planilha.
+- **Só a loja Oiapoque.** O estoque vai para o depósito "Geral" do Bling.
 - **GTINs extras nas observações:** o 1º GTIN válido vai em `gtin`. Os outros GTINs e códigos de
   `TODOSEANS` (menos o próprio código do produto) ficam em `observacoes`, como
   "Outros códigos de barras: ...". O caixa não acha o produto pelo código extra.
@@ -81,4 +77,5 @@ não perder a classificação do Superus, a proposta é usar **grupos de produto
 
 ## A confirmar
 - Marca, peso, medidas e vínculos produto × fornecedor completos: Pedido #4 no quadro.
+- Estoque mínimo: o Superus não tem; vai em branco, salvo pedido do Weslei.
 - No teste (Etapa 4): o Bling aceitar o produto com o grupo fiscal e a categoria de 4º nível.
