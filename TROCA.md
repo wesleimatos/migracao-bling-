@@ -93,7 +93,7 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
   a busca passou a ignorar a lixeira e eles foram criados. Decisões do Weslei: telefone sem zeros de
   discagem ou sem telefone (159), GTIN recusado vira o código/SKU (117), CEST recusado sai (5).
   **Migração completa, 0 erros:** 500 categorias, 800 fornecedores, 13.001 produtos, 5.859 vínculos,
-  3.194 estoques · 72 testes passando · limpeza da lixeira autorizada pelo Weslei e iniciada.
+  3.194 estoques · 71 testes passando · limpeza da lixeira autorizada pelo Weslei e iniciada.
 - CODE · **Etapa 2 pronta** em 19/10/2026: login (scrypt, cookie seguro, bloqueio de tentativas),
   conexão com o Bling (OAuth com state, Secret e tokens cifrados), fila de envio por etapas
   (não duplica, retoma, pausa, limite do dia), envio de teste "TESTE" + apagar testes, ligação das
