@@ -42,7 +42,7 @@ Conferência feita em 19/10/2026:
 | INATIVO | `situacao` | `N` → `A`, `S` → `I` |
 | — | `tipo` = `P`, `formato` = `S` | fixo |
 | EAN | `gtin` | só se for GTIN válido (8, 12, 13 ou 14 dígitos com dígito certo) |
-| TODOSEANS | `observacoes` | GTINs e códigos extras, para nada se perder (a decidir) |
+| TODOSEANS | `observacoes` | GTINs e códigos extras, para nada se perder |
 | PRECOVENDA | `preco` | igual |
 | CUSTO | vínculo com fornecedor (`precoCusto`) e balanço de estoque (`custo`) | igual |
 | NCM | `tributacao.ncm` | só dígitos |
@@ -65,10 +65,12 @@ não perder a classificação do Superus, a proposta é usar **grupos de produto
    Os pequenos (CST 90, 41, 20) ficam a critério da contadora.
 2. O app liga cada produto ao grupo do seu CST.
 
-## A decidir (Weslei)
-- A migração é só da loja Oiapoque ou há outras lojas (cada uma vira um depósito no Bling)?
-- Produtos com mais de um GTIN: onde guardar os extras.
-- Estoque negativo (1.097 produtos): zerar no Bling ou levar negativo.
+## Decisões do Weslei (19/10/2026)
+- **Só a loja Oiapoque.** Um depósito no Bling, com o estoque desta planilha.
+- **GTINs extras nas observações:** o 1º GTIN válido vai em `gtin`. Os outros GTINs e códigos de
+  `TODOSEANS` (menos o próprio código do produto) ficam em `observacoes`, como
+  "Outros códigos de barras: ...". O caixa não acha o produto pelo código extra.
+- **Estoque negativo vira zero** no balanço. A lista desses produtos sai no relatório.
 
 ## A confirmar
 - Unidade e vínculos produto × fornecedor completos: Pedido #4 no quadro.

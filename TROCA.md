@@ -67,7 +67,6 @@ Referências em `docs/`.
   - Gere também `produtos_fornecedores`: todos os pares produto × fornecedor (código do produto,
     código do fornecedor, código do produto no fornecedor, custo). A planilha de fornecedores
     conta 6.121 ligações, e a de produtos só traz um fornecedor por produto.
-  - Diga se o Superus tem estoque de mais de uma loja ou depósito, e quais.
   - Entregue as planilhas ao Weslei, que me manda pelo chat. No quadro, só colunas e contagens.
 
 ## Entregas
