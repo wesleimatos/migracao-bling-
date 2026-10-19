@@ -59,11 +59,11 @@ Referências em `docs/`.
   - Entregue a planilha nova ao Weslei, que me manda pelo chat (como as anteriores). No quadro,
     escreva só o nome das colunas novas e quantos fornecedores têm IE e telefone preenchidos.
 
-- [ ] #4 PARA: COMPUTADOR · Produtos: unidade e vínculos com fornecedores · aberto em 19/10/2026
-  - A planilha "62 CADASTRO COMPLETO OIAPOQUE" veio com `CODUNIDADE`, `EMBALAGEM`, `QTDEMBALAGEM`,
-    `CODMARCA`, peso e medidas vazios em todos os produtos. Confira no Superus (só olhando) se
-    esses dados existem no cadastro. Se existirem, gere a planilha de novo com eles (unidade por
-    extenso: UN, KG, CX...; marca pelo nome).
+- [ ] #4 PARA: COMPUTADOR · Produtos: marca, medidas e vínculos com fornecedores · aberto em 19/10/2026
+  - Unidade não precisa: o Weslei decidiu `UN` para todos.
+  - A planilha "62 CADASTRO COMPLETO OIAPOQUE" veio com `CODMARCA`, peso e medidas vazios em
+    todos os produtos. Confira no Superus (só olhando) se esses dados existem no cadastro. Se
+    existirem, gere a planilha de novo com eles (marca pelo nome).
   - Gere também `produtos_fornecedores`: todos os pares produto × fornecedor (código do produto,
     código do fornecedor, código do produto no fornecedor, custo). A planilha de fornecedores
     conta 6.121 ligações, e a de produtos só traz um fornecedor por produto.

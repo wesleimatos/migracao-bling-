@@ -50,7 +50,7 @@ Conferência feita em 19/10/2026:
 | 1º dígito de CSTICMS | `tributacao.origem` | 0 a 8 |
 | CST, alíquotas, CFOP | `tributacao.grupoProduto` | proposta abaixo |
 | setor/grupo/subgrupo/categoria | `categoria.id` | o nível mais fundo preenchido (ver MAPEAMENTO-CATEGORIAS) |
-| CODUNIDADE | `unidade` | veio vazia; sem ela, `UN` (Pedido #4) |
+| — | `unidade` = `UN` | fixo para todos (decisão do Weslei, 19/10/2026) |
 | CODFORNECEDOR + SKUREFFORNECEDOR + CUSTO | `POST /produtos/fornecedores` | `padrao` = sim |
 | DESCRICAO2, DESCRICAO3, DESCRICAO4 | — | são cortes da descrição ou "SEM NOME" |
 | ALTURA, LARGURA, COMPRIMENTO, PESOs, CODMARCA | — | vieram vazios |
@@ -71,7 +71,8 @@ não perder a classificação do Superus, a proposta é usar **grupos de produto
   `TODOSEANS` (menos o próprio código do produto) ficam em `observacoes`, como
   "Outros códigos de barras: ...". O caixa não acha o produto pelo código extra.
 - **Estoque negativo vira zero** no balanço. A lista desses produtos sai no relatório.
+- **Unidade de venda `UN` para todos os produtos.**
 
 ## A confirmar
-- Unidade e vínculos produto × fornecedor completos: Pedido #4 no quadro.
+- Marca, peso, medidas e vínculos produto × fornecedor completos: Pedido #4 no quadro.
 - No teste (Etapa 4): o Bling aceitar o produto com o grupo fiscal e a categoria de 4º nível.
