@@ -76,6 +76,7 @@ cada produto pelo CST de ICMS (os 2 últimos dígitos de `CSTICMS`) em `tributac
 - **Unidade de venda `UN` para todos os produtos.**
 
 ## A confirmar
-- Vínculos produto × fornecedor completos: arquivo 67, a receber (Pedido #6).
+- Vínculos produto × fornecedor: o arquivo 67 não vem ao CODE. Se ele for enviado na tela do app,
+  entram todos os vínculos; se não, vale o fornecedor da planilha de produtos (5.844 produtos).
 - Estoque mínimo: o Superus não tem; vai em branco, salvo pedido do Weslei.
 - No teste (Etapa 4): o Bling aceitar o produto com o grupo fiscal e a categoria de 4º nível.

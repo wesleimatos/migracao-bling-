@@ -1,8 +1,7 @@
 # TROCA — quadro da migração Superus → Bling
 
 ## Agora
-Etapa: 0 · Com a bola: WESLEI (#6) e VPS (#2) · Aguardando: arquivos 65, 66 e 67 no chat e a
-porta do servidor
+Etapa: 0 (quase fechada) · Com a bola: VPS (#2) e CODE (desenho do app para o Weslei aprovar)
 
 Repositório: `wesleimatos/migracao-bling-` (com traço no fim; o Weslei escolheu usar este no lugar
 de `migracao-bling`). Fica **público** por decisão do Weslei e será excluído no fim do projeto.
@@ -53,8 +52,10 @@ Referências em `docs/`; regras de cada cadastro em `docs/MAPEAMENTO-*.md`.
   - Entregue as planilhas ao Weslei, que manda ao CODE pelo chat.
 
 ## Pedido para o Weslei
-- [ ] #6 PARA: WESLEI · Mandar ao CODE, pelo chat, os arquivos 64, 65, 66 e 67 de `X:\backup` · aberto em 19/10/2026
-  - 64 recebido em 19/10/2026 (fornecedores com IE e telefones). Faltam 65, 66 e 67.
+- [x] #6 PARA: WESLEI · Mandar ao CODE, pelo chat, os arquivos 64, 65, 66 e 67 de `X:\backup` · aberto em 19/10/2026
+  - 64 recebido em 19/10/2026 (fornecedores com IE e telefones).
+  - 65, 66 e 67: o Weslei decidiu não mandar ao CODE. Entram direto na tela do app (Etapa 4),
+    onde ele liga as colunas. Regra das contas a pagar em `docs/MAPEAMENTO-CONTAS-PAGAR.md`.
 
 ## Entregas
 - #1, #3 e #4 FEITOS por COMPUTADOR em 19/10/2026 · arquivos em `X:\backup` no computador do
