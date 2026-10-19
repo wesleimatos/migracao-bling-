@@ -53,6 +53,8 @@ Referências em `docs/`.
   - Responda em "Entregas".
 
 ## Entregas
+- WESLEI · árvore de categorias do Superus (consulta 48, XLSX) entregue ao CODE em 19/10/2026 ·
+  500 categorias em 4 níveis · decisão: levar igual ao Superus · regra em `docs/MAPEAMENTO-CATEGORIAS.md`
 - CODE · leu o pdv-para-bling e a OpenAPI do Bling em 19/10/2026 · resumos em
   `docs/REFERENCIA-PDV-PARA-BLING.md` e `docs/REFERENCIA-API-BLING.md`
 - WESLEI · app "Migração" criado na central do Bling em 19/10/2026 · Client ID:
