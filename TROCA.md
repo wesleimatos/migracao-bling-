@@ -82,6 +82,9 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
 - CODE (nuvem) · 19/10/2026 · envio de teste: 13 categorias, 2 fornecedores, 5 produtos, 5 vínculos,
   5 estoques, 0 erros. O Bling recusa dois números no campo telefone: nova regra (um telefone, um
   celular, repetidos caem), aprovada pelo Weslei · 68 testes passando · aguardando o Weslei conferir.
+- CODE (nuvem) · 19/10/2026 · pedidos do Weslei no teste: Tipo do item = Mercadoria para Revenda
+  (`spedTipoItem` 00) em todos; origem sem sinalização (0 ou vazio) vai como **2** (Estrangeira,
+  mercado interno), 1 e 5 ficam. Teste refeito e conferido no Bling: 5 produtos com origem 2 e tipo 00.
 - CODE · **Etapa 2 pronta** em 19/10/2026: login (scrypt, cookie seguro, bloqueio de tentativas),
   conexão com o Bling (OAuth com state, Secret e tokens cifrados), fila de envio por etapas
   (não duplica, retoma, pausa, limite do dia), envio de teste "TESTE" + apagar testes, ligação das

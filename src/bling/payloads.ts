@@ -63,6 +63,8 @@ export function payloadProduto(p: Produto, ids: { categoria: number | null; grup
       origem: p.origem,
       ncm: p.ncm,
       cest: p.cest,
+      // Tipo do item (SPED) "00" = Mercadoria para Revenda (pedido do Weslei no envio de teste).
+      spedTipoItem: '00',
       grupoProduto: ids.grupo ? { id: ids.grupo } : null
     }
   })

@@ -8,6 +8,9 @@ import { digitos, gtinValido, numero } from './validar.ts'
 export type GrupoFiscal = 'COM ST' | 'SEM ST'
 
 /** Campos fixos de todo produto (decisões do Weslei e padrão do cadastro do Bling). */
+/** Origem 2 = Estrangeira, adquirida no mercado interno. */
+export const ORIGEM_SEM_SINALIZACAO = 2
+
 export const PADRAO_PRODUTO = { tipo: 'P', formato: 'S', unidade: 'UN', condicao: 1, tipoProducao: 'T', freteGratis: false } as const
 
 export interface Produto {
@@ -93,8 +96,11 @@ export function montarProdutos(p: Planilha, mapa: Mapa, ctx: ContextoProdutos = 
     if (cestBruto && !cest) anota.aviso('cest-invalido', linha, codigo, `CEST "${v(l, 'cest')}" inválido: vai sem CEST.`)
     const cstIcms = digitos(v(l, 'cstIcms'))
     const cst = cstIcms.length === 3 ? cstIcms.slice(1) : cstIcms
-    const origem = cstIcms.length === 3 && Number(cstIcms[0]) <= 8 ? Number(cstIcms[0]) : null
-    if (cstIcms.length === 3 && origem === null) anota.aviso('origem-invalida', linha, codigo, `Origem ${cstIcms[0]} inválida: vai sem origem.`)
+    // Sem sinalização no Superus (origem 0 ou CST vazio) vai como 2, Estrangeira adquirida no mercado
+    // interno (decisão do Weslei no envio de teste, 19/10/2026). Origens marcadas (1 a 8) ficam.
+    const marcada = cstIcms.length === 3 ? Number(cstIcms[0]) : 0
+    const origem = marcada >= 1 && marcada <= 8 ? marcada : ORIGEM_SEM_SINALIZACAO
+    if (marcada > 8) anota.aviso('origem-invalida', linha, codigo, `Origem ${cstIcms[0]} inválida: vai com origem ${ORIGEM_SEM_SINALIZACAO}.`)
     const grupoFiscal: GrupoFiscal = cst === '60' ? 'COM ST' : 'SEM ST'
     if (!cst) anota.aviso('sem-cst', linha, codigo, 'Sem CST de ICMS: vai para SEM ST.')
     else if (cst !== '00' && cst !== '60') anota.aviso('cst-especial', linha, codigo, `CST ${cst}: vai para SEM ST (conferir com a contadora).`)

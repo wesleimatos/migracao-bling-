@@ -42,13 +42,14 @@ Conferência feita em 19/10/2026:
 | INATIVO | `situacao` | `N` → `A`, `S` → `I` |
 | — | `tipo` = `P`, `formato` = `S` | fixo |
 | — | `condicao` = 1 (Novo), `tipoProducao` = `T` (Terceiros), `freteGratis` = não | padrão do cadastro do Bling (prints do Weslei) |
+| — | `tributacao.spedTipoItem` = `00` (Tipo do item: Mercadoria para Revenda) | pedido do Weslei no envio de teste (19/10/2026) |
 | EAN | `gtin` | só se for GTIN válido (8, 12, 13 ou 14 dígitos com dígito certo) |
 | TODOSEANS | `observacoes` | GTINs e códigos extras, para nada se perder |
 | PRECOVENDA | `preco` | igual |
 | CUSTO | vínculo com fornecedor (`precoCusto`) e balanço de estoque (`custo`) | igual |
 | NCM | `tributacao.ncm` | só dígitos |
 | CEST | `tributacao.cest` | só dígitos |
-| 1º dígito de CSTICMS | `tributacao.origem` | 0 a 8 |
+| 1º dígito de CSTICMS | `tributacao.origem` | 1 a 8 como está; **0 ou vazio (sem sinalização) → 2** (Estrangeira, adquirida no mercado interno), decisão do Weslei no envio de teste (19/10/2026) |
 | CST, alíquotas, CFOP | `tributacao.grupoProduto` | proposta abaixo |
 | setor/grupo/subgrupo/categoria | `categoria.id` | o nível mais fundo preenchido (ver MAPEAMENTO-CATEGORIAS) |
 | — | `unidade` = `UN` | fixo para todos (decisão do Weslei, 19/10/2026) |

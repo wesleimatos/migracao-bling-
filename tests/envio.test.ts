@@ -60,7 +60,7 @@ describe('envio completo', () => {
     // Produto com categoria, grupo fiscal, origem, unidade UN e os outros códigos nas observações.
     const caneta = bling.db.produtos.find((p) => p.codigo === '100')!
     assert.deepEqual(caneta.categoria, { id: gel.id })
-    assert.deepEqual(caneta.tributacao, { origem: 0, ncm: '96081000', cest: '1900100', grupoProduto: { id: 51 } })
+    assert.deepEqual(caneta.tributacao, { origem: 2, ncm: '96081000', cest: '1900100', spedTipoItem: '00', grupoProduto: { id: 51 } })
     assert.equal(caneta.unidade, 'UN')
     assert.equal(caneta.situacao, 'A')
     assert.match(String(caneta.observacoes), /Outros códigos de barras/)

@@ -108,7 +108,7 @@ describe('produtos', () => {
     assert.equal(p('100').grupoFiscal, 'COM ST')
     assert.equal(p('101').grupoFiscal, 'SEM ST')
     assert.equal(p('102').origem, 1)
-    assert.equal(p('100').origem, 0)
+    assert.equal(p('100').origem, 2) // 0 = sem sinalização no Superus: vai como 2
   })
 
   it('GTIN válido no campo; outros códigos nas observações (menos o próprio código)', () => {
