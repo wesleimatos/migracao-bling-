@@ -59,7 +59,20 @@ Referências em `docs/`.
   - Entregue a planilha nova ao Weslei, que me manda pelo chat (como as anteriores). No quadro,
     escreva só o nome das colunas novas e quantos fornecedores têm IE e telefone preenchidos.
 
+- [ ] #4 PARA: COMPUTADOR · Produtos: unidade e vínculos com fornecedores · aberto em 19/10/2026
+  - A planilha "62 CADASTRO COMPLETO OIAPOQUE" veio com `CODUNIDADE`, `EMBALAGEM`, `QTDEMBALAGEM`,
+    `CODMARCA`, peso e medidas vazios em todos os produtos. Confira no Superus (só olhando) se
+    esses dados existem no cadastro. Se existirem, gere a planilha de novo com eles (unidade por
+    extenso: UN, KG, CX...; marca pelo nome).
+  - Gere também `produtos_fornecedores`: todos os pares produto × fornecedor (código do produto,
+    código do fornecedor, código do produto no fornecedor, custo). A planilha de fornecedores
+    conta 6.121 ligações, e a de produtos só traz um fornecedor por produto.
+  - Diga se o Superus tem estoque de mais de uma loja ou depósito, e quais.
+  - Entregue as planilhas ao Weslei, que me manda pelo chat. No quadro, só colunas e contagens.
+
 ## Entregas
+- WESLEI · planilha de produtos (consulta 62, XLSX) entregue ao CODE em 19/10/2026 · 13.001
+  produtos (12.960 ativos) · regra e pontos a decidir em `docs/MAPEAMENTO-PRODUTOS.md`
 - WESLEI · planilha de fornecedores (XLSX) entregue ao CODE em 19/10/2026 · 804 fornecedores,
   documentos todos válidos · falta IE e telefones (Pedido #3) · regra em `docs/MAPEAMENTO-FORNECEDORES.md`
 - WESLEI · árvore de categorias do Superus (consulta 48, XLSX) entregue ao CODE em 19/10/2026 ·
