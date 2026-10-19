@@ -90,6 +90,8 @@ describe('fornecedores', () => {
     })
     // Repetido cai; sem celular, o 2º número vai no celular.
     assert.deepEqual(separarTelefones('COMERCIAL  1126925651 / Comercial 11 2692-5651'), { telefone: '1126925651', celular: '', sobras: [], incompletos: [] })
+    // Zeros de discagem na frente saem (o Bling recusa).
+    assert.deepEqual(separarTelefones('COMERCIAL  0011964981662 / 03136261526'), { telefone: '3136261526', celular: '11964981662', sobras: [], incompletos: [] })
     assert.deepEqual(separarTelefones('3133334444 / 31 3222-1111'), { telefone: '3133334444', celular: '31 3222-1111', sobras: [], incompletos: [] })
     assert.deepEqual(separarTelefones('(11) 3333-444').incompletos, ['(11) 3333-444'])
   })

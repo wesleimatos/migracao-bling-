@@ -56,9 +56,11 @@ export function separarTelefones(texto: string): { telefone: string; celular: st
   const vistos = new Set<string>()
   const numeros: { n: string; d: string }[] = []
   for (const parte of texto.split('/')) {
-    const n = parte.replace(/^[^\d(+]*/, '').trim()
+    let n = parte.replace(/^[^\d(+]*/, '').trim()
     let d = digitos(n)
     if (d.length >= 12 && d.startsWith('55')) d = d.slice(2)
+    // Zeros de discagem na frente ("0031...", "00 11 9..."): vai só DDD + número, no padrão do Bling.
+    if (/^0+[1-9]/.test(d) && [10, 11].includes(d.replace(/^0+/, '').length)) n = d = d.replace(/^0+/, '')
     if (d === '' || vistos.has(d)) continue
     vistos.add(d)
     numeros.push({ n, d })
