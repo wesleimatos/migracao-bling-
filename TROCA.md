@@ -75,6 +75,9 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     onde ele liga as colunas. Regra das contas a pagar em `docs/MAPEAMENTO-CONTAS-PAGAR.md`.
 
 ## Entregas
+- CODE (nuvem) · 19/10/2026: planilhas 48, 64 e 62 carregadas e conferidas: 500 categorias,
+  800 fornecedores, 13.001 produtos, 5.859 vínculos, 3.194 estoques (122.277 un.). Bate com os docs.
+  Envio parado no Bloqueio do Client Secret (abaixo).
 - CODE · **Etapa 2 pronta** em 19/10/2026: login (scrypt, cookie seguro, bloqueio de tentativas),
   conexão com o Bling (OAuth com state, Secret e tokens cifrados), fila de envio por etapas
   (não duplica, retoma, pausa, limite do dia), envio de teste "TESTE" + apagar testes, ligação das
@@ -112,4 +115,9 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
   digita na tela do app, na Etapa 3) · link de retorno e permissões confirmados pelo Weslei
 
 ## Bloqueios (precisa do Weslei)
-_(nenhum)_
+- 19/10/2026 · modo nuvem: o Bling recusou o `BLING_CLIENT_SECRET` do ambiente ("client credentials
+  are invalid"). A variável existe (62 caracteres), mas não confere com o app "Migração"
+  (Client ID `d8c1742b...`). O Weslei deve copiar de novo o Client Secret da central do Bling para
+  a variável do ambiente e abrir uma sessão nova (com as planilhas 48, 64 e 62 de novo).
+  Obs.: a autorização precisa ser feita com o usuário administrador do Bling (o usuário
+  financeiro não tem a permissão "Contratos", e o botão Autorizar some).
