@@ -58,4 +58,7 @@ Referências em `docs/`.
   digita na tela do app, na Etapa 3) · link de retorno e permissões confirmados pelo Weslei
 
 ## Bloqueios (precisa do Weslei)
-_(nenhum)_
+- B1 · O CODE não consegue abrir a documentação oficial do Bling (`developer.bling.com.br`): a rede
+  da sessão na nuvem bloqueia esse endereço. Quem resolve: Weslei, liberando o domínio nas
+  configurações do ambiente da nuvem (Network access → Allowed domains). O resumo do
+  pdv-para-bling já está em `docs/REFERENCIA-PDV-PARA-BLING.md`.
