@@ -83,6 +83,7 @@ export interface OpcoesApp extends OpcoesCliente {
 /** O app: login, planilhas, ligação de colunas, conferência, conexão com o Bling, envio e relatório. */
 export function criarApp(banco: Banco, opcoes: OpcoesApp = {}) {
   const acesso = new Acesso(banco)
+  acesso.prepararPrimeiroAcesso()
   const credenciais = new CredenciaisBling(banco, new Cofre(banco.pasta))
   const cliente = new BlingCliente(credenciais, opcoes)
   const envio = new Envio(banco, cliente)
@@ -179,7 +180,7 @@ export function criarApp(banco: Banco, opcoes: OpcoesApp = {}) {
         if (!acesso.temSenha) {
           if (senha !== form.get('confirmar')) return html(res, telaEntrar(true, 'As duas senhas não são iguais.'), 400)
           try {
-            acesso.criarSenha(senha)
+            acesso.criarSenha(senha, form.get('codigo') ?? '', origem.ip)
           } catch (e) {
             return html(res, telaEntrar(true, (e as Error).message), 400)
           }

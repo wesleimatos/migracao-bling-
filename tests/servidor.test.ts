@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { mkdtempSync, rmSync } from 'node:fs'
+import { mkdtempSync, readFileSync, rmSync } from 'node:fs'
 import { createServer, type Server } from 'node:http'
 import type { AddressInfo } from 'node:net'
 import { tmpdir } from 'node:os'
@@ -21,9 +21,13 @@ before(async () => {
   servidor = createServer(criarApp(banco))
   await new Promise<void>((r) => servidor.listen(0, '127.0.0.1', r))
   base = `http://127.0.0.1:${(servidor.address() as AddressInfo).port}`
+  // Sem o código do servidor, ninguém cria a senha.
+  const semCodigo = await fetch(`${base}/entrar`, { method: 'POST', body: new URLSearchParams({ codigo: 'CHUTE', senha: 'senha-de-intruso', confirmar: 'senha-de-intruso' }) })
+  assert.equal(semCodigo.status, 400)
+  assert.match(await semCodigo.text(), /Código de primeiro acesso errado/)
   const r = await fetch(`${base}/entrar`, {
     method: 'POST',
-    body: new URLSearchParams({ senha: 'senha-de-teste-1', confirmar: 'senha-de-teste-1' }),
+    body: new URLSearchParams({ codigo: readFileSync(join(pasta, 'codigo-primeiro-acesso'), 'utf8'), senha: 'senha-de-teste-1', confirmar: 'senha-de-teste-1' }),
     redirect: 'manual'
   })
   cookie = (r.headers.get('set-cookie') ?? '').split(';')[0]
@@ -53,6 +57,11 @@ describe('login', () => {
     assert.equal(r.headers.get('location'), '/entrar')
     assert.equal((await fetch(`${base}/envio/estado`, { headers: { Accept: 'application/json' } })).status, 401)
     assert.match(await (await fetch(`${base}/entrar`)).text(), /Entrar/)
+  })
+
+  it('o código de primeiro acesso some depois que a senha é criada', async () => {
+    assert.throws(() => readFileSync(join(pasta, 'codigo-primeiro-acesso')), /ENOENT/)
+    assert.match(await (await fetch(`${base}/entrar`)).text(), /<h1>Entrar<\/h1>/)
   })
 
   it('cookie da sessão é HttpOnly e SameSite', async () => {

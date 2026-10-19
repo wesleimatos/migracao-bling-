@@ -1,5 +1,7 @@
 import { createHash, randomBytes, scryptSync, timingSafeEqual } from 'node:crypto'
+import { existsSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import type { IncomingMessage } from 'node:http'
+import { join } from 'node:path'
 import type { Banco } from './banco.ts'
 
 const DURACAO_SESSAO_MS = 12 * 60 * 60 * 1000
@@ -38,10 +40,34 @@ export class Acesso {
     return this.banco.db.prepare('SELECT 1 FROM usuario WHERE id = 1').get() !== undefined
   }
 
-  criarSenha(senha: string): void {
+  /** Arquivo com o código do primeiro acesso (só quem tem acesso ao servidor consegue ler). */
+  get arquivoCodigo(): string {
+    return join(this.banco.pasta, 'codigo-primeiro-acesso')
+  }
+
+  /**
+   * Sem senha criada, o app está aberto na internet: para criar a senha é preciso o código gravado
+   * no servidor (assim ninguém de fora chega antes do Weslei). Some depois que a senha é criada.
+   */
+  prepararPrimeiroAcesso(): void {
+    if (this.temSenha || existsSync(this.arquivoCodigo)) return
+    const codigo = randomBytes(6).toString('hex').toUpperCase()
+    writeFileSync(this.arquivoCodigo, `${codigo}\n`, { mode: 0o600 })
+  }
+
+  criarSenha(senha: string, codigo: string, ip: string): void {
     if (this.temSenha) throw new Error('A senha já foi criada.')
+    if (this.bloqueado(ip)) throw new Error('Muitas tentativas erradas. Espere 15 minutos.')
+    this.prepararPrimeiroAcesso()
+    const certo = Buffer.from(readFileSync(this.arquivoCodigo, 'utf8').trim())
+    const dado = Buffer.from(codigo.trim().toUpperCase())
+    if (certo.length !== dado.length || !timingSafeEqual(certo, dado)) {
+      this.banco.db.prepare('INSERT INTO tentativas (ip, quando) VALUES (?, ?)').run(ip, this.agora())
+      throw new Error('Código de primeiro acesso errado.')
+    }
     if (senha.length < TAMANHO_MINIMO_SENHA) throw new Error(`A senha precisa ter pelo menos ${TAMANHO_MINIMO_SENHA} caracteres.`)
     this.banco.db.prepare('INSERT INTO usuario (id, senha) VALUES (1, ?)').run(hashSenha(senha))
+    rmSync(this.arquivoCodigo, { force: true })
   }
 
   /** Confere a senha, contando as erradas por IP. Devolve o token da sessão ou null. */

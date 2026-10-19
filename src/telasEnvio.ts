@@ -18,6 +18,8 @@ const sim = (v: boolean, texto: string) => `<span class="etiqueta ${v ? 'ok' : '
 export function telaEntrar(criar: boolean, mensagem: string): string {
   const corpo = criar
     ? `<p>Primeiro acesso: crie a senha do app (pelo menos ${TAMANHO_MINIMO_SENHA} caracteres). Só você vai usar.</p>
+       <label class="campo"><span>Código de primeiro acesso</span><input type="text" name="codigo" autocomplete="off" required></label>
+       <p class="ajuda">Peça o código à sessão VPS (está no arquivo <code>codigo-primeiro-acesso</code>, na pasta de dados do app). Ele só vale uma vez.</p>
        <label class="campo"><span>Senha nova</span><input type="password" name="senha" autocomplete="new-password" required minlength="${TAMANHO_MINIMO_SENHA}"></label>
        <label class="campo"><span>Repita a senha</span><input type="password" name="confirmar" autocomplete="new-password" required></label>
        <button class="botao">Criar senha e entrar</button>`

@@ -1,3 +1,4 @@
+import { existsSync } from 'node:fs'
 import { createServer } from 'node:http'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -11,4 +12,7 @@ const host = process.env.HOST ?? '127.0.0.1'
 const banco = new Banco(pasta)
 createServer(criarApp(banco, { confiarProxy: process.env.CONFIAR_PROXY === '1' })).listen(porta, host, () => {
   console.log(`Migração Superus → Bling em http://${host}:${porta} (dados em ${pasta})`)
+  if (existsSync(join(pasta, 'codigo-primeiro-acesso'))) {
+    console.log(`Primeiro acesso: o código para criar a senha está em ${join(pasta, 'codigo-primeiro-acesso')}`)
+  }
 })

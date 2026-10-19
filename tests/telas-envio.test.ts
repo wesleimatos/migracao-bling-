@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { mkdtempSync, rmSync } from 'node:fs'
+import { mkdtempSync, readFileSync, rmSync } from 'node:fs'
 import { createServer, type Server } from 'node:http'
 import type { AddressInfo } from 'node:net'
 import { tmpdir } from 'node:os'
@@ -25,7 +25,7 @@ before(async () => {
   servidor = createServer(criarApp(banco, { fetch: bling.f, intervaloMs: 0, esperar: async () => {} }))
   await new Promise<void>((r) => servidor.listen(0, '127.0.0.1', r))
   base = `http://127.0.0.1:${(servidor.address() as AddressInfo).port}`
-  const r = await fetch(`${base}/entrar`, { method: 'POST', body: new URLSearchParams({ senha: 'senha-de-teste-1', confirmar: 'senha-de-teste-1' }), redirect: 'manual' })
+  const r = await fetch(`${base}/entrar`, { method: 'POST', body: new URLSearchParams({ codigo: readFileSync(join(pasta, 'codigo-primeiro-acesso'), 'utf8'), senha: 'senha-de-teste-1', confirmar: 'senha-de-teste-1' }), redirect: 'manual' })
   cookie = (r.headers.get('set-cookie') ?? '').split(';')[0]
 })
 

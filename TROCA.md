@@ -1,7 +1,7 @@
 # TROCA — quadro da migração Superus → Bling
 
 ## Agora
-Etapa: 2 pronta (aguardando o OK do Weslei) · Próxima: Etapa 3, app na VPS (sessão VPS, porta 8101)
+Etapa: 3 · Com a bola: VPS (Pedido #7: instalar o app) · Depois: WESLEI entra, cria a senha e conecta o Bling
 
 Repositório: `wesleimatos/migracao-bling-` (com traço no fim; o Weslei escolheu usar este no lugar
 de `migracao-bling`). Fica **público** por decisão do Weslei e será excluído no fim do projeto.
@@ -53,6 +53,13 @@ O app roda na **VPS** (`migra.focosaas.com.br`), como no brief: decisão confirm
     código do fornecedor, código do produto no fornecedor, custo). A planilha de fornecedores
     conta 6.121 ligações, e a de produtos só traz um fornecedor por produto.
   - Entregue as planilhas ao Weslei, que manda ao CODE pelo chat.
+
+- [ ] #7 PARA: VPS · Instalar o app na VPS (Etapa 3) · aberto em 19/10/2026
+  - Roteiro completo em `docs/IMPLANTACAO-VPS.md`: serviço `migracao-bling` em `/opt/migracao-bling`,
+    porta 127.0.0.1:8101, proxy do `migra.focosaas.com.br` (mantendo o `/.well-known`), backup diário.
+  - Primeiro só olhar e mostrar ao Weslei; instalar com o OK dele. Regras de ouro do servidor.
+  - O código de primeiro acesso vai só para o Weslei, direto (nunca no quadro).
+  - Responder em "Entregas" (e para a sessão "Migração Superus → Bling").
 
 ## Pedido para o Weslei
 - [x] #6 PARA: WESLEI · Mandar ao CODE, pelo chat, os arquivos 64, 65, 66 e 67 de `X:\backup` · aberto em 19/10/2026
