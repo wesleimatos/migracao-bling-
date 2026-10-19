@@ -165,6 +165,32 @@ describe('envio completo', () => {
     assert.match(envio.item('completo', 'fornecedores', C1)?.mensagem ?? '', /Criado sem IE/)
   })
 
+  it('telefone recusado: o fornecedor vai sem telefone (junto com IE recusada) e fica anotado', async () => {
+    lote.fornecedores = lote.fornecedores.map((f) => (f.numeroDocumento === C1 ? { ...f, ie: '999', indicadorIe: 1, telefone: '(31) 3234-612' } : f))
+    await envio.enviar('completo', lote, catalogos, ligacoes)
+    const alfa = bling.db.contatos.find((c) => c.numeroDocumento === C1)!
+    assert.ok(!('ie' in alfa) && !('telefone' in alfa))
+    assert.match(envio.item('completo', 'fornecedores', C1)?.mensagem ?? '', /Criado sem IE.*Criado sem telefone: o Bling recusou \(31\) 3234-612/)
+  })
+
+  it('GTIN e CEST recusados: o produto vai sem eles, com os originais nas observações', async () => {
+    lote.produtos = lote.produtos.map((p) => (p.codigo === '101' ? { ...p, gtin: '7890000000000', cest: '9999999' } : p))
+    await envio.enviar('completo', lote, catalogos, ligacoes)
+    const p = bling.db.produtos.find((x) => x.codigo === '101')!
+    assert.ok(!('gtin' in p) && !('cest' in (p.tributacao as object)))
+    assert.match(String(p.observacoes), /GTIN do Superus recusado pelo Bling: 7890000000000\nCEST do Superus recusado pelo Bling: 9999999/)
+    assert.equal(envio.contagem('completo', lote).produtos.erro, 0)
+  })
+
+  it('produto na lixeira do Bling (situação E) não conta como existente: é criado de novo', async () => {
+    bling.db.produtos.push({ id: 9001, codigo: '101', situacao: 'E' })
+    await envio.enviar('completo', lote, catalogos, ligacoes)
+    const ativos = bling.db.produtos.filter((x) => x.codigo === '101' && x.situacao !== 'E')
+    assert.equal(ativos.length, 1)
+    assert.equal(envio.item('completo', 'produtos', '101')?.status, 'enviado')
+    assert.notEqual(envio.item('completo', 'produtos', '101')?.bling_id, 9001)
+  })
+
   it('pausar no meio e continuar depois', async () => {
     bling.falhas.push((m, c) => {
       if (m === 'POST' && c === '/produtos') envio.pausar()

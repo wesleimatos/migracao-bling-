@@ -6,7 +6,7 @@ import type { Produto } from '../regras/produtos.ts'
 import type { Vinculo } from '../regras/vinculos.ts'
 import { type Catalogos, depositoEscolhido, idGrupo, idTipoFornecedor, type Ligacoes, pendenciasBling } from './catalogos.ts'
 import { type BlingCliente, ErroBlingApi, ErroBlingDesconectado, ErroBlingRede } from './cliente.ts'
-import { payloadCategoria, payloadConta, payloadEstoque, payloadFornecedor, payloadProduto, payloadVinculo } from './payloads.ts'
+import { payloadCategoria, payloadConta, payloadEstoque, payloadFornecedor, payloadProduto, payloadVinculo, type SemCampos } from './payloads.ts'
 
 export type Modo = 'teste' | 'completo'
 
@@ -280,14 +280,24 @@ export class Envio {
         const { data } = await this.cliente.get<{ data: { id: number }[] }>('/contatos', { numeroDocumento: f.numeroDocumento, criterio: 1, limite: 1 })
         if (data[0]) return { status: 'pulado', id: data[0].id }
       }
-      try {
-        const { data } = await this.cliente.post<{ data: { id: number } }>('/contatos', payloadFornecedor(f, idTipo, teste))
-        return { status: 'enviado', id: data.id }
-      } catch (e) {
-        // IE recusada: cria sem ela (docs/MAPEAMENTO-FORNECEDORES.md) e deixa anotado.
-        if (!(e instanceof ErroBlingApi) || !f.indicadorIe || !/inscri[cç][aã]o estadual|\bie\b/i.test(e.message)) throw e
-        const { data } = await this.cliente.post<{ data: { id: number } }>('/contatos', payloadFornecedor(f, idTipo, teste, false))
-        return { status: 'enviado', id: data.id, mensagem: `Criado sem IE: o Bling recusou a IE ${f.ie} (${e.message}).` }
+      // O que o Bling recusar (IE fora do padrão, telefone incompleto no Superus) sai e fica anotado.
+      let comIe = true
+      let comFone = true
+      const notas: string[] = []
+      for (;;) {
+        try {
+          const { data } = await this.cliente.post<{ data: { id: number } }>('/contatos', payloadFornecedor(f, idTipo, teste, comIe, comFone))
+          return { status: 'enviado', id: data.id, mensagem: notas.length ? notas.join(' ') : undefined }
+        } catch (e) {
+          if (!(e instanceof ErroBlingApi)) throw e
+          if (comIe && f.indicadorIe && /inscri[cç][aã]o estadual|\bie\b/i.test(e.message)) {
+            comIe = false
+            notas.push(`Criado sem IE: o Bling recusou a IE ${f.ie} (${e.message}).`)
+          } else if (comFone && (f.telefone || f.celular) && /fone|celular/i.test(e.message)) {
+            comFone = false
+            notas.push(`Criado sem telefone: o Bling recusou ${[f.telefone, f.celular].filter(Boolean).join(' / ')}.`)
+          } else throw e
+        }
       }
     })
   }
@@ -303,20 +313,33 @@ export class Envio {
     })
     for (let i = 0; i < faltam.length; i += 100) {
       const codigos = faltam.slice(i, i + 100).map(codigoNoBling)
-      const { data } = await this.cliente.get<{ data: { id: number; codigo?: string }[] }>('/produtos', { 'codigos[]': codigos, criterio: 5, limite: 100 })
-      for (const p of data) if (p.codigo) existentes.set(p.codigo, p.id)
+      const { data } = await this.cliente.get<{ data: { id: number; codigo?: string; situacao?: string }[] }>('/produtos', { 'codigos[]': codigos, criterio: 5, limite: 100 })
+      // Produto na lixeira do Bling (situação E) não conta: o do Superus é criado de novo.
+      for (const p of data) if (p.codigo && p.situacao !== 'E') existentes.set(p.codigo, p.id)
     }
     const grupos = { 'SEM ST': idGrupo(cat, 'SEM ST'), 'COM ST': idGrupo(cat, 'COM ST') }
     await this.etapa(modo, 'produtos', lote.produtos, async (p) => {
       const achado = existentes.get(codigoNoBling(p))
       if (achado) return { status: 'pulado', id: achado }
       const categoria = p.categoria ? this.idDe(modo, 'categorias', p.categoria) : null
-      const corpo = payloadProduto(p, { categoria, grupo: grupos[p.grupoFiscal] }, teste)
-      const { data } = await this.cliente.post<{ data: { id: number } }>('/produtos', corpo)
-      return {
-        status: 'enviado',
-        id: data.id,
-        mensagem: p.categoria && !categoria ? `Criado sem categoria: a categoria ${p.categoria} não foi para o Bling.` : undefined
+      // GTIN fora do GS1 ou CEST inválido: o produto vai sem ele, com o original nas observações.
+      const sem: SemCampos = {}
+      const notas: string[] = []
+      if (p.categoria && !categoria) notas.push(`Criado sem categoria: a categoria ${p.categoria} não foi para o Bling.`)
+      for (;;) {
+        try {
+          const { data } = await this.cliente.post<{ data: { id: number } }>('/produtos', payloadProduto(p, { categoria, grupo: grupos[p.grupoFiscal] }, teste, sem))
+          return { status: 'enviado', id: data.id, mensagem: notas.length ? notas.join(' ') : undefined }
+        } catch (e) {
+          if (!(e instanceof ErroBlingApi)) throw e
+          if (!sem.gtin && p.gtin && /gtin/i.test(e.message)) {
+            sem.gtin = true
+            notas.push(`Criado sem GTIN: o Bling recusou ${p.gtin} (está nas observações).`)
+          } else if (!sem.cest && p.cest && /cest/i.test(e.message)) {
+            sem.cest = true
+            notas.push(`Criado sem CEST: o Bling recusou ${p.cest} (está nas observações).`)
+          } else throw e
+        }
       }
     })
   }

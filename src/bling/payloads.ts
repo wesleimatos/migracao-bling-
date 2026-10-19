@@ -30,7 +30,7 @@ export function payloadCategoria(c: Categoria, idPai: number | null, teste: bool
   return limpo({ descricao: nomeTeste(teste, c.descricao), categoriaPai: idPai ? { id: idPai } : null })
 }
 
-export function payloadFornecedor(f: Fornecedor, idTipoFornecedor: number | null, teste: boolean, comIe = true) {
+export function payloadFornecedor(f: Fornecedor, idTipoFornecedor: number | null, teste: boolean, comIe = true, comFone = true) {
   return limpo({
     nome: nomeTeste(teste, f.nome),
     codigo: codigoTeste(teste, f.codigo),
@@ -41,28 +41,38 @@ export function payloadFornecedor(f: Fornecedor, idTipoFornecedor: number | null
     ie: comIe ? f.ie : '',
     indicadorIe: comIe ? f.indicadorIe : null,
     email: f.email,
-    telefone: f.telefone,
-    celular: f.celular,
+    telefone: comFone ? f.telefone : '',
+    celular: comFone ? f.celular : '',
     endereco: { geral: f.endereco },
     tiposContato: idTipoFornecedor ? [{ id: idTipoFornecedor }] : null
   })
 }
 
-export function payloadProduto(p: Produto, ids: { categoria: number | null; grupo: number | null }, teste: boolean) {
+/** O que o Bling recusou no produto e vai só anotado nas observações (GTIN fora do GS1, CEST inválido). */
+export interface SemCampos {
+  gtin?: boolean
+  cest?: boolean
+}
+
+export function payloadProduto(p: Produto, ids: { categoria: number | null; grupo: number | null }, teste: boolean, sem: SemCampos = {}) {
+  const notas = [
+    sem.gtin && p.gtin ? `GTIN do Superus recusado pelo Bling: ${p.gtin}` : '',
+    sem.cest && p.cest ? `CEST do Superus recusado pelo Bling: ${p.cest}` : ''
+  ].filter(Boolean)
   return limpo({
     nome: nomeTeste(teste, p.nome),
     codigo: codigoTeste(teste, p.codigo),
     preco: p.preco,
     ...PADRAO_PRODUTO,
     situacao: p.situacao,
-    gtin: p.gtin,
+    gtin: sem.gtin ? '' : p.gtin,
     descricaoCurta: p.descricaoCurta,
-    observacoes: p.observacoes,
+    observacoes: [p.observacoes, ...notas].filter(Boolean).join('\n'),
     categoria: ids.categoria ? { id: ids.categoria } : null,
     tributacao: {
       origem: p.origem,
       ncm: p.ncm,
-      cest: p.cest,
+      cest: sem.cest ? '' : p.cest,
       // Tipo do item (SPED) "00" = Mercadoria para Revenda (pedido do Weslei no envio de teste).
       spedTipoItem: '00',
       grupoProduto: ids.grupo ? { id: ids.grupo } : null

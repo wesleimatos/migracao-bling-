@@ -67,16 +67,19 @@ export function blingFalso() {
     }
     if (metodo === 'POST' && caminho === '/contatos') {
       if (corpo.ie === '999') return erro(400, 'Inscrição estadual inválida')
+      if (corpo.telefone === '(31) 3234-612') return erro(400, 'fone: É necessário preencher corretamente o campo Telefone')
       const c = { id: novoId(), ...corpo }
       db.contatos.push(c)
       return json(201, { data: { id: c.id } })
     }
     if (metodo === 'GET' && caminho === '/produtos') {
       const codigos = q.getAll('codigos[]')
-      return lista(db.produtos.filter((p) => codigos.includes(String(p.codigo))).map((p) => ({ id: p.id, codigo: p.codigo })), u)
+      return lista(db.produtos.filter((p) => codigos.includes(String(p.codigo))).map((p) => ({ id: p.id, codigo: p.codigo, situacao: p.situacao ?? 'A' })), u)
     }
     if (metodo === 'POST' && caminho === '/produtos') {
-      if (db.produtos.some((p) => p.codigo === corpo.codigo)) return erro(400, 'Já existe um produto com este código')
+      if (db.produtos.some((p) => p.codigo === corpo.codigo && p.situacao !== 'E')) return erro(400, 'Já existe um produto com este código')
+      if (corpo.gtin === '7890000000000') return erro(400, 'gtin: GTIN/EAN inválido, motivo: O prefixo 789 não é válido')
+      if ((corpo.tributacao as { cest?: string } | undefined)?.cest === '9999999') return erro(400, 'cest: Código CEST inválido')
       const p = { id: novoId(), ...corpo }
       db.produtos.push(p)
       return json(201, { data: { id: p.id } })
