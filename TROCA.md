@@ -66,6 +66,7 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
 ## Pedido para o Weslei
 - [ ] #8 PARA: WESLEI · Preparar o modo nuvem · aberto em 19/10/2026
   - Cadastrar `BLING_CLIENT_SECRET` nas configurações do ambiente da nuvem (nunca pelo chat).
+    Feito pelo Weslei em 19/10/2026 (variável de ambiente; vale a partir da próxima sessão).
   - Abrir uma sessão nova com o repositório e mandar as planilhas 48, 64 e 62 (e 65 e 67, se quiser
     que o Claude cadastre contas a pagar e todos os vínculos). Passo a passo em `docs/EXECUCAO-NUVEM.md`.
 - [x] #6 PARA: WESLEI · Mandar ao CODE, pelo chat, os arquivos 64, 65, 66 e 67 de `X:\backup` · aberto em 19/10/2026
