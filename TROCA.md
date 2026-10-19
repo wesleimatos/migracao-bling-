@@ -1,11 +1,12 @@
 # TROCA — quadro da migração Superus → Bling
 
 ## Agora
-Etapa: 0 (quase fechada) · Com a bola: VPS (#2) e CODE (desenho do app para o Weslei aprovar)
+Etapa: 0 (quase fechada) · Com a bola: WESLEI (aprovar `docs/DESENHO.md`) e VPS (#2)
 
 Repositório: `wesleimatos/migracao-bling-` (com traço no fim; o Weslei escolheu usar este no lugar
 de `migracao-bling`). Fica **público** por decisão do Weslei e será excluído no fim do projeto.
 Referências em `docs/`; regras de cada cadastro em `docs/MAPEAMENTO-*.md`.
+O app roda na **VPS** (`migra.focosaas.com.br`), como no brief: decisão confirmada pelo Weslei em 19/10/2026.
 
 ## Como usar o quadro
 - Quem mantém o quadro é o CODE: `git pull` antes, commit `quadro: ...` + `git push` depois.
@@ -58,6 +59,7 @@ Referências em `docs/`; regras de cada cadastro em `docs/MAPEAMENTO-*.md`.
     onde ele liga as colunas. Regra das contas a pagar em `docs/MAPEAMENTO-CONTAS-PAGAR.md`.
 
 ## Entregas
+- CODE · desenho do app em `docs/DESENHO.md` (19/10/2026) · aguardando aprovação do Weslei
 - #1, #3 e #4 FEITOS por COMPUTADOR em 19/10/2026 · arquivos em `X:\backup` no computador do
   Weslei: 64 (fornecedores com IE e telefones), 65 (contas a pagar em aberto), 66 (categorias
   financeiras e formas de pagamento), 67 (produtos × fornecedores) · `CONTATO` é só uma marcação
