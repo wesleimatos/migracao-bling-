@@ -3,7 +3,3 @@ dados/
 *.xlsx
 *.db
 node_modules/
-
-# amostras mascaradas da Etapa 0 (cabeçalho + 5 linhas) podem entrar
-!amostras/*.csv
-!amostras/*.xlsx

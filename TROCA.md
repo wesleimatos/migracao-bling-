@@ -25,13 +25,12 @@ Referências em `docs/`.
     estoque, contas_pagar só em aberto) em
     `C:\Users\wesle\OneDrive\Documentos\migracao-bling\planilhas\<AAAA-MM-DD>\`.
     **Esses arquivos completos não vão para o Git.**
-  - 3) Crie a amostra no repositório, em `amostras/`, com o mesmo nome de cada arquivo
-    (ex.: `amostras/produtos.csv`): cabeçalho + 5 linhas, com o mesmo separador e a mesma
-    codificação do original. Se der, escolha linhas variadas (produto inativo, com CEST,
-    unidade diferente de UN, conta com parcela). Se o Superus só gerar XLSX, a amostra pode ser `.xlsx`.
-    - Mascare CNPJ/CPF mantendo o formato e só os 2 primeiros e os 2 últimos dígitos
-      (ex.: `12.***.***/****-34`). Mascare também telefone, e-mail e rua/número do endereço
-      (deixe cidade, UF e CEP).
+  - 3) Crie a amostra no repositório, um arquivo por planilha: `amostras/<arquivo>.md`
+    (ex.: `amostras/produtos.md`), com o cabeçalho + até 5 linhas copiados do arquivo do jeito
+    que estão, dentro de um bloco de código, sem trocar separador nem aspas. Se a planilha for
+    XLSX, copie as células separadas por `;`. Se der, escolha linhas variadas (produto inativo,
+    com CEST, unidade diferente de UN, conta com parcela).
+    - Mascare só CNPJ/CPF, assim: `12.345.***/0001-**`.
     - A amostra serve só para a nuvem ver o formato. **A migração leva todos os registros,
       completos e sem máscara**, a partir dos arquivos completos (pela tela do app, na Etapa 4).
   - 4) Escreva a entrega em "Entregas", com:
@@ -56,5 +55,5 @@ Referências em `docs/`.
 _(nenhuma ainda)_
 
 ## Bloqueios (precisa do Weslei)
-- B1 · **Faltam documentos em `docs/`:** `PROMPT-CLAUDE-COMPUTADOR.md` e o `COMO-TRABALHAMOS.md`
-  do Weslei (o brief manda seguir). Quem resolve: Weslei ou o líder do projeto.
+- B1 · **Falta em `docs/`:** o `COMO-TRABALHAMOS.md` do Weslei (o brief manda seguir).
+  Quem resolve: Weslei ou o líder do projeto.
