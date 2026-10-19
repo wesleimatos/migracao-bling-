@@ -88,7 +88,12 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
 - CODE (nuvem) · 19/10/2026 · teste aprovado pelo Weslei · **envio completo**: 500 categorias, 623
   fornecedores, 2.786 produtos criados (+10.094 que já existiam no Bling, não mexidos), 5.005 vínculos,
   3.179 estoques. Erros: 177 fornecedores (telefone inválido no Superus), 121 produtos (GTIN fora do
-  GS1 e 4 CEST), 854 vínculos e 15 estoques que dependem deles. Decisões pendentes no Bloqueio.
+  GS1 e 4 CEST), 854 vínculos e 15 estoques que dependem deles.
+- CODE (nuvem) · 19/10/2026 · os 10.094 "que já existiam" estavam na **lixeira** do Bling (situação E):
+  a busca passou a ignorar a lixeira e eles foram criados. Decisões do Weslei: telefone sem zeros de
+  discagem ou sem telefone (159), GTIN recusado vira o código/SKU (117), CEST recusado sai (5).
+  **Migração completa, 0 erros:** 500 categorias, 800 fornecedores, 13.001 produtos, 5.859 vínculos,
+  3.194 estoques · 72 testes passando · limpeza da lixeira autorizada pelo Weslei e iniciada.
 - CODE · **Etapa 2 pronta** em 19/10/2026: login (scrypt, cookie seguro, bloqueio de tentativas),
   conexão com o Bling (OAuth com state, Secret e tokens cifrados), fila de envio por etapas
   (não duplica, retoma, pausa, limite do dia), envio de teste "TESTE" + apagar testes, ligação das
@@ -126,7 +131,4 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
   digita na tela do app, na Etapa 3) · link de retorno e permissões confirmados pelo Weslei
 
 ## Bloqueios (precisa do Weslei)
-- 19/10/2026 · envio completo: o Bling já tinha 10.094 produtos com o mesmo código (sem NCM, grupo,
-  origem e tipo do item). Proposta: atualizar com os dados do Superus. Também: fornecedor com telefone
-  recusado vai sem telefone (números no relatório); produto com GTIN/CEST recusado vai sem eles
-  (código original nas observações). Aguardando o OK do Weslei.
+_(nenhum)_
