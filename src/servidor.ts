@@ -9,14 +9,11 @@ import { Envio, type Lote, loteDeTeste, type Modo, NOMES_ETAPA } from './bling/e
 import { trocarCodigo, urlAutorizacao } from './bling/oauth.ts'
 import { esc, formatar, pagina } from './html.ts'
 import { lerPlanilha, type Planilha } from './planilhas/ler.ts'
-import { CAMPOS, mapaPadrao } from './regras/campos.ts'
+import { CAMPOS } from './regras/campos.ts'
 import { conferir, type ConferenciaTipo, type Fonte } from './regras/conferencia.ts'
-import type { Categoria } from './regras/categorias.ts'
+import { loteDaConferencia, mapaValido } from './montagem.ts'
 import type { Conta } from './regras/contas.ts'
-import type { Fornecedor } from './regras/fornecedores.ts'
-import type { Produto } from './regras/produtos.ts'
 import { type Mapa, NOMES_TIPO, type Problema, type Tipo, TIPOS } from './regras/tipos.ts'
-import type { Vinculo } from './regras/vinculos.ts'
 import { Acesso, lerCookies, origemDaRequisicao } from './seguranca.ts'
 import { alerta, andamento, telaBling, telaEntrar, telaEnvio, telaLigacoes, telaRelatorio } from './telasEnvio.ts'
 
@@ -100,18 +97,7 @@ export function criarApp(banco: Banco, opcoes: OpcoesApp = {}) {
     return p
   }
 
-  /** Ligação que vale: a salva (se a coluna ainda existe na planilha) e, no resto, a padrão. */
-  function mapa(tipo: Tipo, p: Planilha | null): Mapa {
-    const colunas = p?.colunas ?? []
-    const salvo = banco.mapaSalvo(tipo)
-    const padrao = mapaPadrao(tipo, colunas)
-    return Object.fromEntries(
-      CAMPOS[tipo].map(({ chave }) => {
-        const s = salvo[chave]
-        return [chave, s !== undefined && (s === '' || colunas.includes(s)) ? s : padrao[chave]]
-      })
-    )
-  }
+  const mapa = (tipo: Tipo, p: Planilha | null): Mapa => mapaValido(banco, tipo, p)
 
   function conferencia(): Record<Tipo, ConferenciaTipo> {
     const fontes = Object.fromEntries(
@@ -134,17 +120,7 @@ export function criarApp(banco: Banco, opcoes: OpcoesApp = {}) {
     }
     if (!cliente.conectado) faltam.push('Conectar o app ao Bling na tela <a href="/bling">Bling</a>.')
     else for (const p of pendenciasBling(lerCatalogosSalvos(banco), lerLigacoes(banco))) faltam.push(`${esc(p)} (tela <a href="/bling">Bling</a>)`)
-    if (faltam.some((f) => f.startsWith('Planilha'))) return { lote: null, faltam }
-    return {
-      lote: {
-        categorias: c.categorias.resultado!.registros as Categoria[],
-        fornecedores: c.fornecedores.resultado!.registros as Fornecedor[],
-        produtos: c.produtos.resultado!.registros as Produto[],
-        vinculos: (c.vinculos.resultado?.registros ?? []) as Vinculo[],
-        contas: (c.contas.resultado?.registros ?? []) as Conta[]
-      },
-      faltam
-    }
+    return { lote: loteDaConferencia(c), faltam }
   }
 
   function comecar(modo: Modo): void {

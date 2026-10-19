@@ -64,3 +64,16 @@ export function trocarCodigo(f: Fetch, clientId: string, secret: string, codigo:
 export function renovarToken(f: Fetch, clientId: string, secret: string, renovacao: string, agora = Date.now()) {
   return pedirToken(f, clientId, secret, { grant_type: 'refresh_token', refresh_token: renovacao }, agora)
 }
+
+/** Código e state do endereço que o navegador mostra depois de autorizar (ou o código puro). */
+export function extrairCodigo(texto: string): { codigo: string; estado: string | null } {
+  const t = texto.trim()
+  if (/^https?:\/\//i.test(t)) {
+    const u = new URL(t)
+    const codigo = u.searchParams.get('code')
+    if (!codigo) throw new ErroAutorizacao('O endereço não tem o código de autorização (code=...).')
+    return { codigo, estado: u.searchParams.get('state') }
+  }
+  if (!/^[\w-]{8,}$/.test(t)) throw new ErroAutorizacao('Código de autorização inválido.')
+  return { codigo: t, estado: null }
+}

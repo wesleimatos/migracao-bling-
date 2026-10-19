@@ -9,7 +9,9 @@ pedidos em `TROCA.md`.
 - **Etapa 1 pronta:** planilhas, ligação de colunas e conferência com totais.
 - **Etapa 2 pronta:** login, conexão com o Bling (OAuth), fila de envio (teste e completo),
   relatório. Testada com um Bling falso; ainda não falou com o Bling de verdade.
-- Próxima: **Etapa 3**, app na VPS pela sessão "VPS".
+- **Modo nuvem** (decisão do Weslei): o app não vai para a VPS. O Claude da nuvem faz os cadastros
+  pelos comandos de `src/cli.ts`, com as mesmas regras e a mesma fila. Roteiro em
+  `docs/EXECUCAO-NUVEM.md`. As telas continuam disponíveis para rodar localmente.
 
 | Tela | O que faz |
 |---|---|
@@ -27,8 +29,9 @@ pedidos em `TROCA.md`.
 Node 22.18 ou mais novo (a VPS tem o 24). Sem dependências: não precisa de `npm install`.
 
 ```
-npm start      # http://127.0.0.1:8100
-npm test       # testes automáticos (67)
+npm start                          # telas em http://127.0.0.1:8100
+npm test                           # testes automáticos (68)
+node src/cli.ts <comando>          # modo nuvem (ver docs/EXECUCAO-NUVEM.md)
 ```
 
 | Variável | Padrão | Na VPS |
