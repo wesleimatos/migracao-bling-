@@ -25,8 +25,9 @@ categoria/plano de contas e forma de pagamento. Só as contas em aberto.
 | — | `situacao` = 1 (aberto) | fixo |
 
 ## Conferência antes de enviar (brief)
-Fornecedor inexistente, valor zerado ou negativo, vencimento inválido, duplicadas (mesmo
-fornecedor + documento + vencimento), e o total para bater com o Superus.
+Fornecedor inexistente, valor zerado ou negativo, vencimento inválido, duplicadas e o total para
+bater com o Superus. Duplicada = mesmo fornecedor, documento, vencimento, parcela **e valor** (mais
+justo que o brief, para não descartar duas parcelas diferentes com o mesmo vencimento).
 
 Não duplicar: antes de criar, `GET /contas/pagar?idContato=&situacao=1&dataVencimentoInicial=&dataVencimentoFinal=`
 no dia do vencimento, comparando nº do documento e valor.

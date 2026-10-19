@@ -1,7 +1,7 @@
 # TROCA — quadro da migração Superus → Bling
 
 ## Agora
-Etapa: 0 (quase fechada) · Com a bola: WESLEI (aprovar `docs/DESENHO.md`) e VPS (#2)
+Etapa: 1 pronta (aguardando o OK do Weslei) · Com a bola: WESLEI (aprovar a Etapa 1) e VPS (#2)
 
 Repositório: `wesleimatos/migracao-bling-` (com traço no fim; o Weslei escolheu usar este no lugar
 de `migracao-bling`). Fica **público** por decisão do Weslei e será excluído no fim do projeto.
@@ -61,7 +61,11 @@ O app roda na **VPS** (`migra.focosaas.com.br`), como no brief: decisão confirm
     onde ele liga as colunas. Regra das contas a pagar em `docs/MAPEAMENTO-CONTAS-PAGAR.md`.
 
 ## Entregas
-- CODE · desenho do app em `docs/DESENHO.md` (19/10/2026) · aguardando aprovação do Weslei
+- CODE · **Etapa 1 pronta** em 19/10/2026: leitura das planilhas (XLSX/CSV, sem biblioteca),
+  ligação de colunas e conferência com totais · 33 testes passando · simulação com as planilhas
+  reais (fora do Git): 500 categorias, 800 fornecedores, 13.001 produtos, 5.859 vínculos,
+  122.277 unidades de estoque (R$ 1.170.117,60 no custo) · ver `README.md`
+- CODE · desenho do app em `docs/DESENHO.md` (19/10/2026) · **aprovado pelo Weslei**
 - #1, #3 e #4 FEITOS por COMPUTADOR em 19/10/2026 · arquivos em `X:\backup` no computador do
   Weslei: 64 (fornecedores com IE e telefones), 65 (contas a pagar em aberto), 66 (categorias
   financeiras e formas de pagamento), 67 (produtos × fornecedores) · `CONTATO` é só uma marcação
