@@ -14,11 +14,14 @@ export function formatar(valor: number, formato: 'qtd' | 'un' | 'reais' = 'qtd')
 const MENU = [
   ['/', 'Início'],
   ['/planilhas', 'Planilhas'],
-  ['/conferencia', 'Conferência']
+  ['/conferencia', 'Conferência'],
+  ['/bling', 'Bling'],
+  ['/envio', 'Envio'],
+  ['/relatorio', 'Relatório']
 ]
 
-/** Página com o menu do app. As telas funcionam no celular. */
-export function pagina(titulo: string, ativo: string, corpo: string): string {
+/** Página com o menu do app (sem menu na tela de entrar). As telas funcionam no celular. */
+export function pagina(titulo: string, ativo: string, corpo: string, comMenu = true): string {
   return `<!doctype html>
 <html lang="pt-BR">
 <head>
@@ -29,6 +32,7 @@ export function pagina(titulo: string, ativo: string, corpo: string): string {
   :root { --verde: #1f8a4c; --verde-claro: #e8f5ee; --vermelho: #b42318; --vermelho-claro: #fdecea;
     --amarelo: #8a5a00; --amarelo-claro: #fff6e0; --cinza: #5f6b7a; --borda: #dfe3e8; --fundo: #f6f7f9; }
   * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
   body { margin: 0; font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: #1d2733; background: var(--fundo); }
   header { background: #fff; border-bottom: 1px solid var(--borda); padding: 12px 16px; display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; }
   header strong { font-size: 16px; }
@@ -57,6 +61,13 @@ export function pagina(titulo: string, ativo: string, corpo: string): string {
   .botao.leve { background: #fff; color: var(--verde); }
   .botao.perigo { background: #fff; color: var(--vermelho); border-color: var(--vermelho); }
   select, input[type=file] { font: inherit; max-width: 100%; }
+  input[type=text], input[type=password] { font: inherit; padding: 8px; border: 1px solid var(--borda); border-radius: 8px; width: 100%; max-width: 420px; }
+  label.campo { display: block; margin: 0 0 12px; }
+  label.campo span { display: block; font-size: 13px; color: var(--cinza); margin-bottom: 4px; }
+  .barra { height: 10px; background: #eef0f3; border-radius: 999px; overflow: hidden; }
+  .barra div { height: 100%; background: var(--verde); }
+  .alerta { padding: 10px 12px; border-radius: 8px; margin-bottom: 12px; }
+  button[disabled] { opacity: .5; cursor: not-allowed; }
   select { padding: 6px; border: 1px solid var(--borda); border-radius: 8px; background: #fff; width: 100%; }
   .ajuda { color: var(--cinza); font-size: 13px; }
   .exemplo { color: var(--cinza); font-size: 13px; word-break: break-word; }
@@ -68,7 +79,8 @@ export function pagina(titulo: string, ativo: string, corpo: string): string {
 </head>
 <body>
 <header><strong>Migração Superus → Bling</strong>
-<nav>${MENU.map(([href, nome]) => `<a href="${href}"${href === ativo ? ' class="ativo"' : ''}>${nome}</a>`).join('')}</nav>
+${comMenu ? `<nav>${MENU.map(([href, nome]) => `<a href="${href}"${href === ativo ? ' class="ativo"' : ''}>${nome}</a>`).join('')}</nav>
+<form method="post" action="/sair" style="margin-left:auto"><button class="botao leve">Sair</button></form>` : ''}
 </header>
 <main>
 <h1>${esc(titulo)}</h1>

@@ -14,9 +14,11 @@ export interface Arquivo {
 /** Banco e planilhas do app, todos dentro da pasta de dados (fora do Git). */
 export class Banco {
   readonly db: DatabaseSync
+  readonly pasta: string
   private readonly pastaPlanilhas: string
 
   constructor(pasta: string) {
+    this.pasta = pasta
     mkdirSync(pasta, { recursive: true, mode: 0o700 })
     this.pastaPlanilhas = join(pasta, 'planilhas')
     mkdirSync(this.pastaPlanilhas, { recursive: true, mode: 0o700 })
@@ -28,6 +30,17 @@ export class Banco {
         linhas INTEGER NOT NULL, recebido_em TEXT NOT NULL
       );
       CREATE TABLE IF NOT EXISTS mapas (tipo TEXT PRIMARY KEY, json TEXT NOT NULL);
+      CREATE TABLE IF NOT EXISTS config (chave TEXT PRIMARY KEY, valor TEXT NOT NULL);
+      -- Tabela local "registro do Superus → id no Bling", por modo (teste ou completo).
+      -- status: enviando (POST em andamento), enviado (criado pelo app), pulado (já existia), erro.
+      CREATE TABLE IF NOT EXISTS itens (
+        modo TEXT NOT NULL, tipo TEXT NOT NULL, chave TEXT NOT NULL, status TEXT NOT NULL,
+        bling_id INTEGER, mensagem TEXT, tentativas INTEGER NOT NULL DEFAULT 0, atualizado_em TEXT NOT NULL,
+        PRIMARY KEY (modo, tipo, chave)
+      );
+      CREATE TABLE IF NOT EXISTS usuario (id INTEGER PRIMARY KEY CHECK (id = 1), senha TEXT NOT NULL);
+      CREATE TABLE IF NOT EXISTS sessoes (token TEXT PRIMARY KEY, expira_em INTEGER NOT NULL);
+      CREATE TABLE IF NOT EXISTS tentativas (ip TEXT NOT NULL, quando INTEGER NOT NULL);
     `)
   }
 
@@ -68,6 +81,16 @@ export class Banco {
     this.db
       .prepare('INSERT INTO mapas (tipo, json) VALUES (?, ?) ON CONFLICT (tipo) DO UPDATE SET json = excluded.json')
       .run(tipo, JSON.stringify(mapa))
+  }
+
+  lerConfig(chave: string): string | null {
+    const r = this.db.prepare('SELECT valor FROM config WHERE chave = ?').get(chave) as { valor: string } | undefined
+    return r?.valor ?? null
+  }
+
+  gravarConfig(chave: string, valor: string | null): void {
+    if (valor === null) this.db.prepare('DELETE FROM config WHERE chave = ?').run(chave)
+    else this.db.prepare('INSERT INTO config (chave, valor) VALUES (?, ?) ON CONFLICT (chave) DO UPDATE SET valor = excluded.valor').run(chave, valor)
   }
 
   fechar(): void {

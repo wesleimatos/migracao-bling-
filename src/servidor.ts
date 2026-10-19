@@ -1,10 +1,24 @@
+import { randomBytes } from 'node:crypto'
 import type { IncomingMessage, ServerResponse } from 'node:http'
 import type { Banco } from './banco.ts'
+import { lerCatalogos, lerCatalogosSalvos, lerLigacoes, pendenciasBling } from './bling/catalogos.ts'
+import { BlingCliente, type OpcoesCliente } from './bling/cliente.ts'
+import { Cofre } from './bling/cofre.ts'
+import { CredenciaisBling } from './bling/credenciais.ts'
+import { Envio, type Lote, loteDeTeste, type Modo, NOMES_ETAPA } from './bling/envio.ts'
+import { trocarCodigo, urlAutorizacao } from './bling/oauth.ts'
 import { esc, formatar, pagina } from './html.ts'
 import { lerPlanilha, type Planilha } from './planilhas/ler.ts'
 import { CAMPOS, mapaPadrao } from './regras/campos.ts'
 import { conferir, type ConferenciaTipo, type Fonte } from './regras/conferencia.ts'
+import type { Categoria } from './regras/categorias.ts'
+import type { Conta } from './regras/contas.ts'
+import type { Fornecedor } from './regras/fornecedores.ts'
+import type { Produto } from './regras/produtos.ts'
 import { type Mapa, NOMES_TIPO, type Problema, type Tipo, TIPOS } from './regras/tipos.ts'
+import type { Vinculo } from './regras/vinculos.ts'
+import { Acesso, lerCookies, origemDaRequisicao } from './seguranca.ts'
+import { alerta, andamento, telaBling, telaEntrar, telaEnvio, telaLigacoes, telaRelatorio } from './telasEnvio.ts'
 
 const LIMITE_ARQUIVO = 60 * 1024 * 1024
 
@@ -61,8 +75,17 @@ class ErroHttp extends Error {
   }
 }
 
-/** O app (Etapa 1): planilhas, ligação de colunas e conferência com totais. Ainda sem o Bling. */
-export function criarApp(banco: Banco) {
+export interface OpcoesApp extends OpcoesCliente {
+  /** Atrás do proxy da VPS: IP, HTTPS e host vêm dos cabeçalhos X-Forwarded-*. */
+  confiarProxy?: boolean
+}
+
+/** O app: login, planilhas, ligação de colunas, conferência, conexão com o Bling, envio e relatório. */
+export function criarApp(banco: Banco, opcoes: OpcoesApp = {}) {
+  const acesso = new Acesso(banco)
+  const credenciais = new CredenciaisBling(banco, new Cofre(banco.pasta))
+  const cliente = new BlingCliente(credenciais, opcoes)
+  const envio = new Envio(banco, cliente)
   const lidas = new Map<Tipo, { recebidoEm: string; planilha: Planilha }>()
   let ultima: { chave: string; valor: Record<Tipo, ConferenciaTipo> } | null = null
 
@@ -101,11 +124,87 @@ export function criarApp(banco: Banco) {
     return ultima.valor
   }
 
+  /** O que vai para o Bling, a partir da conferência; e o que ainda falta para poder enviar. */
+  function lote(): { lote: Lote | null; faltam: string[] } {
+    const c = conferencia()
+    const faltam: string[] = []
+    for (const t of ['categorias', 'fornecedores', 'produtos'] as const) {
+      if (!c[t].resultado) faltam.push(`Planilha de ${NOMES_TIPO[t].toLowerCase()} pronta na <a href="/conferencia">conferência</a>.`)
+    }
+    if (!cliente.conectado) faltam.push('Conectar o app ao Bling na tela <a href="/bling">Bling</a>.')
+    else for (const p of pendenciasBling(lerCatalogosSalvos(banco), lerLigacoes(banco))) faltam.push(`${esc(p)} (tela <a href="/bling">Bling</a>)`)
+    if (faltam.some((f) => f.startsWith('Planilha'))) return { lote: null, faltam }
+    return {
+      lote: {
+        categorias: c.categorias.resultado!.registros as Categoria[],
+        fornecedores: c.fornecedores.resultado!.registros as Fornecedor[],
+        produtos: c.produtos.resultado!.registros as Produto[],
+        vinculos: (c.vinculos.resultado?.registros ?? []) as Vinculo[],
+        contas: (c.contas.resultado?.registros ?? []) as Conta[]
+      },
+      faltam
+    }
+  }
+
+  function comecar(modo: Modo): void {
+    const { lote: l, faltam } = lote()
+    if (!l || faltam.length) throw new ErroHttp(400, 'Ainda falta preparar o envio (veja a lista na tela).')
+    const catalogos = lerCatalogosSalvos(banco)
+    const ligacoes = lerLigacoes(banco)
+    try {
+      envio.verificar(modo, catalogos, ligacoes)
+    } catch (e) {
+      throw new ErroHttp(400, (e as Error).message)
+    }
+    void envio.enviar(modo, l, catalogos, ligacoes)
+  }
+
+  async function atualizarCatalogos(): Promise<void> {
+    banco.gravarConfig('bling.catalogos', JSON.stringify(await lerCatalogos(cliente)))
+  }
+
   return async function atender(req: IncomingMessage, res: ServerResponse): Promise<void> {
     try {
       const url = new URL(req.url ?? '/', 'http://localhost')
       const rota = `${req.method} ${url.pathname}`
+      const origem = origemDaRequisicao(req, !!opcoes.confiarProxy)
+      const sessao = lerCookies(req).sessao
       let m: RegExpExecArray | null
+
+      // Entrar (única página aberta sem login).
+      if (rota === 'GET /entrar') return html(res, telaEntrar(!acesso.temSenha, ''))
+      if (rota === 'POST /entrar') {
+        const form = new URLSearchParams((await corpo(req, 64 * 1024)).toString('utf8'))
+        const senha = form.get('senha') ?? ''
+        if (!acesso.temSenha) {
+          if (senha !== form.get('confirmar')) return html(res, telaEntrar(true, 'As duas senhas não são iguais.'), 400)
+          try {
+            acesso.criarSenha(senha)
+          } catch (e) {
+            return html(res, telaEntrar(true, (e as Error).message), 400)
+          }
+        }
+        const token = acesso.entrar(senha, origem.ip)
+        if (!token) {
+          const msg = acesso.bloqueado(origem.ip) ? 'Muitas tentativas erradas. Espere 15 minutos.' : 'Senha errada.'
+          return html(res, telaEntrar(false, msg), 401)
+        }
+        res.setHeader('Set-Cookie', `sessao=${token}; HttpOnly; SameSite=Lax; Path=/; Max-Age=43200${origem.https ? '; Secure' : ''}`)
+        return redirecionar(res, '/')
+      }
+      if (!acesso.valida(sessao)) {
+        if (req.headers.accept?.includes('application/json')) return json(res, 401, { erro: 'Entre de novo.' })
+        return redirecionar(res, '/entrar')
+      }
+      // Formulário de outro site não pode agir em nome do Weslei ("null" = origem escondida, também recusa).
+      const origin = req.headers.origin
+      if (req.method === 'POST' && origin && hostDe(origin) !== origem.host) throw new ErroHttp(403, 'Pedido de outro site recusado.')
+      if (rota === 'POST /sair') {
+        acesso.sair(sessao)
+        res.setHeader('Set-Cookie', 'sessao=; HttpOnly; SameSite=Lax; Path=/; Max-Age=0')
+        return redirecionar(res, '/entrar')
+      }
+
       if (rota === 'GET /') return html(res, telaInicio(banco, conferencia()))
       if (rota === 'GET /planilhas') return html(res, telaPlanilhas(banco))
       if ((m = /^POST \/planilhas\/(\w+)$/.exec(rota))) return await receberPlanilha(req, res, banco, tipoDa(m[1]), lidas)
@@ -133,6 +232,142 @@ export function criarApp(banco: Banco) {
         const tipo = tipoDa(m[1])
         return csv(res, `problemas-${tipo}.csv`, conferencia()[tipo].resultado?.problemas ?? [])
       }
+
+      // ---------- Bling ----------
+      if (rota === 'GET /bling') {
+        const catalogos = lerCatalogosSalvos(banco)
+        const ligacoes = lerLigacoes(banco)
+        return html(
+          res,
+          telaBling(
+            {
+              clientId: credenciais.clientId,
+              temSecret: credenciais.temSecret,
+              conectado: cliente.conectado,
+              expiraEm: credenciais.tokens()?.expiraEm ?? null,
+              catalogos,
+              ligacoes,
+              pendencias: cliente.conectado ? pendenciasBling(catalogos, ligacoes) : []
+            },
+            alerta(url)
+          )
+        )
+      }
+      if (rota === 'POST /bling/app') {
+        const form = new URLSearchParams((await corpo(req, 64 * 1024)).toString('utf8'))
+        const clientId = (form.get('clientId') ?? '').trim()
+        if (!clientId) throw new ErroHttp(400, 'Informe o Client ID.')
+        credenciais.gravarApp(clientId, form.get('clientSecret') ?? '')
+        return redirecionar(res, `/bling?ok=${encodeURIComponent('App salvo. Agora clique em "Conectar ao Bling".')}`)
+      }
+      if (rota === 'GET /bling/conectar') {
+        if (!credenciais.temSecret) return redirecionar(res, `/bling?erro=${encodeURIComponent('Salve o Client Secret primeiro.')}`)
+        const estado = randomBytes(24).toString('base64url')
+        banco.gravarConfig('oauth.estado', JSON.stringify({ estado, expira: Date.now() + 10 * 60_000 }))
+        return redirecionar(res, urlAutorizacao(credenciais.clientId, estado))
+      }
+      if (rota === 'GET /bling/callback') {
+        const salvo = JSON.parse(banco.lerConfig('oauth.estado') ?? 'null') as { estado: string; expira: number } | null
+        banco.gravarConfig('oauth.estado', null)
+        const codigo = url.searchParams.get('code')
+        if (!codigo || !salvo || salvo.expira < Date.now() || url.searchParams.get('state') !== salvo.estado) {
+          return redirecionar(res, `/bling?erro=${encodeURIComponent('Autorização inválida ou vencida. Clique em "Conectar ao Bling" de novo.')}`)
+        }
+        const app = credenciais.app()!
+        try {
+          credenciais.gravarTokens(await trocarCodigo(opcoes.fetch ?? fetch, app.clientId, app.clientSecret, codigo))
+          await atualizarCatalogos()
+        } catch (e) {
+          return redirecionar(res, `/bling?erro=${encodeURIComponent((e as Error).message)}`)
+        }
+        return redirecionar(res, `/bling?ok=${encodeURIComponent('Conectado ao Bling.')}`)
+      }
+      if (rota === 'POST /bling/catalogos') {
+        try {
+          await atualizarCatalogos()
+        } catch (e) {
+          return redirecionar(res, `/bling?erro=${encodeURIComponent((e as Error).message)}`)
+        }
+        return redirecionar(res, `/bling?ok=${encodeURIComponent('Cadastros do Bling atualizados.')}`)
+      }
+      if (rota === 'POST /bling/deposito') {
+        const form = new URLSearchParams((await corpo(req, 64 * 1024)).toString('utf8'))
+        banco.gravarConfig('ligacoes', JSON.stringify({ ...lerLigacoes(banco), deposito: Number(form.get('deposito')) || null }))
+        return redirecionar(res, `/bling?ok=${encodeURIComponent('Depósito salvo.')}`)
+      }
+
+      // ---------- Ligações das contas a pagar ----------
+      if (rota === 'GET /ligacoes' || rota === 'POST /ligacoes') {
+        const contas = (conferencia().contas.resultado?.registros ?? []) as Conta[]
+        const distintos = (f: (c: Conta) => string) => [...new Set(contas.map(f).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'pt-BR'))
+        const categorias = distintos((c) => c.categoria)
+        const formas = distintos((c) => c.formaPagamento)
+        if (req.method === 'POST') {
+          const form = new URLSearchParams((await corpo(req, 1024 * 1024)).toString('utf8'))
+          const ler = (campo: string, nomes: string[]) =>
+            Object.fromEntries(nomes.map((n, i) => [form.get(`${campo}Nome${i}`) ?? n, Number(form.get(`${campo}${i}`))]).filter(([, id]) => id))
+          banco.gravarConfig('ligacoes', JSON.stringify({ ...lerLigacoes(banco), categorias: ler('cat', categorias), formas: ler('forma', formas) }))
+          return redirecionar(res, `/ligacoes?ok=${encodeURIComponent('Ligações salvas.')}`)
+        }
+        return html(res, telaLigacoes(categorias, formas, lerCatalogosSalvos(banco), lerLigacoes(banco), alerta(url)))
+      }
+
+      // ---------- Envio ----------
+      if (rota === 'GET /envio') {
+        const { lote: l, faltam } = lote()
+        const contas = l?.contas ?? []
+        const ligacoes = lerLigacoes(banco)
+        // Sem ligação a conta vai sem categoria/forma (fica anotado): é aviso, não impede o envio.
+        const semLigacao = contas.some((c) => (c.categoria && !ligacoes.categorias[c.categoria]) || (c.formaPagamento && !ligacoes.formas[c.formaPagamento]))
+        return html(
+          res,
+          telaEnvio(
+            {
+              faltam,
+              estado: envio.estado,
+              teste: l ? envio.contagem('teste', loteDeTeste(l)) : null,
+              completo: l ? envio.contagem('completo', l) : null,
+              temTestes: envio.temTestes(),
+              testesCriados: envio.testesCriados().length
+            },
+            alerta(url) + (semLigacao && l ? `<div class="alerta aviso">Há contas com categoria ou forma de pagamento sem ligação. <a href="/ligacoes">Ligar agora</a>.</div>` : '')
+          )
+        )
+      }
+      if (rota === 'GET /envio/estado') return json(res, 200, { rodando: envio.estado.rodando, html: andamento(envio.estado) })
+      if ((m = /^POST \/envio\/(teste|completo)$/.exec(rota))) {
+        comecar(m[1] as Modo)
+        return redirecionar(res, '/envio')
+      }
+      if (rota === 'POST /envio/pausar') {
+        envio.pausar()
+        return redirecionar(res, '/envio')
+      }
+      if (rota === 'POST /envio/apagar-testes') {
+        try {
+          const r = await envio.apagarTestes()
+          const msg = r.falhas.length ? `Apagados ${r.apagados}; não deu para apagar: ${r.falhas.join('; ')}` : `Apagados ${r.apagados} registros de teste do Bling.`
+          return redirecionar(res, `/envio?${r.falhas.length ? 'erro' : 'ok'}=${encodeURIComponent(msg)}`)
+        } catch (e) {
+          return redirecionar(res, `/envio?erro=${encodeURIComponent((e as Error).message)}`)
+        }
+      }
+
+      // ---------- Relatório ----------
+      if (rota === 'GET /relatorio' || rota === 'GET /relatorio.csv') {
+        const modo: Modo = url.searchParams.get('modo') === 'teste' ? 'teste' : 'completo'
+        const { lote: l } = lote()
+        const ocorrencias = envio.ocorrencias(modo)
+        if (rota === 'GET /relatorio.csv') {
+          return csvLinhas(res, `relatorio-${modo}.csv`, [
+            ['Etapa', 'Registro', 'Situação', 'Mensagem'],
+            ...ocorrencias.map((o) => [NOMES_ETAPA[o.etapa], o.chave, o.status === 'erro' ? 'erro' : 'aviso', o.mensagem])
+          ])
+        }
+        const contagem = l ? envio.contagem(modo, modo === 'teste' ? loteDeTeste(l) : l) : null
+        return html(res, telaRelatorio(modo, contagem, ocorrencias))
+      }
+
       throw new ErroHttp(404, 'Página não encontrada.')
     } catch (e) {
       const status = e instanceof ErroHttp ? e.status : 500
@@ -141,6 +376,14 @@ export function criarApp(banco: Banco) {
       if (req.headers.accept?.includes('application/json')) return json(res, status, { erro: mensagem })
       html(res, pagina('Algo deu errado', '', `<div class="cartao"><p>${esc(mensagem)}</p><a class="botao leve" href="/">Voltar ao início</a></div>`), status)
     }
+  }
+}
+
+function hostDe(origin: string): string | null {
+  try {
+    return new URL(origin).host
+  } catch {
+    return null
   }
 }
 
@@ -178,7 +421,8 @@ async function corpo(req: IncomingMessage, limite: number): Promise<Buffer> {
 const SEGURANCA = {
   'X-Content-Type-Options': 'nosniff',
   'X-Frame-Options': 'DENY',
-  'Referrer-Policy': 'no-referrer',
+  // same-origin: o navegador manda a origem certa nos formulários do próprio app (com no-referrer ela vira "null").
+  'Referrer-Policy': 'same-origin',
   'Cache-Control': 'no-store'
 }
 
@@ -194,10 +438,14 @@ function redirecionar(res: ServerResponse, para: string) {
   res.writeHead(303, { ...SEGURANCA, Location: para }).end()
 }
 
-/** Lista de problemas para abrir no Excel (UTF-8 com BOM e ponto e vírgula). */
+/** Lista de problemas para abrir no Excel. */
 function csv(res: ServerResponse, nome: string, problemas: Problema[]) {
+  csvLinhas(res, nome, [['Nível', 'Regra', 'Linha', 'Código', 'Mensagem'], ...problemas.map((p) => [p.nivel, ROTULOS[p.regra] ?? p.regra, p.linha, p.codigo, p.mensagem])])
+}
+
+/** CSV para o Excel: UTF-8 com BOM (acentos certos) e ponto e vírgula. */
+function csvLinhas(res: ServerResponse, nome: string, linhas: unknown[][]) {
   const campo = (v: unknown) => `"${String(v).replace(/"/g, '""')}"`
-  const linhas = [['Nível', 'Regra', 'Linha', 'Código', 'Mensagem'], ...problemas.map((p) => [p.nivel, ROTULOS[p.regra] ?? p.regra, p.linha, p.codigo, p.mensagem])]
   res
     .writeHead(200, { ...SEGURANCA, 'Content-Type': 'text/csv; charset=utf-8', 'Content-Disposition': `attachment; filename="${nome}"` })
     .end('\ufeff' + linhas.map((l) => l.map(campo).join(';')).join('\r\n'))

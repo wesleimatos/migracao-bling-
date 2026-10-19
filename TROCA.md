@@ -1,7 +1,7 @@
 # TROCA — quadro da migração Superus → Bling
 
 ## Agora
-Etapa: 1 pronta (aguardando o OK do Weslei) · Com a bola: WESLEI (aprovar a Etapa 1)
+Etapa: 2 pronta (aguardando o OK do Weslei) · Próxima: Etapa 3, app na VPS (sessão VPS, porta 8101)
 
 Repositório: `wesleimatos/migracao-bling-` (com traço no fim; o Weslei escolheu usar este no lugar
 de `migracao-bling`). Fica **público** por decisão do Weslei e será excluído no fim do projeto.
@@ -61,6 +61,12 @@ O app roda na **VPS** (`migra.focosaas.com.br`), como no brief: decisão confirm
     onde ele liga as colunas. Regra das contas a pagar em `docs/MAPEAMENTO-CONTAS-PAGAR.md`.
 
 ## Entregas
+- CODE · **Etapa 2 pronta** em 19/10/2026: login (scrypt, cookie seguro, bloqueio de tentativas),
+  conexão com o Bling (OAuth com state, Secret e tokens cifrados), fila de envio por etapas
+  (não duplica, retoma, pausa, limite do dia), envio de teste "TESTE" + apagar testes, ligação das
+  contas a pagar e relatório · 67 testes com Bling falso · simulação com as planilhas reais e o
+  Bling falso: 500 categorias, 800 fornecedores, 13.001 produtos, 5.859 vínculos e 3.194 estoques
+  enviados, 0 erros · ver `README.md`
 - #2 FEITO por VPS em 19/10/2026 (só olhando, nada instalado) · **porta 8101** (a 8100 é do ERPNext;
   entra na tabela de portas do ACESSO-DOCKER.md na Etapa 3) · o servidor baixa o código de
   `migracao-bling-` sem login · Node 24.22.0 com `node:sqlite` funcionando · API do Bling responde

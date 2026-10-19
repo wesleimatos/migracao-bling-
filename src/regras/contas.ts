@@ -5,6 +5,8 @@ import { dataIso, digitos, numero } from './validar.ts'
 
 /** Conta a pagar em aberto. Cada parcela do Superus é uma conta. */
 export interface Conta {
+  /** Fornecedor, documento, vencimento, parcela e valor: identifica a conta mesmo com a planilha exportada de novo. */
+  chave: string
   linha: number
   /** Chave do fornecedor (CPF/CNPJ). */
   fornecedor: string
@@ -51,6 +53,7 @@ export function montarContas(p: Planilha, mapa: Mapa, fornecedores: IndiceFornec
     vistas.set(chave, linha)
 
     registros.push({
+      chave,
       linha,
       fornecedor,
       numeroDocumento: documento,

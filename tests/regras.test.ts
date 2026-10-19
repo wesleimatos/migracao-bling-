@@ -8,42 +8,11 @@ import { indiceFornecedores, montarFornecedores, numeroEndereco, separarTelefone
 import { montarProdutos } from '../src/regras/produtos.ts'
 import type { Problema, Tipo } from '../src/regras/tipos.ts'
 import { montarVinculos } from '../src/regras/vinculos.ts'
-import { cnpj, gtin, planilha } from './util/planilha.ts'
+import { ARVORE, C1, C2, FORNECEDORES, G1, G2, PRODUTOS } from './util/exemplos.ts'
+import { planilha } from './util/planilha.ts'
 
 const regras = (ps: Problema[]) => ps.map((p) => `${p.nivel}:${p.regra}:${p.codigo}`).sort()
 const total = (totais: { rotulo: string; valor: number }[], rotulo: string) => totais.find((t) => t.rotulo === rotulo)?.valor
-
-// Planilhas de exemplo com as mesmas colunas das consultas do Superus (dados inventados).
-const ARVORE = planilha([
-  { COD_SETOR: '10', SETOR: 'PAPELARIA', COD_GRUPO: '20', GRUPO: 'ESCOLAR', COD_SUBGRUPO: '30', SUBGRUPO: 'CANETAS', COD_CATEGORIA: '40', CATEGORIA: 'GEL' },
-  { COD_SETOR: '10', SETOR: 'PAPELARIA', COD_GRUPO: '20', GRUPO: 'ESCOLAR', COD_SUBGRUPO: '31', SUBGRUPO: 'LAPIS', COD_CATEGORIA: '', CATEGORIA: '' },
-  { COD_SETOR: '11', SETOR: 'GERAL', COD_GRUPO: '', GRUPO: '', COD_SUBGRUPO: '', SUBGRUPO: '', COD_CATEGORIA: '', CATEGORIA: '' },
-  // Mesmo número (20) em outro nível não pode se confundir com o grupo 20.
-  { COD_SETOR: '20', SETOR: 'FESTA', COD_GRUPO: '0', GRUPO: '', COD_SUBGRUPO: '0', SUBGRUPO: '', COD_CATEGORIA: '0', CATEGORIA: '' }
-])
-
-const C1 = cnpj('123456780001')
-const C2 = cnpj('876543210001')
-const FORNECEDORES = planilha([
-  { CODIGO: '1', RAZAO: 'ALFA LTDA', NOME: 'ALFA', CNPJ: C1, CPF: '', IE: '0012345678901', TIPOPESSOA: 'J', LOGRADOURO: 'RUA A', ENDERECO: 'RUA A, 199-GALPAO 1', COMPLEMENTO: 'GALPAO 1', BAIRRO: 'CENTRO', CIDADE: 'BELO HORIZONTE', ESTADO: 'MG', CEP: '30000-000', EMAIL: 'a@a.com', TODOS_TELEFONES: 'COMERCIAL  3133334444 / Comercial 31 99999-8888', PRODUTOS_ATIVOS: '0' },
-  { CODIGO: '2', RAZAO: 'ALFA LTDA', NOME: 'ALFA', CNPJ: C1, CPF: '', IE: '', TIPOPESSOA: 'J', LOGRADOURO: 'RUA A', ENDERECO: 'RUA A, SN-', COMPLEMENTO: '', BAIRRO: '', CIDADE: '', ESTADO: 'MG', CEP: '', EMAIL: '', TODOS_TELEFONES: '', PRODUTOS_ATIVOS: '5' },
-  { CODIGO: '3', RAZAO: 'BETA ME', NOME: 'BETA', CNPJ: C2, CPF: '', IE: 'ISENTO', TIPOPESSOA: 'J', LOGRADOURO: 'AV B', ENDERECO: 'AV B, KM 66,5 - LADO A, SN', COMPLEMENTO: '', BAIRRO: '', CIDADE: 'SAO PAULO', ESTADO: 'SP', CEP: '', EMAIL: '', TODOS_TELEFONES: '(11) 3333-444', PRODUTOS_ATIVOS: '1' },
-  { CODIGO: '4', RAZAO: 'JOSE DA SILVA', NOME: '', CNPJ: '', CPF: '529.982.247-25', IE: '', TIPOPESSOA: 'F', LOGRADOURO: '', ENDERECO: '', COMPLEMENTO: '', BAIRRO: '', CIDADE: '', ESTADO: 'MG', CEP: '', EMAIL: '', TODOS_TELEFONES: '', PRODUTOS_ATIVOS: '0' },
-  { CODIGO: '5', RAZAO: 'ERRADO SA', NOME: '', CNPJ: '11.222.333/0001-82', CPF: '', IE: '', TIPOPESSOA: 'J', LOGRADOURO: '', ENDERECO: '', COMPLEMENTO: '', BAIRRO: '', CIDADE: '', ESTADO: 'MG', CEP: '', EMAIL: '', TODOS_TELEFONES: '', PRODUTOS_ATIVOS: '0' }
-])
-
-const G1 = gtin('789100010010')
-const G2 = gtin('789100010011')
-const prod = (o: Record<string, string>) => ({
-  CODPRODUTO: '', DESCRICAO: '', DESCRICAOWEB: '', INATIVO: 'N', EAN: '', TODOSEANS: '', PRECOVENDA: '10', CUSTO: '4', ESTOQUE: '0',
-  NCM: '96081000', CEST: '', CSTICMS: '000', CODSETOR: '0', CODGRUPO: '0', CODSUBGRUPO: '0', CODCATEGORIA: '0', CODFORNECEDOR: '', SKUREFFORNECEDOR: '', ...o
-})
-const PRODUTOS = planilha([
-  prod({ CODPRODUTO: '100', DESCRICAO: 'CANETA GEL AZUL', EAN: G1, TODOSEANS: `${G1} / ${G2} / 100`, CSTICMS: '060', CEST: '1900100', CODSETOR: '10', CODGRUPO: '20', CODSUBGRUPO: '30', CODCATEGORIA: '40', ESTOQUE: '12', CODFORNECEDOR: '2', SKUREFFORNECEDOR: 'AL-1' }),
-  prod({ CODPRODUTO: '101', DESCRICAO: 'LAPIS PRETO', EAN: '101', TODOSEANS: '101', CSTICMS: '090', CODSETOR: '10', CODGRUPO: '20', CODSUBGRUPO: '31', ESTOQUE: '-3', PRECOVENDA: '0' }),
-  prod({ CODPRODUTO: '102', DESCRICAO: 'PRODUTO VELHO', INATIVO: 'S', EAN: '445566', CSTICMS: '100', NCM: '00000000', CODSETOR: '1', ESTOQUE: '2', CUSTO: '20', PRECOVENDA: '15', CODFORNECEDOR: '3' }),
-  prod({ CODPRODUTO: '100', DESCRICAO: 'REPETIDO' })
-])
 
 describe('categorias', () => {
   it('monta a árvore com pai antes do filho e chave por nível', () => {
