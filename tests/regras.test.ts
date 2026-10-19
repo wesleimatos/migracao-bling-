@@ -5,7 +5,7 @@ import { montarCategorias } from '../src/regras/categorias.ts'
 import { conferir, type Fonte } from '../src/regras/conferencia.ts'
 import { montarContas } from '../src/regras/contas.ts'
 import { indiceFornecedores, montarFornecedores, numeroEndereco, separarTelefones } from '../src/regras/fornecedores.ts'
-import { montarProdutos } from '../src/regras/produtos.ts'
+import { gtinCompleto, montarProdutos } from '../src/regras/produtos.ts'
 import type { Problema, Tipo } from '../src/regras/tipos.ts'
 import { montarVinculos } from '../src/regras/vinculos.ts'
 import { ARVORE, C1, C2, FORNECEDORES, G1, G2, PRODUTOS } from './util/exemplos.ts'
@@ -106,6 +106,17 @@ describe('produtos', () => {
   })
   const p = (c: string) => r.registros.find((x) => x.codigo === c)!
 
+  it('EAN sem os zeros da esquerda (o Superus guarda como número) volta a ter 13 dígitos', () => {
+    assert.equal(gtinCompleto('735201003924', '62'), '0735201003924') // UPC-A de 12
+    assert.equal(gtinCompleto('86201225084', '100128'), '0086201225084')
+    assert.equal(gtinCompleto('771001084', '100108'), '0000771001084')
+    assert.equal(gtinCompleto('78931251', '101554'), '78931251') // EAN-8 fica como está
+    assert.equal(gtinCompleto('7899605778284', '2'), '7899605778284')
+    assert.equal(gtinCompleto('100281', '100281'), '') // é o próprio código, não código de barras
+    assert.equal(gtinCompleto('12', '12'), '')
+    assert.equal(gtinCompleto('771002143', '1'), '') // dígito verificador não fecha
+  })
+
   it('grupo fiscal pelo CST e origem pelo 1º dígito', () => {
     assert.equal(p('100').grupoFiscal, 'COM ST')
     assert.equal(p('101').grupoFiscal, 'SEM ST')
@@ -118,7 +129,7 @@ describe('produtos', () => {
     assert.equal(p('100').observacoes, `Outros códigos de barras: ${G2}`)
     assert.equal(p('101').gtin, '')
     assert.equal(p('101').observacoes, '')
-    assert.equal(p('102').observacoes, 'Outros códigos de barras: 445566')
+    assert.equal(p('102').observacoes, 'Outros códigos de barras: 445567')
   })
 
   it('categoria mais funda, estoque negativo zerado e inativo', () => {

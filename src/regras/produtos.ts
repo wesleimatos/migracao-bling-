@@ -11,6 +11,14 @@ export type GrupoFiscal = 'COM ST' | 'SEM ST'
 /** Origem 2 = Estrangeira, adquirida no mercado interno. */
 export const ORIGEM_SEM_SINALIZACAO = 2
 
+/** GTIN para o campo do Bling: EAN-8, 13 e 14 válidos como estão; os outros com zeros à esquerda até 13. */
+export function gtinCompleto(ean: string, codigo: string): string {
+  if ([8, 13, 14].includes(ean.length)) return gtinValido(ean) ? ean : ''
+  if (!ean || ean === codigo || ean.length > 13) return ''
+  const completo = ean.padStart(13, '0')
+  return gtinValido(completo) ? completo : ''
+}
+
 export const PADRAO_PRODUTO = { tipo: 'P', formato: 'S', unidade: 'UN', condicao: 1, tipoProducao: 'T', freteGratis: false } as const
 
 export interface Produto {
@@ -63,8 +71,10 @@ export function montarProdutos(p: Planilha, mapa: Mapa, ctx: ContextoProdutos = 
     const situacao = v(l, 'inativo').toUpperCase() === 'S' ? 'I' : 'A'
 
     // Código de barras: só GTIN válido vai no campo; os outros códigos ficam nas observações.
+    // O Superus guarda o EAN como número e perde os zeros da esquerda: completa até 13 dígitos
+    // quando assim ele fica válido, para o leitor achar o produto (pedido do Weslei, 19/10/2026).
     const ean = digitos(v(l, 'ean'))
-    const gtin = gtinValido(ean) ? ean : ''
+    const gtin = gtinCompleto(ean, codigo)
     if (ean && !gtin && ean !== codigo) anota.aviso('ean-interno', linha, codigo, `EAN ${ean} não é um GTIN válido: vai nas observações.`)
     if (gtin) {
       const dono = donoGtin.get(gtin)
@@ -72,7 +82,7 @@ export function montarProdutos(p: Planilha, mapa: Mapa, ctx: ContextoProdutos = 
       else donoGtin.set(gtin, codigo)
     }
     const extras = [...new Set([ean, ...v(l, 'todosEans').split('/')].map((t) => t.trim()).filter(Boolean))]
-      .filter((t) => t !== gtin && t !== codigo)
+      .filter((t) => t !== gtin && t !== codigo && !(gtin && t === ean))
     const observacoes = extras.length ? `Outros códigos de barras: ${extras.join(', ')}` : ''
 
     const preco = numero(v(l, 'preco'))

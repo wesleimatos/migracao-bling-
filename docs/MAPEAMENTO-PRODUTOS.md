@@ -87,3 +87,7 @@ cada produto pelo CST de ICMS (os 2 últimos dígitos de `CSTICMS`) em `tributac
 - **GTIN recusado pelo Bling** (prefixo fora do GS1): o GTIN vira o **código (SKU)** do produto, porque a
   loja localiza o produto por ele; o código do Superus vai nas observações ("Código no Superus: ...").
 - **CEST recusado:** o produto vai sem CEST, com o original nas observações.
+- **Zeros à esquerda no EAN:** o Superus guarda o EAN como número e perde os zeros da esquerda. Quando,
+  completado com zeros até 13 dígitos, ele fica válido, vai assim no GTIN (UPC de 12 dígitos também vira
+  13). EAN-8 fica como está; EAN igual ao próprio código do produto não conta. 660 produtos completados
+  no Bling (com GTIN agora: 11.457).
