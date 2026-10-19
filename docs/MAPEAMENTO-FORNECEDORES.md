@@ -36,8 +36,8 @@ Conferência feita em 19/10/2026:
 | BAIRRO, CIDADE, ESTADO, CEP | `bairro`, `municipio`, `uf`, `cep` | iguais |
 | EMAIL | `email` | igual |
 | IE | `ie` + `indicadorIe` | só dígitos e `indicadorIe` = 1; "ISENTO" → sem IE e `indicadorIe` = 2; vazio → não manda. Se o Bling recusar a IE, cria sem ela e lista no relatório |
-| TODOS_TELEFONES | `celular` | o 1º número que for celular (11 dígitos com DDD, 3º dígito 9), do jeito que está no Superus, sem o rótulo "COMERCIAL" |
-| TODOS_TELEFONES | `telefone` | os outros números, separados por " / " (assim nenhum se perde) |
+| TODOS_TELEFONES | `celular` | o 1º número que for celular (11 dígitos com DDD, 3º dígito 9), do jeito que está no Superus, sem o rótulo "COMERCIAL"; sem celular, o 2º número |
+| TODOS_TELEFONES | `telefone` | o 1º dos outros números (o Bling aceita **um só** número por campo; repetidos caem; o que não couber sai no aviso `telefone-sobrando`, hoje 1 fornecedor) |
 | TELEFONE_PRINCIPAL, QTD_TELEFONES | — | já estão dentro de TODOS_TELEFONES |
 | — | `situacao` = `A`; `tiposContato` = Fornecedor | fixo |
 | CONTATO | — | só uma marcação S/N sem uso no Superus (resposta do COMPUTADOR, 19/10/2026) |
@@ -56,5 +56,6 @@ Superus → id do Bling.
   produtos e as contas a pagar de qualquer um deles ficam ligados a ele.
 
 ## A confirmar no envio de teste
-- O Bling aceitar dois números no campo `telefone` e as IEs de tamanho fora do padrão.
+- ~~Dois números no campo `telefone`~~: o Bling **recusa** (teste de 19/10/2026). Regra acima, aprovada pelo Weslei.
+- O Bling aceitar as IEs de tamanho fora do padrão.
 - O Bling aceitar como contato o CNPJ da própria empresa (ATACADAO MULTIMARCAS aparece como fornecedor).

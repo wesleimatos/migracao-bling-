@@ -83,10 +83,14 @@ describe('fornecedores', () => {
     assert.equal(numeroEndereco('AV B, KM 66,5 - LADO A, SN'), 'S/N')
     assert.equal(numeroEndereco('RUA SEM VIRGULA'), 'S/N')
     assert.deepEqual(separarTelefones('COMERCIAL  3133334444 / Comercial 31 99999-8888 / 31 3222-1111'), {
-      telefone: '3133334444 / 31 3222-1111',
+      telefone: '3133334444',
       celular: '31 99999-8888',
+      sobras: ['31 3222-1111'],
       incompletos: []
     })
+    // Repetido cai; sem celular, o 2º número vai no celular.
+    assert.deepEqual(separarTelefones('COMERCIAL  1126925651 / Comercial 11 2692-5651'), { telefone: '1126925651', celular: '', sobras: [], incompletos: [] })
+    assert.deepEqual(separarTelefones('3133334444 / 31 3222-1111'), { telefone: '3133334444', celular: '31 3222-1111', sobras: [], incompletos: [] })
     assert.deepEqual(separarTelefones('(11) 3333-444').incompletos, ['(11) 3333-444'])
   })
 })

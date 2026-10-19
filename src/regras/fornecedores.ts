@@ -47,23 +47,28 @@ export function numeroEndereco(endereco: string): string {
   return n === '' || /^S\.?\/?N\.?$/i.test(n) ? 'S/N' : n
 }
 
-/** Separa celular (o 1º com 11 dígitos e 9 depois do DDD) dos outros números, que ficam juntos em telefone. */
-export function separarTelefones(texto: string): { telefone: string; celular: string; incompletos: string[] } {
-  const numeros = texto
-    .split('/')
-    .map((t) => t.replace(/^[^\d(+]*/, '').trim())
-    .filter((t) => digitos(t) !== '')
-  let celular = ''
-  const outros: string[] = []
-  const incompletos: string[] = []
-  for (const n of numeros) {
+/**
+ * Separa os números: o Bling aceita um só em telefone e um só em celular (confirmado no envio de
+ * teste de 19/10/2026). Repetidos caem; celular é o 1º com 11 dígitos e 9 depois do DDD, telefone é o
+ * 1º dos outros; se não houver celular, o 2º número vai no celular. O que sobrar vai para o aviso.
+ */
+export function separarTelefones(texto: string): { telefone: string; celular: string; sobras: string[]; incompletos: string[] } {
+  const vistos = new Set<string>()
+  const numeros: { n: string; d: string }[] = []
+  for (const parte of texto.split('/')) {
+    const n = parte.replace(/^[^\d(+]*/, '').trim()
     let d = digitos(n)
     if (d.length >= 12 && d.startsWith('55')) d = d.slice(2)
-    if (!celular && d.length === 11 && d[2] === '9') celular = n
-    else outros.push(n)
-    if (d.length < 8 || (d.length === 9 && d[0] !== '9')) incompletos.push(n)
+    if (d === '' || vistos.has(d)) continue
+    vistos.add(d)
+    numeros.push({ n, d })
   }
-  return { telefone: outros.join(' / '), celular, incompletos }
+  const incompletos = numeros.filter(({ d }) => d.length < 8 || (d.length === 9 && d[0] !== '9')).map(({ n }) => n)
+  const iCel = numeros.findIndex(({ d }) => d.length === 11 && d[2] === '9')
+  const outros = numeros.filter((_, i) => i !== iCel).map(({ n }) => n)
+  const telefone = outros.shift() ?? ''
+  const celular = iCel >= 0 ? numeros[iCel].n : (outros.shift() ?? '')
+  return { telefone, celular, sobras: outros, incompletos }
 }
 
 /** Fornecedores do Superus virando contatos do Bling. CPF/CNPJ repetido vira um só (decisão do Weslei). */
@@ -105,6 +110,9 @@ export function montarFornecedores(p: Planilha, mapa: Mapa): Resultado<Fornecedo
     const tel = separarTelefones(v(l, 'telefones'))
     if (tel.incompletos.length) {
       anota.aviso('telefone-incompleto', linha, codigo, `Telefone que parece incompleto: ${tel.incompletos.join(', ')}.`)
+    }
+    if (tel.sobras.length) {
+      anota.aviso('telefone-sobrando', linha, codigo, `Número que não coube no Bling (um telefone e um celular): ${tel.sobras.join(', ')}.`)
     }
 
     lidos.push({

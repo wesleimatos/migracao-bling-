@@ -40,6 +40,7 @@ const ROTULOS: Record<string, string> = {
   'documento-repetido': 'CPF/CNPJ repetido (juntados)',
   'ie-fora-do-padrao': 'IE fora do padrão da UF',
   'telefone-incompleto': 'Telefone que parece incompleto',
+  'telefone-sobrando': 'Número que não coube no Bling',
   'ean-interno': 'EAN que não é GTIN (vai nas observações)',
   'gtin-repetido': 'GTIN em mais de um produto',
   'preco-invalido': 'Preço que não é número',
