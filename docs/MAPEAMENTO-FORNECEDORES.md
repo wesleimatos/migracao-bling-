@@ -32,7 +32,8 @@ Conferência feita em 19/10/2026:
 | IE (falta) | `ie` + `indicadorIe` | quando chegar |
 | telefones (falta) | `telefone`, `celular` | quando chegar |
 | — | `situacao` = `A`; `tiposContato` = Fornecedor | fixo |
-| CONTATO, PRAZOPAGAMENTO, PRAZOENTREGA | — | sem informação (todos iguais) |
+| CONTATO | — | só uma marcação S/N sem uso no Superus (resposta do COMPUTADOR, 19/10/2026) |
+| PRAZOPAGAMENTO, PRAZOENTREGA | — | sem informação (todos 0) |
 | PRODUTOS_ATIVOS | — | só conferência |
 
 Não duplicar: antes de criar, `GET /contatos?numeroDocumento=<dígitos>`. Tabela local: código do

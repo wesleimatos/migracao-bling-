@@ -54,7 +54,7 @@ Conferência feita em 19/10/2026:
 | — | `unidade` = `UN` | fixo para todos (decisão do Weslei, 19/10/2026) |
 | CODFORNECEDOR + SKUREFFORNECEDOR + CUSTO | `POST /produtos/fornecedores` | `padrao` = sim |
 | DESCRICAO2, DESCRICAO3, DESCRICAO4 | — | são cortes da descrição ou "SEM NOME" |
-| ALTURA, LARGURA, COMPRIMENTO, PESOs, CODMARCA | — | vieram vazios |
+| ALTURA, LARGURA, COMPRIMENTO, PESOs, CODMARCA | — | vazios no próprio Superus (confirmado pelo COMPUTADOR, 19/10/2026) |
 
 Não duplicar: `GET /produtos?codigos[]=...` (até 100 códigos por chamada) antes de criar.
 
@@ -76,6 +76,6 @@ cada produto pelo CST de ICMS (os 2 últimos dígitos de `CSTICMS`) em `tributac
 - **Unidade de venda `UN` para todos os produtos.**
 
 ## A confirmar
-- Marca, peso, medidas e vínculos produto × fornecedor completos: Pedido #4 no quadro.
+- Vínculos produto × fornecedor completos: arquivo 67, a receber (Pedido #6).
 - Estoque mínimo: o Superus não tem; vai em branco, salvo pedido do Weslei.
 - No teste (Etapa 4): o Bling aceitar o produto com o grupo fiscal e a categoria de 4º nível.

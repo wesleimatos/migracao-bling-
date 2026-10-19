@@ -1,8 +1,8 @@
 # TROCA — quadro da migração Superus → Bling
 
 ## Agora
-Etapa: 0 · Com a bola: COMPUTADOR (#1, #3, #4) e VPS (#2) · Aguardando: contas a pagar,
-IE e telefones dos fornecedores, vínculos produto × fornecedor, porta do servidor
+Etapa: 0 · Com a bola: WESLEI (#6) e VPS (#2) · Aguardando: arquivos 64 a 67 no chat e a
+porta do servidor
 
 Repositório: `wesleimatos/migracao-bling-` (com traço no fim; o Weslei escolheu usar este no lugar
 de `migracao-bling`). Fica **público** por decisão do Weslei e será excluído no fim do projeto.
@@ -18,7 +18,7 @@ Referências em `docs/`; regras de cada cadastro em `docs/MAPEAMENTO-*.md`.
   pela tela do app.
 
 ## Pedidos abertos
-- [ ] #1 PARA: COMPUTADOR · Exportar do Superus (só leitura) · aberto em 19/10/2026
+- [x] #1 PARA: COMPUTADOR · Exportar do Superus (só leitura) · aberto em 19/10/2026
   - Regras de `docs/PROMPT-EXPORTAR-SUPERUS.md`: só leitura, cancelar qualquer janela de
     confirmação, senha é com o Weslei.
   - Já chegaram: categorias, fornecedores e produtos (com o estoque da loja Oiapoque).
@@ -34,7 +34,7 @@ Referências em `docs/`; regras de cada cadastro em `docs/MAPEAMENTO-*.md`.
     o GitHub do servidor já está configurado, ou vai precisar de uma deploy key só leitura
     (o Weslei cadastra a chave pública)?
   - Responda em "Entregas".
-- [ ] #3 PARA: COMPUTADOR · Fornecedores: IE e telefones · aberto em 19/10/2026
+- [x] #3 PARA: COMPUTADOR · Fornecedores: IE e telefones · aberto em 19/10/2026
   - A planilha "RELATORIO FORNECEDOR" veio sem inscrição estadual e sem telefones.
   - Gere de novo a mesma planilha (só leitura, mesmas regras), incluindo as colunas de IE e de
     todos os telefones que o Superus tiver para o fornecedor (fixo, celular, fax...).
@@ -42,7 +42,7 @@ Referências em `docs/`; regras de cada cadastro em `docs/MAPEAMENTO-*.md`.
   - 19/10/2026: o arquivo reenviado ("RELATORIO_FORNECEDOR_1.xlsx") é idêntico ao primeiro,
     byte a byte. Continua sem IE e sem telefones.
   - Entregue a planilha nova ao Weslei, que manda ao CODE pelo chat.
-- [ ] #4 PARA: COMPUTADOR · Produtos: marca, medidas e vínculos com fornecedores · aberto em 19/10/2026
+- [x] #4 PARA: COMPUTADOR · Produtos: marca, medidas e vínculos com fornecedores · aberto em 19/10/2026
   - Unidade não precisa: o Weslei decidiu `UN` para todos.
   - A planilha "62 CADASTRO COMPLETO OIAPOQUE" veio com `CODMARCA`, peso e medidas vazios em
     todos os produtos. Confira no Superus (só olhando) se esses dados existem no cadastro. Se
@@ -52,7 +52,15 @@ Referências em `docs/`; regras de cada cadastro em `docs/MAPEAMENTO-*.md`.
     conta 6.121 ligações, e a de produtos só traz um fornecedor por produto.
   - Entregue as planilhas ao Weslei, que manda ao CODE pelo chat.
 
+## Pedido para o Weslei
+- [ ] #6 PARA: WESLEI · Mandar ao CODE, pelo chat, os arquivos 64, 65, 66 e 67 de `X:\backup` · aberto em 19/10/2026
+
 ## Entregas
+- #1, #3 e #4 FEITOS por COMPUTADOR em 19/10/2026 · arquivos em `X:\backup` no computador do
+  Weslei: 64 (fornecedores com IE e telefones), 65 (contas a pagar em aberto), 66 (categorias
+  financeiras e formas de pagamento), 67 (produtos × fornecedores) · `CONTATO` é só uma marcação
+  S/N sem uso · marca, peso e medidas estão vazios no próprio Superus · os arquivos ainda não
+  chegaram ao CODE (Pedido #6)
 - #5 CANCELADO em 19/10/2026 · o Bling já tem os grupos de produtos "COM ST" e "SEM ST";
   decisão do Weslei: CST 00 → SEM ST, CST 60 → COM ST (ver `docs/MAPEAMENTO-PRODUTOS.md`)
 - WESLEI · planilha de produtos (consulta 62, XLSX) entregue ao CODE em 19/10/2026 · 13.001
