@@ -60,6 +60,7 @@ O app roda na **VPS** (`migra.focosaas.com.br`), como no brief: decisão confirm
   - Primeiro só olhar e mostrar ao Weslei; instalar com o OK dele. Regras de ouro do servidor.
   - O código de primeiro acesso vai só para o Weslei, direto (nunca no quadro).
   - Responder em "Entregas" (e para a sessão "Migração Superus → Bling").
+  - 19/10/2026: enviado pelo CODE direto para a sessão "VPS" (pedido do Weslei).
 
 ## Pedido para o Weslei
 - [x] #6 PARA: WESLEI · Mandar ao CODE, pelo chat, os arquivos 64, 65, 66 e 67 de `X:\backup` · aberto em 19/10/2026
