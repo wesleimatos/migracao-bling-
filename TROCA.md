@@ -32,6 +32,8 @@ Referências em `docs/`.
     - Mascare CNPJ/CPF mantendo o formato e só os 2 primeiros e os 2 últimos dígitos
       (ex.: `12.***.***/****-34`). Mascare também telefone, e-mail e rua/número do endereço
       (deixe cidade, UF e CEP).
+    - A amostra serve só para a nuvem ver o formato. **A migração leva todos os registros,
+      completos e sem máscara**, a partir dos arquivos completos (pela tela do app, na Etapa 4).
   - 4) Escreva a entrega em "Entregas", com:
     - onde fica cada exportação no Superus (caminho do menu);
     - para cada arquivo: nº de linhas, formato (CSV ou XLSX), separador, codificação
