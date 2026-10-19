@@ -39,6 +39,8 @@ Referências em `docs/`; regras de cada cadastro em `docs/MAPEAMENTO-*.md`.
   - Gere de novo a mesma planilha (só leitura, mesmas regras), incluindo as colunas de IE e de
     todos os telefones que o Superus tiver para o fornecedor (fixo, celular, fax...).
   - Diga também o que significa a coluna `CONTATO` (veio "N" em todos).
+  - 19/10/2026: o arquivo reenviado ("RELATORIO_FORNECEDOR_1.xlsx") é idêntico ao primeiro,
+    byte a byte. Continua sem IE e sem telefones.
   - Entregue a planilha nova ao Weslei, que manda ao CODE pelo chat.
 - [ ] #4 PARA: COMPUTADOR · Produtos: marca, medidas e vínculos com fornecedores · aberto em 19/10/2026
   - Unidade não precisa: o Weslei decidiu `UN` para todos.
