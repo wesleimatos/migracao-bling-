@@ -53,7 +53,8 @@ Referências em `docs/`.
   - Responda em "Entregas".
 
 ## Entregas
-_(nenhuma ainda)_
+- WESLEI · app "Migração" criado na central do Bling em 19/10/2026 · falta passar o Client ID
+  ao CODE (o Client Secret só será digitado na tela do app, na Etapa 3)
 
 ## Bloqueios (precisa do Weslei)
 _(nenhum)_
