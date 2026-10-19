@@ -46,6 +46,7 @@ Referências em `docs/`.
 - [ ] #2 PARA: VPS · Porta livre e como baixar o código · aberto em 19/10/2026
   - Só responder, sem instalar nada ainda (a instalação é na Etapa 3, seção 7 do brief).
   - Qual porta livre em 127.0.0.1, entre 8100 e 8199, fica para o serviço `migracao-bling`?
+    (conferir com `ss -tln`; as ocupadas conhecidas estão em `docs/COMO-TRABALHAMOS.md`, seção 3)
   - Como o servidor vai baixar o código de `wesleimatos/migracao-bling-` (atenção ao traço no fim):
     o GitHub do servidor já está configurado, ou vai precisar de uma deploy key só leitura
     (o Weslei cadastra a chave pública)?
@@ -55,5 +56,4 @@ Referências em `docs/`.
 _(nenhuma ainda)_
 
 ## Bloqueios (precisa do Weslei)
-- B1 · **Falta em `docs/`:** o `COMO-TRABALHAMOS.md` do Weslei (o brief manda seguir).
-  Quem resolve: Weslei ou o líder do projeto.
+_(nenhum)_
