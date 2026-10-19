@@ -60,10 +60,16 @@ Não duplicar: `GET /produtos?codigos[]=...` (até 100 códigos por chamada) ant
 ## Proposta para a parte fiscal (para o Weslei e a contadora)
 O Bling não guarda CST, alíquota nem CFOP no produto: ele calcula pela natureza de operação. Para
 não perder a classificação do Superus, a proposta é usar **grupos de produtos** do Bling:
-1. O Weslei ou a contadora cria no Bling um grupo para cada perfil fiscal, com a regra de
-   tributação dele. Os 2 principais: "TRIBUTADO 18%" (CST 00) e "SUBSTITUIÇÃO TRIBUTÁRIA" (CST 60).
-   Os pequenos (CST 90, 41, 20) ficam a critério da contadora.
-2. O app liga cada produto ao grupo do seu CST.
+1. O Claude do computador cria no Bling 6 grupos de produtos (Pedido #5, prompt em
+   `docs/PROMPT-GRUPOS-FISCAIS.md`). A contadora configura a regra fiscal de cada um.
+2. O app liga cada produto ao grupo pelo CST de ICMS (os 2 últimos dígitos de `CSTICMS`):
+   - `00` → FISCAL 00 - TRIBUTADO 18% (7.675)
+   - `60` → FISCAL 60 - ICMS ST (5.126), menos os que têm PIS/COFINS `04` ou `06`, que vão para
+     FISCAL 60 - ICMS ST + PIS/COFINS ZERO (8)
+   - `90` → FISCAL 90 - ICMS OUTROS (152)
+   - `41` → FISCAL 41 - ICMS NAO TRIBUTADO (37)
+   - `20` → FISCAL 20 - ICMS COM REDUCAO (2)
+   - sem CST → sem grupo, listado no relatório (1)
 
 ## Decisões do Weslei (19/10/2026)
 - **Só a loja Oiapoque.** Um depósito no Bling, com o estoque desta planilha.

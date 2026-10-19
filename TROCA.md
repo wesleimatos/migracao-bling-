@@ -68,6 +68,9 @@ Referências em `docs/`.
     código do fornecedor, código do produto no fornecedor, custo). A planilha de fornecedores
     conta 6.121 ligações, e a de produtos só traz um fornecedor por produto.
   - Entregue as planilhas ao Weslei, que me manda pelo chat. No quadro, só colunas e contagens.
+- [ ] #5 PARA: COMPUTADOR · Criar os 6 grupos fiscais no Bling · aberto em 19/10/2026
+  - Siga `docs/PROMPT-GRUPOS-FISCAIS.md`. Exceção ao "Bling só leitura", autorizada pelo Weslei:
+    só criar os 6 grupos de produtos. Regras fiscais ficam com a contadora.
 
 ## Entregas
 - WESLEI · planilha de produtos (consulta 62, XLSX) entregue ao CODE em 19/10/2026 · 13.001
