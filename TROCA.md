@@ -85,6 +85,10 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
 - CODE (nuvem) · 19/10/2026 · pedidos do Weslei no teste: Tipo do item = Mercadoria para Revenda
   (`spedTipoItem` 00) em todos; origem sem sinalização (0 ou vazio) vai como **2** (Estrangeira,
   mercado interno), 1 e 5 ficam. Teste refeito e conferido no Bling: 5 produtos com origem 2 e tipo 00.
+- CODE (nuvem) · 19/10/2026 · teste aprovado pelo Weslei · **envio completo**: 500 categorias, 623
+  fornecedores, 2.786 produtos criados (+10.094 que já existiam no Bling, não mexidos), 5.005 vínculos,
+  3.179 estoques. Erros: 177 fornecedores (telefone inválido no Superus), 121 produtos (GTIN fora do
+  GS1 e 4 CEST), 854 vínculos e 15 estoques que dependem deles. Decisões pendentes no Bloqueio.
 - CODE · **Etapa 2 pronta** em 19/10/2026: login (scrypt, cookie seguro, bloqueio de tentativas),
   conexão com o Bling (OAuth com state, Secret e tokens cifrados), fila de envio por etapas
   (não duplica, retoma, pausa, limite do dia), envio de teste "TESTE" + apagar testes, ligação das
@@ -122,4 +126,7 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
   digita na tela do app, na Etapa 3) · link de retorno e permissões confirmados pelo Weslei
 
 ## Bloqueios (precisa do Weslei)
-_(nenhum)_
+- 19/10/2026 · envio completo: o Bling já tinha 10.094 produtos com o mesmo código (sem NCM, grupo,
+  origem e tipo do item). Proposta: atualizar com os dados do Superus. Também: fornecedor com telefone
+  recusado vai sem telefone (números no relatório); produto com GTIN/CEST recusado vai sem eles
+  (código original nas observações). Aguardando o OK do Weslei.
