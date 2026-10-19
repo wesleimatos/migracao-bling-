@@ -38,8 +38,11 @@ Conferência feita em 19/10/2026:
 Não duplicar: antes de criar, `GET /contatos?numeroDocumento=<dígitos>`. Tabela local: código do
 Superus → id do Bling.
 
-## A decidir (Weslei)
-- Os 3 casos de CNPJ/CPF repetido: juntar num fornecedor só no Bling (recomendado) ou manter separados.
+## CNPJ/CPF repetido: juntar (decisão do Weslei, 19/10/2026)
+- Cada CNPJ/CPF vira **um** fornecedor no Bling. Os 3 casos (7 cadastros) viram 3 fornecedores.
+- O `codigo` no Bling fica com o cadastro que tem mais produtos ativos (empate: o menor código).
+- Na tabela local, todos os códigos antigos apontam para esse mesmo fornecedor do Bling. Assim os
+  produtos e as contas a pagar de qualquer um deles ficam ligados a ele.
 
 ## A confirmar no envio de teste
 - O Bling aceitar como contato o CNPJ da própria empresa (ATACADAO MULTIMARCAS aparece como fornecedor).
