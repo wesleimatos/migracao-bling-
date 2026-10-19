@@ -1,5 +1,9 @@
-# PROMPT-EXPORTAR-SUPERUS
+# PROMPT — Claude no computador: exportar os dados do Superus
 
+> Colar no app do Claude **no computador onde o Superus está instalado**, com o Superus aberto e já logado.
+> Usado duas vezes: **amostra** (agora, para a Etapa 0) e **versão final** (no dia da troca).
+
+```
 Você vai usar meu computador (uso do computador) para tirar os dados do ERP Superus,
 que já está aberto e logado. Fale comigo em português simples.
 
@@ -40,3 +44,8 @@ NO FIM, me entregue um resumo:
 | Arquivo | Linhas | Colunas principais | Observação |
 e as totalizações para conferência: nº de produtos, soma do estoque (unidades e valor no custo)
 e soma das contas a pagar em aberto.
+```
+
+## Depois
+- **Amostra (agora):** mande ao Claude Code (Etapa 0) só o cabeçalho e umas 5 linhas de cada arquivo.
+- **Dia da troca:** rode de novo depois de fechar as vendas, e suba os arquivos na tela de `migra.focosaas.com.br`.

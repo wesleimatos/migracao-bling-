@@ -1,79 +1,58 @@
-# TROCA: quadro de recados da migração Superus → Bling
+# TROCA — quadro da migração Superus → Bling
 
-Quadro de recados entre o **Claude da nuvem** (planeja, monta os arquivos para o Bling)
-e o **Claude do computador** (opera o Superus e o Bling no computador do Weslei).
+## Agora
+Etapa: 0 · Com a bola: COMPUTADOR · Aguardando: amostras do Superus (Pedido #1)
 
-## Como usar
+Repositório: `wesleimatos/migracao-bling-` (com traço no fim; o Weslei escolheu usar este no lugar
+de `migracao-bling`). Fica **público** por decisão do Weslei e será excluído no fim do projeto.
+Referências em `docs/`.
 
-- Cada pedido tem um número, uma direção (**PARA COMPUTADOR** ou **PARA NUVEM**) e uma situação:
-  `ABERTO` → `EM ANDAMENTO` → `FEITO` (ou `PARADO`, com o motivo).
-- Quem recebe o pedido responde logo abaixo dele, em **Resposta #N**, e atualiza a situação na tabela.
-- Pedido novo vai no fim do arquivo, com o próximo número.
-- **Este repositório é público.** Aqui só entram contagens, nomes de colunas, nomes de menus e
-  observações. Nunca cole linhas das planilhas, CNPJ/CPF, telefones, e-mails, preços ou valores
-  em dinheiro. Os arquivos de dados ficam só no computador.
+## Como usar o quadro
+- Antes de mexer: `git pull`. Depois: commit `quadro: ...` + `git push`.
+- Cada pedido tem número, destinatário (CODE, COMPUTADOR, VPS ou WESLEI) e o que deve voltar.
+- Quem termina marca [x], escreve a entrega em "Entregas" e atualiza o "Agora".
+- **Dados reais não entram no Git.** Só aqui e em `amostras/`: cabeçalhos, até 5 linhas de exemplo
+  por arquivo (com CNPJ/CPF mascarados) e totais. As planilhas completas ficam no computador e,
+  na Etapa 4, vão pela tela do app.
 
-## Documentos de referência (pasta docs/)
+## Pedidos abertos
+- [ ] #1 PARA: COMPUTADOR · Amostra dos 6 arquivos do Superus · aberto em 19/10/2026
+  - Siga `docs/PROMPT-EXPORTAR-SUPERUS.md` (uso "amostra"). Todas as regras de lá valem:
+    só leitura no Superus, cancelar qualquer janela de confirmação, senha é com o Weslei.
+  - 1) **Só olhar primeiro:** percorra os menus e mostre ao Weslei onde fica cada exportação.
+    Só gere os arquivos depois do OK dele.
+  - 2) Gere os 6 arquivos completos (categorias, fornecedores, produtos, produtos_fornecedores,
+    estoque, contas_pagar só em aberto) em
+    `C:\Users\wesle\OneDrive\Documentos\migracao-bling\planilhas\<AAAA-MM-DD>\`.
+    **Esses arquivos completos não vão para o Git.**
+  - 3) Crie a amostra no repositório, em `amostras/`, com o mesmo nome de cada arquivo
+    (ex.: `amostras/produtos.csv`): cabeçalho + 5 linhas, com o mesmo separador e a mesma
+    codificação do original. Se der, escolha linhas variadas (produto inativo, com CEST,
+    unidade diferente de UN, conta com parcela). Se o Superus só gerar XLSX, a amostra pode ser `.xlsx`.
+    - Mascare CNPJ/CPF mantendo o formato e só os 2 primeiros e os 2 últimos dígitos
+      (ex.: `12.***.***/****-34`). Mascare também telefone, e-mail e rua/número do endereço
+      (deixe cidade, UF e CEP).
+  - 4) Escreva a entrega em "Entregas", com:
+    - onde fica cada exportação no Superus (caminho do menu);
+    - para cada arquivo: nº de linhas, formato (CSV ou XLSX), separador, codificação
+      (UTF-8 ou ANSI/Windows-1252) e se algum acento saiu quebrado;
+    - totais: nº de produtos (ativos e inativos), soma do estoque (unidades e valor no custo),
+      quantidade e soma das contas a pagar em aberto;
+    - quantos locais de estoque existem, com os nomes;
+    - lista das categorias financeiras (plano de contas) e das formas de pagamento que aparecem
+      nas contas a pagar em aberto;
+    - o que não teve exportação e as alternativas encontradas.
+- [ ] #2 PARA: VPS · Porta livre e como baixar o código · aberto em 19/10/2026
+  - Só responder, sem instalar nada ainda (a instalação é na Etapa 3, seção 7 do brief).
+  - Qual porta livre em 127.0.0.1, entre 8100 e 8199, fica para o serviço `migracao-bling`?
+  - Como o servidor vai baixar o código de `wesleimatos/migracao-bling-` (atenção ao traço no fim):
+    o GitHub do servidor já está configurado, ou vai precisar de uma deploy key só leitura
+    (o Weslei cadastra a chave pública)?
+  - Responda em "Entregas".
 
-| Documento | Situação |
-|---|---|
-| docs/BRIEF-MIGRACAO-BLING.md | falta receber |
-| docs/PROMPT-CLAUDE-COMPUTADOR.md | falta receber |
-| docs/PROMPT-EXPORTAR-SUPERUS.md | salvo |
+## Entregas
+_(nenhuma ainda)_
 
-## Pedidos
-
-| # | Direção | Assunto | Situação |
-|---|---|---|---|
-| 1 | PARA COMPUTADOR | Exportar os dados do Superus em planilhas | ABERTO |
-
----
-
-## Pedido #1: PARA COMPUTADOR, exportar os dados do Superus
-
-**Situação:** ABERTO
-**Referência completa:** docs/PROMPT-EXPORTAR-SUPERUS.md (siga esse documento; abaixo vai o resumo)
-
-**Objetivo:** gerar uma planilha para cada item abaixo (CSV de preferência; se não houver, XLSX),
-usando as exportações do próprio Superus, e salvar em
-`C:\Users\wesle\OneDrive\Documentos\migracao-bling\planilhas\<AAAA-MM-DD>\` (data do dia da exportação).
-
-| Arquivo | O que precisa ter |
-|---|---|
-| categorias.csv | categorias/grupos/departamentos, com a categoria-pai se houver |
-| fornecedores.csv | razão social, fantasia, CNPJ/CPF, IE, endereço, telefone, e-mail |
-| produtos.csv | cadastro completo, todas as colunas que o Superus oferecer (código, descrição, unidade, EAN/GTIN, categoria, NCM, CEST, origem, CST/CSOSN, preço de venda, preço de custo, peso, dimensões, marca, ativo/inativo) |
-| produtos_fornecedores.csv | produto × fornecedor: código do produto no fornecedor, custo |
-| estoque.csv | código do produto, quantidade, custo, local/loja/depósito (se houver mais de um) |
-| contas_pagar.csv | **só as em aberto**: fornecedor (com CNPJ), nº do documento, emissão, vencimento, valor, parcela, histórico, categoria/plano de contas, forma de pagamento |
-
-**Passos:**
-1. **Só olhar primeiro.** Percorra os menus e mostre ao Weslei onde está cada exportação.
-   Só gere os arquivos depois do OK dele.
-2. Em cada relatório, marque "todos os registros" (sem filtro de data ou loja), menos nas
-   contas a pagar, que são só as em aberto.
-3. Se algum dado não tiver exportação, diga qual é e mostre as alternativas encontradas.
-   Não copie da tela produto por produto.
-4. Depois de gerar, abra cada arquivo e confira: nº de linhas, colunas (cabeçalho) e se algum
-   texto saiu com acento quebrado.
-
-**Regras:**
-- **Só leitura** no Superus: nunca cadastrar, alterar, excluir, baixar conta, ajustar estoque
-  ou fechar caixa. Se aparecer janela pedindo para confirmar uma alteração, cancele e pergunte ao Weslei.
-- Não feche o Superus nem mude configurações dele.
-- Os arquivos não saem do computador: nada de e-mail, GitHub ou nuvem.
-- Se o Superus pedir senha, pare e o Weslei digita.
-
-**Entrega:**
-- **Para o Weslei, no computador:** o resumo completo
-  `| Arquivo | Linhas | Colunas principais | Observação |` e as totalizações para conferência
-  (nº de produtos, soma do estoque em unidades e em valor no custo, soma das contas a pagar em aberto).
-- **Aqui no quadro (Resposta #1):** a mesma tabela, mas sem valores em dinheiro: nº de linhas,
-  o cabeçalho completo de cada arquivo (nomes das colunas, exatamente como saíram), a pasta
-  usada, os arquivos que saíram em XLSX em vez de CSV, os problemas de acento e os dados sem
-  exportação (com as alternativas encontradas). Esse cabeçalho é o que a nuvem usa para montar
-  os arquivos de importação do Bling.
-
-### Resposta #1
-
-_(aguardando o Claude do computador)_
+## Bloqueios (precisa do Weslei)
+- B1 · **Faltam documentos em `docs/`:** `PROMPT-CLAUDE-COMPUTADOR.md` e o `COMO-TRABALHAMOS.md`
+  do Weslei (o brief manda seguir). Quem resolve: Weslei ou o líder do projeto.
