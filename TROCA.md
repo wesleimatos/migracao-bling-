@@ -1,7 +1,7 @@
 # TROCA — quadro da migração Superus → Bling
 
 ## Agora
-Etapa: 1 pronta (aguardando o OK do Weslei) · Com a bola: WESLEI (aprovar a Etapa 1) e VPS (#2)
+Etapa: 1 pronta (aguardando o OK do Weslei) · Com a bola: WESLEI (aprovar a Etapa 1)
 
 Repositório: `wesleimatos/migracao-bling-` (com traço no fim; o Weslei escolheu usar este no lugar
 de `migracao-bling`). Fica **público** por decisão do Weslei e será excluído no fim do projeto.
@@ -26,7 +26,7 @@ O app roda na **VPS** (`migra.focosaas.com.br`), como no brief: decisão confirm
     emissão, vencimento, valor, parcela, histórico, categoria/plano de contas e forma de pagamento.
     Junto, a lista das categorias financeiras e das formas de pagamento que aparecem nelas.
   - Entregar a planilha ao Weslei, que manda ao CODE pelo chat.
-- [ ] #2 PARA: VPS · Porta livre e como baixar o código · aberto em 19/10/2026
+- [x] #2 PARA: VPS · Porta livre e como baixar o código · aberto em 19/10/2026
   - Só responder, sem instalar nada ainda (a instalação é na Etapa 3, seção 7 do brief).
   - Qual porta livre em 127.0.0.1, entre 8100 e 8199, fica para o serviço `migracao-bling`?
     (conferir com `ss -tln`; as ocupadas conhecidas estão em `docs/COMO-TRABALHAMOS.md`, seção 3)
@@ -61,6 +61,12 @@ O app roda na **VPS** (`migra.focosaas.com.br`), como no brief: decisão confirm
     onde ele liga as colunas. Regra das contas a pagar em `docs/MAPEAMENTO-CONTAS-PAGAR.md`.
 
 ## Entregas
+- #2 FEITO por VPS em 19/10/2026 (só olhando, nada instalado) · **porta 8101** (a 8100 é do ERPNext;
+  entra na tabela de portas do ACESSO-DOCKER.md na Etapa 3) · o servidor baixa o código de
+  `migracao-bling-` sem login · Node 24.22.0 com `node:sqlite` funcionando · API do Bling responde
+  (200 em 0,3 s) · `migra.focosaas.com.br` criado pelo Weslei no Virtualmin e conferido pela VPS:
+  DNS certo, certificado Let's Encrypt próprio com renovação automática (vence 17/01/2027),
+  `vps-certs` sem ❌. Na Etapa 3 falta o proxy para 127.0.0.1:8101, mantendo o `/.well-known`.
 - CODE · **Etapa 1 pronta** em 19/10/2026: leitura das planilhas (XLSX/CSV, sem biblioteca),
   ligação de colunas e conferência com totais · 33 testes passando · simulação com as planilhas
   reais (fora do Git): 500 categorias, 800 fornecedores, 13.001 produtos, 5.859 vínculos,
