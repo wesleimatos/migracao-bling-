@@ -81,3 +81,9 @@ cada produto pelo CST de ICMS (os 2 últimos dígitos de `CSTICMS`) em `tributac
   entram todos os vínculos; se não, vale o fornecedor da planilha de produtos (5.844 produtos).
 - Estoque mínimo: o Superus não tem; vai em branco, salvo pedido do Weslei.
 - No teste (Etapa 4): o Bling aceitar o produto com o grupo fiscal e a categoria de 4º nível.
+
+## Ajustes do envio completo (19/10/2026, decisões do Weslei)
+- Produto na **lixeira** do Bling (situação E) não conta como existente: o do Superus é criado de novo.
+- **GTIN recusado pelo Bling** (prefixo fora do GS1): o GTIN vira o **código (SKU)** do produto, porque a
+  loja localiza o produto por ele; o código do Superus vai nas observações ("Código no Superus: ...").
+- **CEST recusado:** o produto vai sem CEST, com o original nas observações.

@@ -59,3 +59,8 @@ Superus → id do Bling.
 - ~~Dois números no campo `telefone`~~: o Bling **recusa** (teste de 19/10/2026). Regra acima, aprovada pelo Weslei.
 - O Bling aceitar as IEs de tamanho fora do padrão.
 - O Bling aceitar como contato o CNPJ da própria empresa (ATACADAO MULTIMARCAS aparece como fornecedor).
+
+## Ajustes do envio completo (19/10/2026, decisão do Weslei)
+- Zeros de discagem na frente do telefone saem ("0031..." vira "31...").
+- Telefone que o Bling recusar (número faltando dígito no Superus): o fornecedor vai sem telefone e o
+  número original fica anotado no relatório.

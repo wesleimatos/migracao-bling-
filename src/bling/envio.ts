@@ -322,7 +322,7 @@ export class Envio {
       const achado = existentes.get(codigoNoBling(p))
       if (achado) return { status: 'pulado', id: achado }
       const categoria = p.categoria ? this.idDe(modo, 'categorias', p.categoria) : null
-      // GTIN fora do GS1 ou CEST inválido: o produto vai sem ele, com o original nas observações.
+      // GTIN fora do GS1 vira o código do produto; CEST inválido sai. Os originais ficam nas observações.
       const sem: SemCampos = {}
       const notas: string[] = []
       if (p.categoria && !categoria) notas.push(`Criado sem categoria: a categoria ${p.categoria} não foi para o Bling.`)
@@ -334,7 +334,7 @@ export class Envio {
           if (!(e instanceof ErroBlingApi)) throw e
           if (!sem.gtin && p.gtin && /gtin/i.test(e.message)) {
             sem.gtin = true
-            notas.push(`Criado sem GTIN: o Bling recusou ${p.gtin} (está nas observações).`)
+            notas.push(`GTIN ${p.gtin} recusado pelo Bling: virou o código do produto (o código do Superus está nas observações).`)
           } else if (!sem.cest && p.cest && /cest/i.test(e.message)) {
             sem.cest = true
             notas.push(`Criado sem CEST: o Bling recusou ${p.cest} (está nas observações).`)

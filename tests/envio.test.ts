@@ -173,12 +173,12 @@ describe('envio completo', () => {
     assert.match(envio.item('completo', 'fornecedores', C1)?.mensagem ?? '', /Criado sem IE.*Criado sem telefone: o Bling recusou \(31\) 3234-612/)
   })
 
-  it('GTIN e CEST recusados: o produto vai sem eles, com os originais nas observações', async () => {
+  it('GTIN recusado vira o código do produto; CEST recusado sai; os originais vão nas observações', async () => {
     lote.produtos = lote.produtos.map((p) => (p.codigo === '101' ? { ...p, gtin: '7890000000000', cest: '9999999' } : p))
     await envio.enviar('completo', lote, catalogos, ligacoes)
-    const p = bling.db.produtos.find((x) => x.codigo === '101')!
+    const p = bling.db.produtos.find((x) => x.codigo === '7890000000000')!
     assert.ok(!('gtin' in p) && !('cest' in (p.tributacao as object)))
-    assert.match(String(p.observacoes), /GTIN do Superus recusado pelo Bling: 7890000000000\nCEST do Superus recusado pelo Bling: 9999999/)
+    assert.match(String(p.observacoes), /Código no Superus: 101 \(o Bling recusou o GTIN 7890000000000, que virou o código\)\nCEST do Superus recusado pelo Bling: 9999999/)
     assert.equal(envio.contagem('completo', lote).produtos.erro, 0)
   })
 

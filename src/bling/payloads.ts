@@ -48,7 +48,11 @@ export function payloadFornecedor(f: Fornecedor, idTipoFornecedor: number | null
   })
 }
 
-/** O que o Bling recusou no produto e vai só anotado nas observações (GTIN fora do GS1, CEST inválido). */
+/**
+ * O que o Bling recusou no produto. GTIN fora do GS1 vira o código (SKU) do produto, porque a loja
+ * localiza o produto por ele (pedido do Weslei, 19/10/2026), e o código do Superus vai nas observações.
+ * CEST inválido sai e fica anotado nas observações.
+ */
 export interface SemCampos {
   gtin?: boolean
   cest?: boolean
@@ -56,12 +60,12 @@ export interface SemCampos {
 
 export function payloadProduto(p: Produto, ids: { categoria: number | null; grupo: number | null }, teste: boolean, sem: SemCampos = {}) {
   const notas = [
-    sem.gtin && p.gtin ? `GTIN do Superus recusado pelo Bling: ${p.gtin}` : '',
+    sem.gtin && p.gtin ? `Código no Superus: ${p.codigo} (o Bling recusou o GTIN ${p.gtin}, que virou o código)` : '',
     sem.cest && p.cest ? `CEST do Superus recusado pelo Bling: ${p.cest}` : ''
   ].filter(Boolean)
   return limpo({
     nome: nomeTeste(teste, p.nome),
-    codigo: codigoTeste(teste, p.codigo),
+    codigo: codigoTeste(teste, sem.gtin && p.gtin ? p.gtin : p.codigo),
     preco: p.preco,
     ...PADRAO_PRODUTO,
     situacao: p.situacao,
