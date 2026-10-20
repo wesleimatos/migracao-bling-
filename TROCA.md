@@ -81,6 +81,11 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     FocoSaaS), tira dúvidas e orienta; **qualquer mudança no sistema só com autorização do Weslei**,
     pedida no próprio grupo. Toda mensagem começa com "🤖 Agente Claude". Envio só seg–sáb, 9h–20h.
   - Só o grupo "Bling atacadao": não lê nem envia em outras conversas, não marca como lida, não apaga.
+  - 20/10/2026 · divisão (decisão do Weslei): o Agente Claude cuida só do que é **interno do Bling**
+    (produtos, preços, cadastros). **Tudo do PDV** (caixa, leitura do EAN no caixa, funções do menu)
+    fica com o **agente do PDV Bling**, que desenvolveu o PDV. O Claude não analisa nem responde PDV.
+  - Pendências do PDV vistas no grupo em 20/10: leitura do EAN pelo leitor não acha o produto (F2 acha);
+    função 17 do menu supervisor sumiu na atualização (a Danda vai dizer para que servia).
   - A chave da API não vai para o Git nem para o quadro; o Weslei deve trocá-la depois (ID 26).
 
 ## Pedido para o Weslei
