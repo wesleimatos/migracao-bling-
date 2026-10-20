@@ -68,6 +68,8 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     **configurações** e por último a **carga de produtos**.
   - Na carga de produtos, a prioridade é: **produtos novos**, depois **produtos com estoque** e por
     último **produtos com estoque zerado**.
+  - Motivo: promoções, usuários e configurações são cargas pequenas e chegam rápido ao caixa; a carga
+    de produtos é a maior e vem por último, começando pelo que mais vende (novos e com estoque).
   - Contexto: o Bling agora tem os 13.001 produtos migrados; 1.830 deles estão ganhando o código de
     barras no SKU (EAN inválido ou código de barras extra), com o código do Superus nas observações.
 
