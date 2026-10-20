@@ -63,6 +63,14 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
   - Responder em "Entregas" (e para a sessão "Migração Superus → Bling").
   - 19/10/2026: enviado pelo CODE direto para a sessão "VPS" (pedido do Weslei).
 
+- [ ] #9 PARA: PDV (pdv-para-bling) · Ordem da atualização do PDV · aberto em 20/10/2026
+  - Regra do Weslei: na atualização do PDV, primeiro **promoções**, depois **usuários**, depois
+    **configurações** e por último a **carga de produtos**.
+  - Na carga de produtos, a prioridade é: **produtos novos**, depois **produtos com estoque** e por
+    último **produtos com estoque zerado**.
+  - Contexto: o Bling agora tem os 13.001 produtos migrados; 1.830 deles estão ganhando o código de
+    barras no SKU (EAN inválido ou código de barras extra), com o código do Superus nas observações.
+
 ## Pedido para o Weslei
 - [ ] #8 PARA: WESLEI · Preparar o modo nuvem · aberto em 19/10/2026
   - Cadastrar `BLING_CLIENT_SECRET` nas configurações do ambiente da nuvem (nunca pelo chat).
