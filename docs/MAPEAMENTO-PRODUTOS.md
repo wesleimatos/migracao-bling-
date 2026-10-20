@@ -91,3 +91,8 @@ cada produto pelo CST de ICMS (os 2 últimos dígitos de `CSTICMS`) em `tributac
   completado com zeros até 13 dígitos, ele fica válido, vai assim no GTIN (UPC de 12 dígitos também vira
   13). EAN-8 fica como está; EAN igual ao próprio código do produto não conta. 660 produtos completados
   no Bling (com GTIN agora: 11.457).
+- **Código de barras no SKU (20/10/2026, pedido do Weslei):** nos 79 produtos com EAN inválido e nos
+  1.751 com mais de um código de barras, o código de barras (o EAN inválido ou o 1º extra, com a regra
+  dos zeros) foi para o **código (SKU)** e o código do Superus para as observações ("Código no
+  Superus: ..."). Códigos zerados ("0000000000000") ficam de fora. Lista do antes e depois em
+  `dados/sku-antes-depois.json` (fora do Git).
