@@ -70,8 +70,18 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     último **produtos com estoque zerado**.
   - Motivo: promoções, usuários e configurações são cargas pequenas e chegam rápido ao caixa; a carga
     de produtos é a maior e vem por último, começando pelo que mais vende (novos e com estoque).
+  - 20/10/2026 · problema visto no caixa (grupo "Bling atacadao"): o produto 105715 (Moedor GiftUtil,
+    EAN 7908762700349) aparece pelo nome e pelo F2, mas a busca digitando o EAN direto diz "Nenhum
+    produto encontrado". No Bling o cadastro está certo (código 105715, GTIN 7908762700349).
   - Contexto: o Bling agora tem os 13.001 produtos migrados; 1.830 deles estão ganhando o código de
     barras no SKU (EAN inválido ou código de barras extra), com o código do Superus nas observações.
+
+- [ ] #10 PARA: CODE (nuvem) · Suporte da migração no WhatsApp · aberto em 20/10/2026
+  - Pedido do Weslei: o Agente Claude atende o grupo "Bling atacadao" (linha CORPORATIVO, Painel Zap
+    FocoSaaS), tira dúvidas e orienta; **qualquer mudança no sistema só com autorização do Weslei**,
+    pedida no próprio grupo. Toda mensagem começa com "🤖 Agente Claude". Envio só seg–sáb, 9h–20h.
+  - Só o grupo "Bling atacadao": não lê nem envia em outras conversas, não marca como lida, não apaga.
+  - A chave da API não vai para o Git nem para o quadro; o Weslei deve trocá-la depois (ID 26).
 
 ## Pedido para o Weslei
 - [ ] #8 PARA: WESLEI · Preparar o modo nuvem · aberto em 19/10/2026
