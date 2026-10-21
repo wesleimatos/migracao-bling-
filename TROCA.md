@@ -131,6 +131,9 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
   vínculos, 806 contatos, em dados/, fora do Git); depois só o fornecedor foi atualizado em 6.580
   produtos: ~5.811 ligados (estavam sem), ~768 trocados (A → B, custo mantido), 1 já ligado na mão,
   0 falhas. 1.798 sem fornecedor na base nova: não mexidos. 4.634 já estavam certos.
+  Depois, com OK do Weslei: custo preenchido em 5.664 ligações novas (custo do Superus, planilha 62,
+  porque a base do Compras veio com custo 0); 6 já tinham custo (não mexidas); 141 sem custo nem no
+  Superus ficaram em branco; 0 falhas.
 - CODE (nuvem) · 20/10/2026 · pedido do Weslei: código de barras no SKU e código do Superus nas
   observações em 1.830 produtos (79 com EAN inválido, 1.751 com código de barras extra), 0 falhas.
 - CODE · **Etapa 2 pronta** em 19/10/2026: login (scrypt, cookie seguro, bloqueio de tentativas),
