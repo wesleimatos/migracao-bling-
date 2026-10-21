@@ -126,6 +126,11 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
   perdia os zeros). 660 produtos atualizados no Bling (só o GTIN), 0 falhas · 72 testes passando.
   Decisão do Weslei: o código (SKU) é o do Superus; só o EAN ganha os zeros. 2 produtos editados à mão
   no Bling (código trocado pelo EAN) voltaram ao código do Superus (104495 e 103371).
+- CODE (nuvem) · 21/10/2026 · base corrigida do Compras (planilha "CADASTRO_PRODUTOS_COMPLETOS_ATUALIZADA
+  21.10.26", exportação do Bling com o fornecedor certo): backup do Bling antes (13.012 produtos, 5.874
+  vínculos, 806 contatos, em dados/, fora do Git); depois só o fornecedor foi atualizado em 6.580
+  produtos: ~5.811 ligados (estavam sem), ~768 trocados (A → B, custo mantido), 1 já ligado na mão,
+  0 falhas. 1.798 sem fornecedor na base nova: não mexidos. 4.634 já estavam certos.
 - CODE (nuvem) · 20/10/2026 · pedido do Weslei: código de barras no SKU e código do Superus nas
   observações em 1.830 produtos (79 com EAN inválido, 1.751 com código de barras extra), 0 falhas.
 - CODE · **Etapa 2 pronta** em 19/10/2026: login (scrypt, cookie seguro, bloqueio de tentativas),
