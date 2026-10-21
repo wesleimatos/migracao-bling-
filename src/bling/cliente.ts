@@ -91,6 +91,10 @@ export class BlingCliente {
     return this.requisitar<T>('PATCH', caminho, corpo)
   }
 
+  put<T>(caminho: string, corpo?: unknown): Promise<T> {
+    return this.requisitar<T>('PUT', caminho, corpo)
+  }
+
   delete<T>(caminho: string): Promise<T> {
     return this.requisitar<T>('DELETE', caminho)
   }
