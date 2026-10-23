@@ -96,6 +96,9 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     e avisa no grupo; o que é novo ou sensível (cadastrar produto novo, mudar preço de venda, excluir,
     estoque, usuários/permissões) continua só com o OK do Weslei. Acesso ao Bling pelo "Braço do Bling"
     (sessão session_01WFhJr3SujiZF83Jqq5ZqSA, conectada em 23/10 com o app novo).
+    Regra de preço (Weslei, 23/10): produto com preço de venda errado (ex.: abaixo do custo) → preço
+    provisório = custo + 54% (ex.: custo 12,37 → 19,05; o Weslei arredondou para 19,99), ajustar no
+    Bling e pedir no grupo para forçar a carga no caixa (menu supervisor, função 11) para o PDV atualizar.
     Assunto do PDV no grupo sem resposta do assistente do PDV: direcionar para ele no grupo (Weslei).
     Problema sistêmico sério: avisar o Weslei na hora (na sessão principal). Todo dia às 20h: resumo
     do dia para o Weslei.
