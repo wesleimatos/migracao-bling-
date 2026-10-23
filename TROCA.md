@@ -73,6 +73,9 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
   - 20/10/2026 · problema visto no caixa (grupo "Bling atacadao"): o produto 105715 (Moedor GiftUtil,
     EAN 7908762700349) aparece pelo nome e pelo F2, mas a busca digitando o EAN direto diz "Nenhum
     produto encontrado". No Bling o cadastro está certo (código 105715, GTIN 7908762700349).
+  - 23/10/2026 · pedido do Weslei ao agente do PDV (enviado à sessão "PDV para Bling"): na leitura do
+    código de barras, (1) ignorar zeros da esquerda (como o Superus) e (2) procurar o código lido no SKU
+    e no GTIN/EAN. Padrão: EAN-13 (13 dígitos) no produto; 14 dígitos é DUN-14 de caixa fechada.
   - Contexto: o Bling agora tem os 13.001 produtos migrados; 1.830 deles estão ganhando o código de
     barras no SKU (EAN inválido ou código de barras extra), com o código do Superus nas observações.
 
