@@ -2,8 +2,8 @@ import type { Banco } from '../banco.ts'
 import type { Cofre } from './cofre.ts'
 import type { Tokens } from './oauth.ts'
 
-/** Client ID do app "Migração" na central do Bling (não é segredo; o Weslei passou em 19/10/2026). */
-export const CLIENT_ID_PADRAO = 'd8c1742bfda50d9d56ee88a8887b07b607c553cd'
+/** Client ID do app novo na central do Bling (não é segredo; o Weslei passou em 23/10/2026, depois de excluir o app de 19/10). */
+export const CLIENT_ID_PADRAO = 'f926deb48f139e78e616726cc453c358af3d5307'
 
 /** App (Client ID e Secret) e tokens do Bling no banco, com o Secret e os tokens cifrados. */
 export class CredenciaisBling {
