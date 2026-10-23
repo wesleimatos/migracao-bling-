@@ -73,7 +73,8 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
   - 20/10/2026 · problema visto no caixa (grupo "Bling atacadao"): o produto 105715 (Moedor GiftUtil,
     EAN 7908762700349) aparece pelo nome e pelo F2, mas a busca digitando o EAN direto diz "Nenhum
     produto encontrado". No Bling o cadastro está certo (código 105715, GTIN 7908762700349).
-  - 23/10/2026 · pedido do Weslei ao agente do PDV (enviado à sessão "PDV para Bling"): na leitura do
+  - 23/10/2026 · pedido do Weslei ao agente do PDV (não deu para mandar direto à sessão "PDV para
+    Bling", que exige aparelho confiável; vai pelo grupo em 24/10): na leitura do
     código de barras, (1) ignorar zeros da esquerda (como o Superus) e (2) procurar o código lido no SKU
     e no GTIN/EAN. Padrão: EAN-13 (13 dígitos) no produto; 14 dígitos é DUN-14 de caixa fechada.
   - Contexto: o Bling agora tem os 13.001 produtos migrados; 1.830 deles estão ganhando o código de
@@ -95,6 +96,7 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     e avisa no grupo; o que é novo ou sensível (cadastrar produto novo, mudar preço de venda, excluir,
     estoque, usuários/permissões) continua só com o OK do Weslei. Acesso ao Bling pelo "Braço do Bling"
     (sessão session_01WFhJr3SujiZF83Jqq5ZqSA, conectada em 23/10 com o app novo).
+    Assunto do PDV no grupo sem resposta do assistente do PDV: direcionar para ele no grupo (Weslei).
     Problema sistêmico sério: avisar o Weslei na hora (na sessão principal). Todo dia às 20h: resumo
     do dia para o Weslei.
   - 23/10/2026 · o Weslei excluiu o app "Migração" do Bling (a conexão caiu) e criou um app novo:
