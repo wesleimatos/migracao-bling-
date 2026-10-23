@@ -99,7 +99,8 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     Regra de preço PROVISÓRIO (Weslei, 23/10): produto com preço de venda errado (ex.: abaixo do custo) → preço
     provisório = custo + 54% (ex.: custo 12,37 → 19,05; o Weslei arredondou para 19,99), ajustar no
     Bling, pedir no grupo para forçar a carga no caixa (menu supervisor, função 11) e avisar o Compras
-    para definir o preço definitivo (arredondar para cima no ,99).
+    para definir o preço definitivo (arredondar para cima no ,99). A autorização desse ajuste provisório
+    pode vir dos gerentes no próprio grupo (Weslei, 23/10).
     Assunto do PDV no grupo sem resposta do assistente do PDV: direcionar para ele no grupo (Weslei).
     Problema sistêmico sério: avisar o Weslei na hora (na sessão principal). Todo dia às 20h: resumo
     do dia para o Weslei.
