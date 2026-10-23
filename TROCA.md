@@ -92,6 +92,8 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     e avisa no grupo; o que é novo ou sensível (cadastrar produto novo, mudar preço de venda, excluir,
     estoque, usuários/permissões) continua só com o OK do Weslei. Acesso ao Bling pelo "Braço do Bling"
     (sessão session_01WFhJr3SujiZF83Jqq5ZqSA, conectada em 23/10 com o app novo).
+    Problema sistêmico sério: avisar o Weslei na hora (na sessão principal). Todo dia às 20h: resumo
+    do dia para o Weslei.
   - 23/10/2026 · o Weslei excluiu o app "Migração" do Bling (a conexão caiu) e criou um app novo:
     Client ID `f926deb48f139e78e616726cc453c358af3d5307` (já no código). Para reconectar: Client Secret
     novo em `BLING_CLIENT_SECRET` no ambiente (sem `< >`), sessão nova, `node src/cli.ts autorizar` e
