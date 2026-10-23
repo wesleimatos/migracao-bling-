@@ -87,6 +87,11 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
   - Pendências do PDV vistas no grupo em 20/10: leitura do EAN pelo leitor não acha o produto (F2 acha);
     função 17 do menu supervisor sumiu na atualização (a Danda vai dizer para que servia).
   - A chave da API não vai para o Git nem para o quadro; o Weslei deve trocá-la depois (ID 26).
+  - 23/10/2026 · missão no grupo (Weslei): ajudar e corrigir os erros. Correção de erro de cadastro
+    no Bling (código de barras, SKU, fornecedor, categoria, NCM, custo vindo do Superus) o Claude faz
+    e avisa no grupo; o que é novo ou sensível (cadastrar produto novo, mudar preço de venda, excluir,
+    estoque, usuários/permissões) continua só com o OK do Weslei. Acesso ao Bling pelo "Braço do Bling"
+    (sessão session_01WFhJr3SujiZF83Jqq5ZqSA, conectada em 23/10 com o app novo).
   - 23/10/2026 · o Weslei excluiu o app "Migração" do Bling (a conexão caiu) e criou um app novo:
     Client ID `f926deb48f139e78e616726cc453c358af3d5307` (já no código). Para reconectar: Client Secret
     novo em `BLING_CLIENT_SECRET` no ambiente (sem `< >`), sessão nova, `node src/cli.ts autorizar` e
