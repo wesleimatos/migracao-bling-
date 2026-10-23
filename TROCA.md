@@ -178,4 +178,7 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
   digita na tela do app, na Etapa 3) · link de retorno e permissões confirmados pelo Weslei
 
 ## Bloqueios (precisa do Weslei)
-_(nenhum)_
+- 23/10/2026 · sessão nova: o Bling recusou o Client Secret do ambiente ("client credentials are invalid")
+  com o Client ID novo. O valor da variável tem 156 caracteres (sem `< >`), longo demais para um
+  Client Secret: provavelmente foi colado outro texto. Weslei: copiar de novo o Client Secret do app
+  novo (central do Bling → app → Informações do app), trocar `BLING_CLIENT_SECRET` e abrir sessão nova.
