@@ -122,6 +122,8 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     vazio (482). Barra que o Bling recusa no EAN fica no SKU (199 não entram). Barras extras (2.269 em
     1.396 produtos) vão numa lista para o PDV cadastrar como códigos alternativos. Hoje depois das 20h,
     com backup e OK do PDV. O Braço do Bling segue os pedidos da sessão principal sem nova aprovação.
+    NÃO "corrigir" números fora do padrão (dígito verificador errado, dígito faltando etc.), porque estão
+    impressos nas embalagens e etiquetas (Weslei, 24/10). Copo Diamante e Amolador ficam como estão.
     Assunto do PDV no grupo sem resposta do assistente do PDV: direcionar para ele no grupo (Weslei).
     Problema sistêmico sério: avisar o Weslei na hora (na sessão principal). Todo dia às 20h: resumo
     do dia para o Weslei.
