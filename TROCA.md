@@ -115,7 +115,13 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     problemas (lista no resumo das 20h). Mudança que afeta outro app (PDV) é feita em conjunto: cada um
     faz a sua parte, combinado antes e fora do horário de vendas (Weslei, 24/10).
     Antes de mudar código, SKU ou EAN no Bling: confirmar com o agente do PDV que não dá erro no caixa
-    (Weslei, 24/10). Pendente: OK do PDV para copiar SKU→EAN em 595 produtos + Copo e Kit.
+    (Weslei, 24/10). Cópia SKU→EAN (595) SUBSTITUÍDA pela reversão abaixo.
+    REVERSÃO DO SKU (Weslei, 24/10, opção A): a trava de bipar pelo SKU já foi corrigida no PDV e no
+    busca-preço, então o SKU volta ao código do Superus só nos produtos ajustados em 21/10 (1.747; a
+    Prateleira 101796 o Weslei corrigiu à mão). A barra que estava no SKU vai para o EAN quando ele está
+    vazio (482). Barra que o Bling recusa no EAN fica no SKU (199 não entram). Barras extras (2.269 em
+    1.396 produtos) vão numa lista para o PDV cadastrar como códigos alternativos. Hoje depois das 20h,
+    com backup e OK do PDV. O Braço do Bling segue os pedidos da sessão principal sem nova aprovação.
     Assunto do PDV no grupo sem resposta do assistente do PDV: direcionar para ele no grupo (Weslei).
     Problema sistêmico sério: avisar o Weslei na hora (na sessão principal). Todo dia às 20h: resumo
     do dia para o Weslei.
