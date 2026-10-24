@@ -107,6 +107,10 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     REGRA (Weslei, 24/10): dentro do Bling só o Agente Claude (migração) mexe; dentro do PDV só o agente
     do PDV mexe. Um nunca altera o código/sistema do outro: precisando de acesso, informação ou
     modificação do outro lado, pede ao outro agente.
+    Comunicação com o PDV (sessão "PDV para Bling", session_01A4Egm732Zj5fsBzLWmNfRB): ele manda por
+    send_message; a resposta fica no fim desta conversa começando com "PARA O PDV:" (ele lê a transcrição).
+    24/10: PDV 0.1.33 corrige carga incompleta e códigos "2…"; cópia SKU→EAN (595) combinada para hoje
+    depois das 20h, com o concentrador na 0.1.33. Promoções do Superus não vieram na planilha 62 (pendente).
     Durante o horário de vendas: NÃO fazer ajustes em lote nem nada que mexa no caixa; só registrar os
     problemas (lista no resumo das 20h). Mudança que afeta outro app (PDV) é feita em conjunto: cada um
     faz a sua parte, combinado antes e fora do horário de vendas (Weslei, 24/10).
