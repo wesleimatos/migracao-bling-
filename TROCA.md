@@ -124,6 +124,8 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     com backup e OK do PDV. O Braço do Bling segue os pedidos da sessão principal sem nova aprovação.
     NÃO "corrigir" números fora do padrão (dígito verificador errado, dígito faltando etc.), porque estão
     impressos nas embalagens e etiquetas (Weslei, 24/10). Copo Diamante e Amolador ficam como estão.
+    REGRA GERAL (Weslei, 24/10): não inventar nada, só usar o que já existe. A única decisão é onde o
+    código fica: barra no padrão EAN vai para o campo EAN; fora do padrão vai para o SKU.
     Assunto do PDV no grupo sem resposta do assistente do PDV: direcionar para ele no grupo (Weslei).
     Problema sistêmico sério: avisar o Weslei na hora (na sessão principal). Todo dia às 20h: resumo
     do dia para o Weslei.
