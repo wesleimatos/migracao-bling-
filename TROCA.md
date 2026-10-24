@@ -104,6 +104,8 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     Regra do EAN (Weslei, 23/10): produto com o campo GTIN/EAN vazio e código de barras no SKU → copiar
     o SKU para o GTIN/EAN (só quando o SKU é código de barras válido; o Bling recusa prefixos fora do
     GS1, como 788). Gravar no Bling hoje só com aprovação no "Braço do Bling" (pedido cruzado bloqueado).
+    Antes de mudar código, SKU ou EAN no Bling: confirmar com o agente do PDV que não dá erro no caixa
+    (Weslei, 24/10). Pendente: OK do PDV para copiar SKU→EAN em 595 produtos + Copo e Kit.
     Assunto do PDV no grupo sem resposta do assistente do PDV: direcionar para ele no grupo (Weslei).
     Problema sistêmico sério: avisar o Weslei na hora (na sessão principal). Todo dia às 20h: resumo
     do dia para o Weslei.
