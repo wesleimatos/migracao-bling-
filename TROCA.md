@@ -104,6 +104,9 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     Regra do EAN (Weslei, 23/10): produto com o campo GTIN/EAN vazio e código de barras no SKU → copiar
     o SKU para o GTIN/EAN (só quando o SKU é código de barras válido; o Bling recusa prefixos fora do
     GS1, como 788). Gravar no Bling hoje só com aprovação no "Braço do Bling" (pedido cruzado bloqueado).
+    REGRA (Weslei, 24/10): dentro do Bling só o Agente Claude (migração) mexe; dentro do PDV só o agente
+    do PDV mexe. Um nunca altera o código/sistema do outro: precisando de acesso, informação ou
+    modificação do outro lado, pede ao outro agente.
     Durante o horário de vendas: NÃO fazer ajustes em lote nem nada que mexa no caixa; só registrar os
     problemas (lista no resumo das 20h). Mudança que afeta outro app (PDV) é feita em conjunto: cada um
     faz a sua parte, combinado antes e fora do horário de vendas (Weslei, 24/10).
