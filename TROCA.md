@@ -126,6 +126,10 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     impressos nas embalagens e etiquetas (Weslei, 24/10). Copo Diamante e Amolador ficam como estão.
     REGRA GERAL (Weslei, 24/10): não inventar nada, só usar o que já existe. A única decisão é onde o
     código fica: barra no padrão EAN vai para o campo EAN; fora do padrão vai para o SKU.
+    FEITO 24/10 (Braço do Bling, com backup): custo preenchido em 141 produtos que estavam com custo zero;
+    cadeado 103783 com GTIN 7891194000401; 99 preços promocionais (4 códigos da planilha não existem
+    no Bling); volta do SKU em 1.725 produtos (2 pulados, 20 com barra recusada pelo GS1 ficaram com a
+    barra no SKU). Falta: o PDV cadastrar as barras extras e forçar a carga (F12 → 11) na segunda.
     Assunto do PDV no grupo sem resposta do assistente do PDV: direcionar para ele no grupo (Weslei).
     Problema sistêmico sério: avisar o Weslei na hora (na sessão principal). Todo dia às 20h: resumo
     do dia para o Weslei.
