@@ -109,6 +109,8 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     modificação do outro lado, pede ao outro agente.
     REGRA (Weslei, 25/10): o que o PDV define ou passa (regras, cálculos, formato dos pedidos) eu não
     altero nem contesto; só respondo o que ele perguntar sobre o Bling.
+    REGRA (Weslei, 26/10): etiqueta que não passa ou diverge do sistema → orientar a gerar uma etiqueta
+    nova pelo sistema novo (as antigas saíram do sistema antigo de etiquetas, por isso há divergências).
     Comunicação com o PDV (sessão "PDV para Bling", session_01A4Egm732Zj5fsBzLWmNfRB): ele manda por
     send_message; a resposta fica no fim desta conversa começando com "PARA O PDV:" (ele lê a transcrição).
     24/10: PDV 0.1.33 corrige carga incompleta e códigos "2…"; cópia SKU→EAN (595) combinada para hoje
