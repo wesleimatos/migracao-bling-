@@ -111,6 +111,10 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     altero nem contesto; só respondo o que ele perguntar sobre o Bling.
     REGRA (Weslei, 26/10): etiqueta que não passa ou diverge do sistema → orientar a gerar uma etiqueta
     nova pelo sistema novo (as antigas saíram do sistema antigo de etiquetas, por isso há divergências).
+    Roteiro de atendimento (Weslei, 26/10): (1) sempre perguntar primeiro se procuraram o produto no
+    nosso sistema (PDV, busca pelo nome); (2) etiqueta do sistema antigo → atualizar/reimprimir pelo
+    sistema novo; (3) nunca gerar número novo para o produto. Boa parte dos erros vinha de colaboradores
+    usando o caminho antigo, e não do cadastro.
     Comunicação com o PDV (sessão "PDV para Bling", session_01A4Egm732Zj5fsBzLWmNfRB): ele manda por
     send_message; a resposta fica no fim desta conversa começando com "PARA O PDV:" (ele lê a transcrição).
     24/10: PDV 0.1.33 corrige carga incompleta e códigos "2…"; cópia SKU→EAN (595) combinada para hoje
