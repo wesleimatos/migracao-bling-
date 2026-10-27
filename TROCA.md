@@ -117,6 +117,8 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     usando o caminho antigo, e não do cadastro.
     REGRA (Weslei, 27/10): produto que não bipa porque a barra da embalagem não está no EAN → ajuste simples,
     pode corrigir na hora: vincular a barra no EAN (sem mexer em código/preço; não sobrescrever outro EAN válido).
+    Se o produto JÁ TEM EAN (diferente da embalagem): não mexer no Bling; pedir à equipe que gere a etiqueta
+    no app Etiquetas (com o EAN do sistema) e cole no produto (Weslei, 27/10).
     Comunicação com o PDV (sessão "PDV para Bling", session_01A4Egm732Zj5fsBzLWmNfRB): ele manda por
     send_message; a resposta fica no fim desta conversa começando com "PARA O PDV:" (ele lê a transcrição).
     24/10: PDV 0.1.33 corrige carga incompleta e códigos "2…"; cópia SKU→EAN (595) combinada para hoje
