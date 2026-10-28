@@ -123,6 +123,8 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     gerada pela loja → não mexer no cadastro; gerar etiqueta nova no app Etiquetas e colar (Weslei, 27/10).
     Responsáveis pela base e pelo CADASTRO de produtos no Bling (Weslei, 28/10): Davidson, João Victor, Cláudio (Claudinho Vaz) e Emerson.
     Dúvida ou erro de cadastro (produto novo, inativo, fornecedor, duplicado, preço errado no cadastro) → marcar os quatro no grupo.
+    Toda ALTERAÇÃO feita na base do Bling (por mim ou pelo Braço) deve ser comunicada no grupo à equipe de Compras
+    (Davidson, João Victor, Cláudio e Emerson), mesmo quando o pedido veio da linha de frente (Weslei, 28/10).
     Os demais do grupo (Carol, Fernanda, Da Mata, Willian etc.) são a linha de frente da loja física, que registra as vendas com os clientes:
     para eles, sempre uma solução na hora (provisória para vender já, ou definitiva quando der): como vender
     agora, forçar carga, gerar etiqueta. Nunca deixar sem resposta nem pedir trabalho de cadastro.
