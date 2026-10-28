@@ -125,6 +125,7 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     Dúvida ou erro de cadastro (produto novo, inativo, fornecedor, duplicado, preço errado no cadastro) → marcar os quatro no grupo.
     Toda ALTERAÇÃO feita na base do Bling (por mim ou pelo Braço) deve ser comunicada no grupo à equipe de Compras
     (Davidson, João Victor, Cláudio e Emerson), mesmo quando o pedido veio da linha de frente (Weslei, 28/10).
+    Decisão séria de cadastro também pode ser pedida a eles (Weslei, 28/10).
     Os demais do grupo (Carol, Fernanda, Da Mata, Willian etc.) são a linha de frente da loja física, que registra as vendas com os clientes:
     para eles, sempre uma solução na hora (provisória para vender já, ou definitiva quando der): como vender
     agora, forçar carga, gerar etiqueta. Nunca deixar sem resposta nem pedir trabalho de cadastro.
