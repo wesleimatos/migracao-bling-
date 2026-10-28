@@ -121,6 +121,8 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     o EAN antigo vai para a lista de barras extras do PDV (Weslei, 27/10).
     Barra de FÁBRICA (impressa na embalagem) recusada pelo Bling no GTIN → vai para o SKU (código). Etiqueta
     gerada pela loja → não mexer no cadastro; gerar etiqueta nova no app Etiquetas e colar (Weslei, 27/10).
+    Responsáveis pela base do Bling (Weslei, 28/10): Davidson, João Victor, Cláudio (Claudinho Vaz) e Emerson.
+    Dúvidas de cadastro (produto inativo, fornecedor, duplicado etc.) → perguntar a eles no grupo.
     Comunicação com o PDV (sessão "PDV para Bling", session_01A4Egm732Zj5fsBzLWmNfRB): ele manda por
     send_message; a resposta fica no fim desta conversa começando com "PARA O PDV:" (ele lê a transcrição).
     24/10: PDV 0.1.33 corrige carga incompleta e códigos "2…"; cópia SKU→EAN (595) combinada para hoje
