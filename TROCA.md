@@ -162,7 +162,8 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     barra no SKU). Falta: o PDV cadastrar as barras extras e forçar a carga (F12 → 11) na segunda.
     Assunto do PDV no grupo sem resposta do assistente do PDV: direcionar para ele no grupo (Weslei).
     Problema sistêmico sério: avisar o Weslei na hora (na sessão principal). Todo dia às 20h: resumo
-    do dia para o Weslei.
+    do dia para o Weslei. Toda mensagem ao Weslei começa com o horário de Brasília (ex.: 🕐 12h50) e, nos avisos,
+    diz a que horas o caso aconteceu no grupo (Weslei, 29/10).
   - 23/10/2026 · o Weslei excluiu o app "Migração" do Bling (a conexão caiu) e criou um app novo:
     Client ID `f926deb48f139e78e616726cc453c358af3d5307` (já no código). Para reconectar: Client Secret
     novo em `BLING_CLIENT_SECRET` no ambiente (sem `< >`), sessão nova, `node src/cli.ts autorizar` e
