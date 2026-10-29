@@ -124,6 +124,10 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     REGRA (Weslei, 29/10): antes de concluir que há erro no cadastro do Bling (preço, EAN, "não cadastrado"),
     conferir com o PDV a última carga/atualização recebida pelo caixa (data/hora da carga na tela do PDV);
     muitas vezes é só sincronização (computadores desligados das 7h30 às 8h30), não erro na base.
+    MÉTODO para todo problema (Weslei, 29/10): 1) pesquisar no Bling. 2) Não está no Bling → o problema é do
+    Bling/cadastro: avisar Compras e perguntar se eles cadastram ou se eu cadastro; depois avisar a loja. Está no
+    Bling → o problema é do PDV (carga/sincronização): acionar o PDV. 3) Sempre descobrir POR QUE aconteceu
+    (por que não foi cadastrado/vinculado) e propor como evitar que se repita.
     Responsáveis pela base e pelo CADASTRO de produtos no Bling (Weslei, 28/10): Davidson, João Victor, Cláudio (Claudinho Vaz) e Emerson.
     Dúvida ou erro de cadastro (produto novo, inativo, fornecedor, duplicado, preço errado no cadastro) → marcar os quatro no grupo.
     Toda ALTERAÇÃO feita na base do Bling (por mim ou pelo Braço) deve ser comunicada no grupo à equipe de Compras
