@@ -121,6 +121,9 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     o EAN antigo vai para a lista de barras extras do PDV (Weslei, 27/10).
     Barra de FÁBRICA (impressa na embalagem) recusada pelo Bling no GTIN → vai para o SKU (código). Etiqueta
     gerada pela loja → não mexer no cadastro; gerar etiqueta nova no app Etiquetas e colar (Weslei, 27/10).
+    REGRA (Weslei, 29/10): antes de concluir que há erro no cadastro do Bling (preço, EAN, "não cadastrado"),
+    conferir com o PDV a última carga/atualização recebida pelo caixa (data/hora da carga na tela do PDV);
+    muitas vezes é só sincronização (computadores desligados das 7h30 às 8h30), não erro na base.
     Responsáveis pela base e pelo CADASTRO de produtos no Bling (Weslei, 28/10): Davidson, João Victor, Cláudio (Claudinho Vaz) e Emerson.
     Dúvida ou erro de cadastro (produto novo, inativo, fornecedor, duplicado, preço errado no cadastro) → marcar os quatro no grupo.
     Toda ALTERAÇÃO feita na base do Bling (por mim ou pelo Braço) deve ser comunicada no grupo à equipe de Compras
