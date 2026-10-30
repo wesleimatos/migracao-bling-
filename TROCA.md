@@ -127,6 +127,10 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     DIVISÃO (PDV, 30/10): problema de caixa/carga/sincronização → o PDV responde no grupo (plantão a cada 30 min);
     eu fico com o cadastro no Bling (EAN, preço, fornecedor). A "Data/hora carga" do rodapé do caixa é campo
     antigo e NÃO indica carga parada (os caixas copiam do painel a cada 5 min).
+    BLOQUEIO "aguardando precificação" (30/10): o caixa bloqueia o produto quando o CUSTO >= PREÇO de venda.
+    Causa típica: custo digitado errado no Bling (custo da caixa em vez da unidade, ou custo = preço). Corrigir
+    o custo no Bling (Compras) e o PDV atualizar o painel; na loja, a supervisora usa F12 → 14 "Atualizar
+    produto do Bling". O painel do PDV pode ficar com o custo antigo até o PDV atualizar.
     MÉTODO para todo problema (Weslei, 29/10): 1) pesquisar no Bling. 2) Não está no Bling → o problema é do
     Bling/cadastro: avisar Compras e perguntar se eles cadastram ou se eu cadastro; depois avisar a loja. Está no
     Bling → o problema é do PDV (carga/sincronização): acionar o PDV. 3) Sempre descobrir POR QUE aconteceu
