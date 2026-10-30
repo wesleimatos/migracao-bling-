@@ -124,6 +124,9 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     REGRA (Weslei, 29/10): antes de concluir que há erro no cadastro do Bling (preço, EAN, "não cadastrado"),
     conferir com o PDV a última carga/atualização recebida pelo caixa (data/hora da carga na tela do PDV);
     muitas vezes é só sincronização (computadores desligados das 7h30 às 8h30), não erro na base.
+    DIVISÃO (PDV, 30/10): problema de caixa/carga/sincronização → o PDV responde no grupo (plantão a cada 30 min);
+    eu fico com o cadastro no Bling (EAN, preço, fornecedor). A "Data/hora carga" do rodapé do caixa é campo
+    antigo e NÃO indica carga parada (os caixas copiam do painel a cada 5 min).
     MÉTODO para todo problema (Weslei, 29/10): 1) pesquisar no Bling. 2) Não está no Bling → o problema é do
     Bling/cadastro: avisar Compras e perguntar se eles cadastram ou se eu cadastro; depois avisar a loja. Está no
     Bling → o problema é do PDV (carga/sincronização): acionar o PDV. 3) Sempre descobrir POR QUE aconteceu
