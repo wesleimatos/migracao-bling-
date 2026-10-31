@@ -134,7 +134,11 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     REGRA (Weslei, 31/10): produto vendido com preço abaixo do custo → criar PROMOÇÃO no painel do PDV
     (quem cria é o PDV/time). Toda terça de manhã eu gero o relatório "preço ≤ custo" e posto no grupo.
     HORÁRIO DO COMPRAS (Weslei, 31/10): segunda a sexta, 9h–18h; não trabalha sábado, domingo nem feriado.
-    Fora desse horário NÃO acionar o Compras: guardar a pendência e disparar no próximo expediente (agendado).
+    Fora desse horário NÃO acionar o Compras: guardar a pendência e disparar no próximo expediente (agendado),
+    numa mensagem só, conferindo antes no Bling o que ainda falta.
+    FORA DO HORÁRIO DO COMPRAS (Weslei, 31/10): agir com mais independência. Cliente no caixa → resolver NA HORA
+    com a melhor solução (regra aprovada segue normal; preço/custo/inativar/duplicado/fornecedor: fazer o
+    necessário para a venda) e registrar para o Compras revisar no próximo expediente.
     Duplicados: o Bling não aceita SKU repetido, mas ACEITA GTIN repetido → antes de cadastrar, procurar a
     barra no Bling; varredura diária de GTIN duplicado no plantão.
     MÉTODO para todo problema (Weslei, 29/10): 1) pesquisar no Bling. 2) Não está no Bling → o problema é do
