@@ -139,6 +139,11 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     FORA DO HORÁRIO DO COMPRAS (Weslei, 31/10): agir com mais independência. Cliente no caixa → resolver NA HORA
     com a melhor solução (regra aprovada segue normal; preço/custo/inativar/duplicado/fornecedor: fazer o
     necessário para a venda) e registrar para o Compras revisar no próximo expediente.
+    Detalhe (PDV/Weslei, 31/10): (1) barra, descrição, unidade → na hora, sem conferência; (2) bloqueado
+    (preço 0 ou ≤ custo) → pôr o preço da etiqueta/gôndola (com foto) e anotar; (3) sem cadastro → cadastro
+    PROVISÓRIO (nome, barra, preço da etiqueta; "PROVISÓRIO" na observação) e anotar para o Compras completar
+    custo/fornecedor; (4) lista ao Compras numa mensagem só no próximo expediente. Após cada ajuste, avisar
+    no grupo com o código (PDV relê; supervisora F12 → 14).
     Duplicados: o Bling não aceita SKU repetido, mas ACEITA GTIN repetido → antes de cadastrar, procurar a
     barra no Bling; varredura diária de GTIN duplicado no plantão.
     MÉTODO para todo problema (Weslei, 29/10): 1) pesquisar no Bling. 2) Não está no Bling → o problema é do
