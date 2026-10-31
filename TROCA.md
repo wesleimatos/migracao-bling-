@@ -131,6 +131,10 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     Causa típica: custo digitado errado no Bling (custo da caixa em vez da unidade, ou custo = preço). Corrigir
     o custo no Bling (Compras) e o PDV atualizar o painel; na loja, a supervisora usa F12 → 14 "Atualizar
     produto do Bling". O painel do PDV pode ficar com o custo antigo até o PDV atualizar.
+    REGRA (Weslei, 31/10): produto vendido com preço abaixo do custo → criar PROMOÇÃO no painel do PDV
+    (quem cria é o PDV/time). Toda terça de manhã eu gero o relatório "preço ≤ custo" e posto no grupo.
+    Duplicados: o Bling não aceita SKU repetido, mas ACEITA GTIN repetido → antes de cadastrar, procurar a
+    barra no Bling; varredura diária de GTIN duplicado no plantão.
     MÉTODO para todo problema (Weslei, 29/10): 1) pesquisar no Bling. 2) Não está no Bling → o problema é do
     Bling/cadastro: avisar Compras e perguntar se eles cadastram ou se eu cadastro; depois avisar a loja. Está no
     Bling → o problema é do PDV (carga/sincronização): acionar o PDV. 3) Sempre descobrir POR QUE aconteceu
