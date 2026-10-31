@@ -131,6 +131,9 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     Causa típica: custo digitado errado no Bling (custo da caixa em vez da unidade, ou custo = preço). Corrigir
     o custo no Bling (Compras) e o PDV atualizar o painel; na loja, a supervisora usa F12 → 14 "Atualizar
     produto do Bling". O painel do PDV pode ficar com o custo antigo até o PDV atualizar.
+    LIMITE DA API (31/10): varredura/leitura em massa no Bling SÓ fora do horário da loja (20h–8h). Em 31/10,
+    das 14h42 às ~15h40, a nossa varredura estourou o limite e o PDV parou de sincronizar com os caixas.
+    No horário da loja: só item a item.
     PREÇO ABAIXO DO CUSTO (Weslei, 31/10): é avaliação do Compras. Só mexer se a LOJA sinalizar que está errado
     (ex.: travou no caixa, etiqueta diferente); senão só entra no relatório de terça.
     REGRA (Weslei, 31/10): produto vendido com preço abaixo do custo → criar PROMOÇÃO no painel do PDV
