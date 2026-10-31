@@ -133,6 +133,8 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     produto do Bling". O painel do PDV pode ficar com o custo antigo até o PDV atualizar.
     REGRA (Weslei, 31/10): produto vendido com preço abaixo do custo → criar PROMOÇÃO no painel do PDV
     (quem cria é o PDV/time). Toda terça de manhã eu gero o relatório "preço ≤ custo" e posto no grupo.
+    HORÁRIO DO COMPRAS (Weslei, 31/10): segunda a sexta, 9h–18h; não trabalha sábado, domingo nem feriado.
+    Fora desse horário NÃO acionar o Compras: guardar a pendência e disparar no próximo expediente (agendado).
     Duplicados: o Bling não aceita SKU repetido, mas ACEITA GTIN repetido → antes de cadastrar, procurar a
     barra no Bling; varredura diária de GTIN duplicado no plantão.
     MÉTODO para todo problema (Weslei, 29/10): 1) pesquisar no Bling. 2) Não está no Bling → o problema é do
