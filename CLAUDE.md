@@ -23,6 +23,15 @@ As regras do dia a dia da loja (PDV, Compras, escala, horário) estão no `TROCA
   dele). Não vai para o chat do VALIDAR PROJETO. RETORNO PARA O CHAT só para validar
   regras (brief novo ou alterado, mudança/exceção no padrão, conflito brief × padrão).
 
+## Como falar com o Weslei (regra obrigatória, 31/10)
+- Tudo que depender de resposta do Weslei vira ENTREVISTA: usar a ferramenta de perguntas
+  com opções para clicar (AskUserQuestion), nunca texto para ele digitar.
+- Uma pergunta por vez (ou poucas, numeradas "1 de 3"), cada opção com uma explicação
+  curta, e a recomendada marcada "(Recomendado)".
+- Sempre deixar a opção "Outro" para ele escrever, se precisar.
+- Nunca pedir para ele responder digitando "1A", "sim/não" ou números.
+- Antes de começar uma função nova, fazer a entrevista para entender o que ele quer.
+
 ## Sessões deste projeto
 - "Migração Superus → Bling (envio pela nuvem)": sessão principal, dona do projeto.
 - "Braço do Bling": ajudante. Executa no Bling (API) o que a principal pede. Não mexe no
