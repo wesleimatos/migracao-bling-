@@ -52,3 +52,10 @@ As regras do dia a dia da loja (PDV, Compras, escala, horário) estão no `TROCA
   fora do horário (20h–8h), no máximo 1 consulta por segundo (o PDV usa a mesma conta).
 - Compras: segunda a sexta, 9h–18h. Fora disso, guardar a pendência para o próximo expediente.
 - Dados reais (planilhas, backups, tokens) nunca no Git.
+
+## Exceção aprovada pelo Weslei: permissões (02/11/2026)
+- O `.claude/settings.json` deste repositório usa uma lista de ações liberadas, e não o modo
+  plano do padrão, para os plantões automáticos (8h, 20h e agendas) não travarem esperando
+  aprovação. Ações sérias (ex.: apagar agenda) continuam pedindo OK.
+- Fora do horário do Compras, com cliente esperando: resolver na hora no Bling (preço da
+  etiqueta, barra de fábrica, cadastro PROVISÓRIO) e anotar para o Compras revisar (31/10).
