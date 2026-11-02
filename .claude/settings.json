@@ -1,0 +1,35 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__claude-code-remote__send_message",
+      "mcp__claude-code-remote__send_later",
+      "mcp__claude-code-remote__create_trigger",
+      "mcp__claude-code-remote__update_trigger",
+      "mcp__claude-code-remote__get_trigger",
+      "mcp__claude-code-remote__list_triggers",
+      "mcp__claude-code-remote__get_session",
+      "mcp__claude-code-remote__list_events",
+      "mcp__claude-code-remote__read_documentation",
+      "ReadNotifications",
+      "Bash(node:*)",
+      "Bash(curl:*)",
+      "Bash(cd:*)",
+      "Bash(cat:*)",
+      "Bash(tail:*)",
+      "Bash(ls:*)",
+      "Bash(file:*)",
+      "Bash(python3:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git pull:*)",
+      "Bash(git push:*)",
+      "Bash(git log:*)",
+      "Bash(git status:*)",
+      "Bash(TZ=America/Sao_Paulo date:*)",
+      "Edit(/home/user/migracao-bling-/TROCA.md)",
+      "Edit(/tmp/claude-0/**)",
+      "Write(/tmp/claude-0/**)",
+      "Read(/tmp/claude-0/**)"
+    ]
+  }
+}
