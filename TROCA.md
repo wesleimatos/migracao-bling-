@@ -141,6 +141,8 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     LINHA DE FRENTE em escala 12x36 (Weslei, 02/11): quem está na loja muda dia a dia. Antes de pedir algo,
     marcar quem está de plantão no dia (perguntar ao Weslei ou ver quem escreveu no grupo hoje); não
     endereçar a quem não está (ex.: 02/11 era o Willian, não o Ragamar).
+    ESCALA (Weslei, 02/11): dias alternados → 02/11 WILLIAN, 03/11 RAGAMAR, 04/11 Willian, 05/11 Ragamar…
+    (seguir alternando; confirmar com o Weslei se mudar).
     HORÁRIO DO COMPRAS (Weslei, 31/10): segunda a sexta, 9h–18h; não trabalha sábado, domingo nem feriado.
     Fora desse horário NÃO acionar o Compras: guardar a pendência e disparar no próximo expediente (agendado),
     numa mensagem só, conferindo antes no Bling o que ainda falta.
