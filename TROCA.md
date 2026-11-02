@@ -138,6 +138,9 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     (ex.: travou no caixa, etiqueta diferente); senão só entra no relatório de terça.
     REGRA (Weslei, 31/10): produto vendido com preço abaixo do custo → criar PROMOÇÃO no painel do PDV
     (quem cria é o PDV/time). Toda terça de manhã eu gero o relatório "preço ≤ custo" e posto no grupo.
+    LINHA DE FRENTE em escala 12x36 (Weslei, 02/11): quem está na loja muda dia a dia. Antes de pedir algo,
+    marcar quem está de plantão no dia (perguntar ao Weslei ou ver quem escreveu no grupo hoje); não
+    endereçar a quem não está (ex.: 02/11 era o Willian, não o Ragamar).
     HORÁRIO DO COMPRAS (Weslei, 31/10): segunda a sexta, 9h–18h; não trabalha sábado, domingo nem feriado.
     Fora desse horário NÃO acionar o Compras: guardar a pendência e disparar no próximo expediente (agendado),
     numa mensagem só, conferindo antes no Bling o que ainda falta.
