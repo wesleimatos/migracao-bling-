@@ -141,6 +141,10 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     1004832, 1001484.
     SEGURANÇA (Weslei, 03/11): produto abaixo do custo SÓ VENDE se estiver em PROMOÇÃO no PDV. Queima autorizada
     = criar promoção no PDV (não mexer custo no Bling). Sem promoção o bloqueio do caixa está certo.
+    TRAVA DO PDV (Weslei, 03/11): o bloqueio "preço abaixo do custo" no PDV está DESLIGADO desde 31/10 e o
+    Weslei decidiu DEIXAR DESLIGADO por enquanto. A regra da promoção vale como combinado com o Compras.
+    PDV REVISA O BLING das 2h às 5h (0,4 s por consulta): leituras em massa nossas NÃO rodam nesse horário.
+    VIGIA (Weslei, 03/11): agenda de hora em hora (8h–19h, seg–sáb) confere se o vigia dos grupos está de pé.
     REGRA (Weslei, 31/10): produto vendido com preço abaixo do custo → criar PROMOÇÃO no painel do PDV
     (quem cria é o PDV/time). Toda terça de manhã eu gero o relatório "preço ≤ custo" e posto no grupo.
     LINHA DE FRENTE em escala 12x36 (Weslei, 02/11): quem está na loja muda dia a dia. Antes de pedir algo,
