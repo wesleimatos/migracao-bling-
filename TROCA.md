@@ -143,6 +143,10 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     endereçar a quem não está (ex.: 02/11 era o Willian, não o Ragamar).
     ESCALA (Weslei, 02/11): dias alternados → 02/11 WILLIAN, 03/11 RAGAMAR, 04/11 Willian, 05/11 Ragamar…
     (seguir alternando; confirmar com o Weslei se mudar).
+    GRUPOS (Weslei, 03/11): assuntos de CADASTRO com o Compras (pendências, decisões, relatório de terça,
+    lista sem fornecedor) vão no grupo "Compras - suporte Ai". O "Bling atacadao" fica para a loja e o PDV
+    (caixa, não cadastrado, bloqueado, preço da etiqueta, barra). O agente vigia os dois.
+    SEM FORNECEDOR (Weslei, 03/11): o Compras cadastra o fornecedor certo produto a produto; nada em lote.
     HORÁRIO DO COMPRAS (Weslei, 31/10): segunda a sexta, 9h–18h; não trabalha sábado, domingo nem feriado.
     Fora desse horário NÃO acionar o Compras: guardar a pendência e disparar no próximo expediente (agendado),
     numa mensagem só, conferindo antes no Bling o que ainda falta.
