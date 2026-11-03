@@ -147,6 +147,11 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     lista sem fornecedor) vão no grupo "Compras - suporte Ai". O "Bling atacadao" fica para a loja e o PDV
     (caixa, não cadastrado, bloqueado, preço da etiqueta, barra). O agente vigia os dois.
     SEM FORNECEDOR (Weslei, 03/11): o Compras cadastra o fornecedor certo produto a produto; nada em lote.
+    SUPORTE DO COMPRAS (Weslei, 03/11): no "Compras - suporte Ai" o agente é o suporte do Compras na base do
+    Bling. Lançar UMA pendência por vez: avisar as pendências abertas, perguntar qual tratar agora e dizer o
+    grau de urgência e o porquê do ajuste. Atender qualquer pedido deles no Bling (alterar cadastro, preço,
+    custo, fornecedor, barra, NCM, categorias, inativar, relatórios). NUNCA EXCLUIR (avisar que excluir não
+    faz). Sempre backup antes, conferir depois e avisar o que mudou.
     HORÁRIO DO COMPRAS (Weslei, 31/10): segunda a sexta, 9h–18h; não trabalha sábado, domingo nem feriado.
     Fora desse horário NÃO acionar o Compras: guardar a pendência e disparar no próximo expediente (agendado),
     numa mensagem só, conferindo antes no Bling o que ainda falta.
