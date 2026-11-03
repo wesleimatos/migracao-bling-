@@ -139,6 +139,8 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     QUEIMA AUTORIZADA (Emerson/Compras, 03/11): vindos do Superus com redução autorizada, NÃO mexer preço nem
     custo e tirar do relatório de terça: 1003037, 1004547, 1004693, 1000608, 1001438, 1000102, 1001818,
     1004832, 1001484.
+    SEGURANÇA (Weslei, 03/11): produto abaixo do custo SÓ VENDE se estiver em PROMOÇÃO no PDV. Queima autorizada
+    = criar promoção no PDV (não mexer custo no Bling). Sem promoção o bloqueio do caixa está certo.
     REGRA (Weslei, 31/10): produto vendido com preço abaixo do custo → criar PROMOÇÃO no painel do PDV
     (quem cria é o PDV/time). Toda terça de manhã eu gero o relatório "preço ≤ custo" e posto no grupo.
     LINHA DE FRENTE em escala 12x36 (Weslei, 02/11): quem está na loja muda dia a dia. Antes de pedir algo,
