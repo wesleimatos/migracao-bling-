@@ -136,6 +136,9 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     No horário da loja: só item a item.
     PREÇO ABAIXO DO CUSTO (Weslei, 31/10): é avaliação do Compras. Só mexer se a LOJA sinalizar que está errado
     (ex.: travou no caixa, etiqueta diferente); senão só entra no relatório de terça.
+    QUEIMA AUTORIZADA (Emerson/Compras, 03/11): vindos do Superus com redução autorizada, NÃO mexer preço nem
+    custo e tirar do relatório de terça: 1003037, 1004547, 1004693, 1000608, 1001438, 1000102, 1001818,
+    1004832, 1001484.
     REGRA (Weslei, 31/10): produto vendido com preço abaixo do custo → criar PROMOÇÃO no painel do PDV
     (quem cria é o PDV/time). Toda terça de manhã eu gero o relatório "preço ≤ custo" e posto no grupo.
     LINHA DE FRENTE em escala 12x36 (Weslei, 02/11): quem está na loja muda dia a dia. Antes de pedir algo,
