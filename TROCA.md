@@ -155,7 +155,8 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     LOTE PEDIDO PELO COMPRAS (Weslei, 03/11): o pedido deles vale como OK. Sugerir fazer à noite (depois das
     20h, para não travar o PDV); se disserem que precisam AGORA, fazer na hora (é urgente), devagar e item a
     item, avisando no grupo e no resumo do Weslei.
-    HORÁRIO DO COMPRAS (Weslei, 31/10): segunda a sexta, 9h–18h; não trabalha sábado, domingo nem feriado.
+    HORÁRIO DO COMPRAS (Weslei, 03/11, substitui 31/10): segunda a sexta, 8h30–18h; não trabalha sábado,
+    domingo nem feriado, EXCETO quem estiver de plantão.
     Fora desse horário NÃO acionar o Compras: guardar a pendência e disparar no próximo expediente (agendado),
     numa mensagem só, conferindo antes no Bling o que ainda falta.
     FORA DO HORÁRIO DO COMPRAS (Weslei, 31/10): agir com mais independência. Cliente no caixa → resolver NA HORA

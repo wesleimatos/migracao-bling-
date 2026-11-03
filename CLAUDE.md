@@ -67,7 +67,7 @@ As regras do dia a dia da loja (PDV, Compras, escala, horário) estão no `TROCA
 - Antes de concluir erro de cadastro, conferir a última carga/sincronização do PDV.
 - Horário da loja: só consulta e correção item a item. Varredura ou leitura em massa só
   fora do horário (20h–8h), no máximo 1 consulta por segundo (o PDV usa a mesma conta).
-- Compras: segunda a sexta, 9h–18h. Fora disso, guardar a pendência para o próximo expediente.
+- Compras: segunda a sexta, 8h30–18h (feriado só quem estiver de plantão). Fora disso, guardar a pendência para o próximo expediente.
 - Dados reais (planilhas, backups, tokens) nunca no Git.
 
 ## Exceção aprovada pelo Weslei: permissões (02/11/2026)
