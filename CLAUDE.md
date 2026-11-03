@@ -1,5 +1,22 @@
 # CLAUDE.md — migracao-bling- (Migração Superus → Bling)
 
+## OBRIGATÓRIO — Como terminar toda tarefa (02/11, pedidos #65 e #77; acima das outras regras)
+1. Nunca terminar com lista de texto do que se espera do Weslei. Terminar de um destes jeitos:
+   A) Se algo depende dele: perguntas com opções para clicar (AskUserQuestion), a
+      recomendada marcada "(Recomendado)" e "Outro". Uma pergunta por decisão. Depois da
+      resposta, seguir direto para a próxima etapa.
+   B) Se nada depende dele, só a linha:
+      "✅ Acabamos. Nada pendente com você. Sessão disponível para a próxima tarefa."
+2. Vale também no meio do trabalho: toda decisão do Weslei é pergunta com clique.
+3. Ao acabar uma tarefa, mostrar o plano da próxima (em poucas linhas) e perguntar com
+   clique se o Weslei aprova. Só começar com o OK dele.
+
+## OBRIGATÓRIO — Prazo de resposta (03/11, pedido #78)
+- Pedido no `wesleimatos/pedidos` "para: migracao-bling": responder em até 1 HORA, pelo
+  menos com um comentário ("recebido, vou fazer / preciso de X / não é comigo").
+- Ler os pedidos abertos ao abrir a sessão e no fim de cada tarefa, e responder os novos.
+- Recurso de testes: cartão do LAB em `padrao/RECURSO-LAB.md` (pedido #71), só consulta.
+
 ## Início de toda sessão
 No início de cada sessão, leia no main do `wesleimatos/projetos` o arquivo
 `padrao/PADRAO-APPS.md` e o brief deste projeto em `briefs/migracao-bling.md`. Siga sempre
