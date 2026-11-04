@@ -37,8 +37,11 @@ As regras do dia a dia da loja (PDV, Compras, escala, horário) estão no `TROCA
 - **Foco só neste projeto.** Pedidos para outros projetos vão pelo quadro `wesleimatos/pedidos`.
 - **Brief novo não apaga o que foi aprovado:** mostre as diferenças antes.
 - **Toda tarefa termina com um RESUMO PARA O WESLEI** (feito, pendente, o que depende
-  dele). Não vai para o chat do VALIDAR PROJETO. RETORNO PARA O CHAT só para validar
-  regras (brief novo ou alterado, mudança/exceção no padrão, conflito brief × padrão).
+  dele). Não vai para o chat do VALIDAR PROJETO. RETORNO PARA O CHAT só para PROJETO NOVO
+  (pedido #103, 04/11): este projeto já existe, então não volta para o chat validar.
+- **Dona da evolução (padrão §7, pedido #103):** o chat só fez o primeiro brief. A evolução
+  da Migração é desta sessão: procurar sempre melhorias e propor ao Weslei com plano e
+  perguntas de clique. Só faz com o OK dele. A central só registra o que for decidido.
 
 ## Como falar com o Weslei (regra obrigatória, 31/10)
 - Tudo que depender de resposta do Weslei vira ENTREVISTA: usar a ferramenta de perguntas
