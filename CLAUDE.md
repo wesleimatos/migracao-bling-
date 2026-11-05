@@ -11,6 +11,17 @@
 3. Ao acabar uma tarefa, mostrar o plano da próxima (em poucas linhas) e perguntar com
    clique se o Weslei aprova. Só começar com o OK dele.
 
+## OBRIGATÓRIO — O Weslei é o último recurso (05/11, pedido #105)
+- O que é técnico se resolve direto entre as sessões (Braço, quadro de pedidos, API).
+- Criar métodos que não dependam dos cliques do Weslei. Ele só entra para o OK que as
+  regras exigem, uma senha ou login só dele, ou uma decisão de negócio.
+- Ao chamá-lo, mostrar em poucas linhas o que já foi tentado e por que não deu.
+
+## OBRIGATÓRIO — Backup nunca no GitHub (05/11, pedido #116)
+- Nunca mandar backup ou cópia de dados ao GitHub (Actions, releases, repositório, pacotes).
+- Nunca apagar nada no GitHub por conta própria; limpeza só pela sessão VPS (#115).
+- Backups do Bling ficam só no container/servidor (`dados/braco/`, fora do Git).
+
 ## OBRIGATÓRIO — Prazo de resposta (03/11, pedido #78)
 - Pedido no `wesleimatos/pedidos` "para: migracao-bling": responder em até 1 HORA, pelo
   menos com um comentário ("recebido, vou fazer / preciso de X / não é comigo").
