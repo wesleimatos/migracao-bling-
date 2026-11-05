@@ -147,7 +147,7 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     VIGIA (Weslei, 03/11): agenda de hora em hora (8h–19h, seg–sáb) confere se o vigia dos grupos está de pé.
     GRUPO DE IMPOSTOS (04–05/11): produto sem "grupo de produtos" no Bling faz a NFC-e ser recusada (sem CFOP).
     Padrão = grupo 847821 (o do 1005631). FA FA = origem 2 (importado, Emerson 04/11). Weslei 05/11: corrigir
-    os 186 ativos sem grupo (à noite); nos não-FA FA a origem fica como está e o Compras revisa.
+    os 186 ativos sem grupo (feito na hora, ordem do Weslei 8h10); nos não-FA FA a origem fica como está e o Compras revisa.
     Todo cadastro NOVO precisa sair com grupo de impostos (avisar o Compras).
     REGRA (Weslei, 31/10): produto vendido com preço abaixo do custo → criar PROMOÇÃO no painel do PDV
     (quem cria é o PDV/time). Toda terça de manhã eu gero o relatório "preço ≤ custo" e posto no grupo.
