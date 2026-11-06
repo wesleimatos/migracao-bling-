@@ -139,18 +139,20 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
     QUEIMA AUTORIZADA (Emerson/Compras, 03/11): vindos do Superus com redução autorizada, NÃO mexer preço nem
     custo e tirar do relatório de terça: 1003037, 1004547, 1004693, 1000608, 1001438, 1000102, 1001818,
     1004832, 1001484.
-    SEGURANÇA (Weslei, 03/11): produto abaixo do custo SÓ VENDE se estiver em PROMOÇÃO no PDV. Queima autorizada
-    = criar promoção no PDV (não mexer custo no Bling). Sem promoção o bloqueio do caixa está certo.
-    TRAVA DO PDV (Weslei, 03/11): o bloqueio "preço abaixo do custo" no PDV está DESLIGADO desde 31/10 e o
-    Weslei decidiu DEIXAR DESLIGADO por enquanto. A regra da promoção vale como combinado com o Compras.
+    PROMOÇÃO PROIBIDA (Weslei, 06/11 — substitui a regra "SEGURANÇA" de 03/11): eu NUNCA crio, peço ou sugiro
+    promoção. Produto com preço de venda no Bling VENDE NORMAL no caixa por esse preço, mesmo abaixo do custo
+    (a trava do PDV foi desativada pelo Weslei). Abaixo do custo = só relatório para o Compras.
+    NÃO inventar situação de risco para a loja: nunca mandar a loja segurar venda/cliente sem certeza; na
+    dúvida, vender pelo preço do Bling e conferir depois.
+    TRAVA DO PDV: DESATIVADA pelo Weslei (confirmado 06/11).
     PDV REVISA O BLING das 2h às 5h (0,4 s por consulta): leituras em massa nossas NÃO rodam nesse horário.
     VIGIA (Weslei, 03/11): agenda de hora em hora (8h–19h, seg–sáb) confere se o vigia dos grupos está de pé.
     GRUPO DE IMPOSTOS (04–05/11): produto sem "grupo de produtos" no Bling faz a NFC-e ser recusada (sem CFOP).
     Padrão = grupo 847821 (o do 1005631). FA FA = origem 2 (importado, Emerson 04/11). Weslei 05/11: corrigir
     os 186 ativos sem grupo (feito na hora, ordem do Weslei 8h10); nos não-FA FA a origem fica como está e o Compras revisa.
     Todo cadastro NOVO precisa sair com grupo de impostos (avisar o Compras).
-    REGRA (Weslei, 31/10): produto vendido com preço abaixo do custo → criar PROMOÇÃO no painel do PDV
-    (quem cria é o PDV/time). Toda terça de manhã eu gero o relatório "preço ≤ custo" e posto no grupo.
+    RELATÓRIO (Weslei, 31/10; ajustado 06/11): toda terça de manhã eu gero o relatório "preço ≤ custo" e
+    posto no grupo do Compras. SEM promoção (ver PROMOÇÃO PROIBIDA).
     LINHA DE FRENTE em escala 12x36 (Weslei, 02/11): quem está na loja muda dia a dia. Antes de pedir algo,
     marcar quem está de plantão no dia (perguntar ao Weslei ou ver quem escreveu no grupo hoje); não
     endereçar a quem não está (ex.: 02/11 era o Willian, não o Ragamar).
