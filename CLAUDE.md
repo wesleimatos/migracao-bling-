@@ -1,5 +1,8 @@
 # CLAUDE.md — migracao-bling- (Migração Superus → Bling)
 
+- Regras de código: siga a seção 14 de `padrao/PADRAO-APPS.md` (wesleimatos/projetos, main) (pedido #126).
+- Skill Arquiteto: `.claude/skills/arquiteto/SKILL.md` (v2026.11.07-2), sem a parte de módulos (3.1 e trava das fronteiras): este projeto fica fora do monólito (pedido #150).
+
 ## OBRIGATÓRIO — Como terminar toda tarefa (02/11, pedidos #65 e #77; acima das outras regras)
 1. Nunca terminar com lista de texto do que se espera do Weslei. Terminar de um destes jeitos:
    A) Se algo depende dele: perguntas com opções para clicar (AskUserQuestion), a
