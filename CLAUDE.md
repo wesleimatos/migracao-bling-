@@ -7,7 +7,7 @@ WhatsApp. Ordem de leitura: este arquivo → `docs/estado.md` → o que a tarefa
 - `docs/constituicao.md`: TODAS as regras fixas (Bling, preço, horários, loja, Compras, WhatsApp, padrão).
 - `docs/estado.md`: onde paramos e pendências. Atualizar ao fim de cada tarefa.
 - `docs/decisoes/`: uma decisão por arquivo (data, decisão, por quê, alternativas). Decisão nova = arquivo novo.
-- `docs/historico.md`: pedidos antigos do quadro e entregas da migração. `docs/`: brief, desenho, mapeamentos.
+- `docs/historico.md`: pedidos antigos e entregas. `docs/MANUAL-USO.md` e `docs/MANUAL-TECNICO.md`: manuais.
 - `TROCA.md`: só um índice para quem ainda procura as regras lá (PDV, Braço, agendas).
 - Regras de código: siga a seção 14 de `padrao/PADRAO-APPS.md` (wesleimatos/projetos, main) (pedido #126).
 - Skill Arquiteto: `.claude/skills/arquiteto/SKILL.md` (v2026.11.07-2), sem a parte de módulos (3.1 e trava das fronteiras): este projeto fica fora do monólito (pedido #150).
