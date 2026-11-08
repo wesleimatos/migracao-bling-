@@ -23,11 +23,9 @@ Atualizado: 07/11/2026, 19h40 (fim do plantão de sábado).
   versão limpa. Falta o PDV carregar. Até lá, a loja vende digitando o código.
 - **Para o Compras (segunda):** 1001571 com fornecedor diferente da embalagem e estoque −63; 100935 perdeu a barra
   antiga 7899858717900 quando o GTIN foi trocado; unidade "Metros" no 100935 (padrão UN).
-- **Pedido #171 (língua português do Brasil):** respondido "recebido" com atraso; gravar no CLAUDE.md com o OK do Weslei.
 
 ## Depende do Weslei
-- Deixar o repositório privado (pedido #30). Prompt para o Claude do navegador já entregue em 07/11.
-- Trocar a chave do Painel Zap (prompt para o Claude do navegador, com o OK dele).
+- Trocar a chave do Painel Zap: marcada pelo Weslei para segunda 09/11 às 20h (agenda criada).
 
 ## Em andamento
 - Organização da memória do projeto (07/11, aprovada pelo Weslei): constituição, estado, histórico e

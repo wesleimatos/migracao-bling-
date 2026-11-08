@@ -3,6 +3,9 @@
 Migração do Superus para o Bling (feita em 19–24/10) e, hoje, suporte do Bling à loja e ao Compras pelo
 WhatsApp. Ordem de leitura: este arquivo → `docs/estado.md` → o que a tarefa pedir.
 
+**Língua (OBRIGATÓRIO, pedido #171):** toda comunicação em português do Brasil (topo de `padrao/PADRAO-APPS.md`).
+Outra língua só com quem começar a conversa nela; nomes técnicos ficam como são, explicados em português.
+
 ## Onde está cada coisa
 - `docs/constituicao.md`: TODAS as regras fixas (Bling, preço, horários, loja, Compras, WhatsApp, padrão).
 - `docs/estado.md`: onde paramos e pendências. Atualizar ao fim de cada tarefa.
