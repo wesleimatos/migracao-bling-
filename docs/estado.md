@@ -1,37 +1,43 @@
 # Estado — onde paramos (atualizar ao fim de cada tarefa)
 
-Atualizado: 07/11/2026, 19h40 (fim do plantão de sábado).
+Atualizado: 10/11/2026, 20h05 (fim do plantão de terça).
 
 ## Onde estamos
 - A migração Superus → Bling terminou em 19–24/10: 13.001 produtos, 800 fornecedores, 500 categorias,
   5.859 vínculos e 3.194 estoques, 0 erros. O histórico está em `docs/historico.md`.
 - Hoje o projeto é o **suporte do Bling** à loja ("Bling atacadao") e ao Compras ("Compras - suporte Ai"),
   em plantão de segunda a sábado, 8h–20h, com o Braço do Bling gravando no Bling.
+- A sessão principal ficou fora do ar de 09/11 ~12h até 10/11 11h13. Nesse tempo ficaram sem resposta 3 casos
+  da loja (a cola, a caneta Flamingo e um print de relatório), e o resumo e a agenda de 09/11 não foram feitos.
 
 ## Pendências abertas
-- **Compras, segunda 09/11 às 8h30** (agenda já criada): avisar os lotes feitos (KFS 12, SEMAAN 38, MACRO 42),
-  os provisórios para completar custo/fornecedor (MCF-38A), o Wilson vermelha/preta sem cadastro, o Wilson
-  preta duplicado, a Caixa de Som com custo acima do preço (só relatório), o Mordedor M-85 com estoque
-  negativo, a diferença do Amolador, a lista dos 186 sem grupo de impostos para revisar e a NFC-e a excluir.
-  Depois: duplicados, preços, estoque negativo e produtos sem fornecedor. Uma pendência por vez.
-- **Pedido #9 do quadro (PDV):** ordem da atualização do PDV (promoções → usuários → configurações → carga;
-  na carga: novos → com estoque → zerados). Com o PDV.
-- **Terça de manhã:** relatório "preço ≤ custo" para o Compras (sem promoção).
-- **Barras extras no caixa (pedido #184 ao PDV):** a lista `barras-extras-pdv.json` (24/10, 2.270 barras em 1.397 SKUs,
-  página "Arquivos da migração") não está carregada no caixa. 4 casos em 07/11: 1001571, 1006816, 1000691 (e 100935,
-  resolvido pelo Compras no Bling). O Braço confere a lista contra o Bling hoje às 20h30 (só leitura) e publica a
-  versão limpa. Falta o PDV carregar. Até lá, a loja vende digitando o código.
-- **Para o Compras (segunda):** 1001571 com fornecedor diferente da embalagem e estoque −63; 100935 perdeu a barra
-  antiga 7899858717900 quando o GTIN foi trocado; unidade "Metros" no 100935 (padrão UN).
+- **Braço, hoje à noite (10/11, a partir das 20h30):**
+  - 18 produtos ALTIMIX recebem fornecedor ALTIMIX e marca "ALTIMIX - ALTITOYS" (pedido do Compras, 17h06);
+  - barra 7898714607041 no 1004964;
+  - teste do GTIN 7888927600724 no Lixador AJ-F07-B (id 16733245597);
+  - CSVs "preço ≤ custo" e "preços alterados" (só leitura).
+- **Quarta 11/11, 8h30 (agenda criada):** avisar o Compras do resultado da noite. Depois, uma pendência por vez:
+  - categoria em ~200 produtos (João, 09/11; esperando a planilha);
+  - Wilson GB001D provisório × 101122;
+  - 100935 perdeu a barra antiga;
+  - 1001571: fornecedor diferente da embalagem e estoque −63;
+  - MCF-38A provisório;
+  - duplicados, estoque negativo e produtos sem fornecedor.
+- **Barras extras no caixa (pedido #184 ao PDV):** são 7 casos desde 07/11 e o PDV não respondeu. A lista limpa
+  `barras-extras-pdv-2026-11-07.json` está na página "Arquivos da migração". Até ela entrar, a loja vende
+  digitando o código.
+- **Webhooks do Bling para o PDV (#187):** dependem de o PDV dizer qual aplicativo tem o Client Secret no painel.
+  Foi perguntado em 08/11 e de novo em 10/11.
+- **Painel do PDV × barra no SKU (#187, 10/11):** o "Atualizar do Bling" não acha produtos cuja barra está só no
+  SKU (exemplo: o Lixador 7888927600724). Foi sugerido ao PDV procurar também pelo SKU.
+- **Pedido #9 (PDV):** ordem da atualização do PDV, com o PDV.
 
 ## Depende do Weslei
-- Trocar a chave do Painel Zap: marcada pelo Weslei para segunda 09/11 às 20h (agenda criada).
+- Trocar a chave do Painel Zap. O vigia está parado desde as 20h, o que permite a troca agora.
 
 ## Em andamento
-- Organização da memória do projeto (07/11, aprovada pelo Weslei): constituição, estado, histórico e
-  decisões em `docs/`; CLAUDE.md curto; TROCA.md virou índice. Manuais de uso e técnico feitos.
-  Scripts do plantão enviados cifrados à sessão VPS em 07/11 (pedido #157); falta a VPS confirmar.
-- Plano do pedido #120 (arquitetura): este projeto fica fora do monólito; espera a vez depois do ERP.
+- Plano do pedido #120 (arquitetura): este projeto fica fora do monólito e espera a vez depois do ERP.
+- Os scripts do plantão estão na VPS desde 07/11, em `/opt/migracao-bling/ferramentas/zap/` (pedido #157, fechado).
 
 ## Próximo passo
-- Continuar o plantão dos grupos e cumprir as pendências acima.
+- Plantão de quarta 11/11 às 8h (agenda trig_01TgVUzMQAu1iwj54793Pfvg).
