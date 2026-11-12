@@ -1,6 +1,18 @@
 # Estado — onde paramos (atualizar ao fim de cada tarefa)
 
-Atualizado: 10/11/2026, 20h05 (fim do plantão de terça).
+Atualizado: 12/11/2026, 8h15 (abertura do plantão de quinta).
+
+## Novidades de 11 e 12/11
+- **#212 (corte de gasto):** o Weslei decidiu manter o plantão (decisão 028). Saiu a conferência de hora em hora. Ficam:
+  - a abertura às 8h;
+  - o fechamento às 19h51 (trig_01VXq4ackTdQsb2qbnTpJFX6, quinta; trig_01BQQXx6UYvBxG3MfhM5TtfG, sexta 8h).
+- **Fechamento de 11/11 não saiu:** a sessão ficou parada das 20h57 de 11/11 até as 8h de 12/11, por reinício.
+  Nada chegou nos grupos nesse tempo.
+- **Token local do Bling** desta sessão está desconectado desde 11/11. Toda leitura do Bling vai pelo Braço.
+- **Braço:** travou às 20h36 de 11/11, esperando a aprovação de uma página. O Weslei vai liberar.
+  Os lotes MARES e BRINQUE FELIZ foram disparados antes de travar; falta o relatório dele.
+- **Guaraná garrafa 7891991014908:** sem cadastro no Bling (só a lata 103822). Pedir o cadastro ao Compras.
+- **Categorias:** o Braço mandou a lista (500 categorias, 27 na raiz) à sessão original, que pediu para o Weslei.
 
 ## Onde estamos
 - A migração Superus → Bling terminou em 19–24/10: 13.001 produtos, 800 fornecedores, 500 categorias,
@@ -40,4 +52,5 @@ Atualizado: 10/11/2026, 20h05 (fim do plantão de terça).
 - Os scripts do plantão estão na VPS desde 07/11, em `/opt/migracao-bling/ferramentas/zap/` (pedido #157, fechado).
 
 ## Próximo passo
-- Plantão de quarta 11/11 às 8h (agenda trig_01TgVUzMQAu1iwj54793Pfvg).
+- 12/11, 8h30: avisar o Compras do resultado do Braço (MARES, BRINQUE FELIZ, relatórios, sem SKU, Guaraná).
+- Fechamento de quinta às 19h51; abertura de sexta às 8h.
