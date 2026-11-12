@@ -1,6 +1,23 @@
 # Estado — onde paramos (atualizar ao fim de cada tarefa)
 
-Atualizado: 12/11/2026, 8h15 (abertura do plantão de quinta).
+Atualizado: 12/11/2026, 19h55 (fim do plantão de quinta).
+
+## Quinta 12/11, o que foi feito
+- Compras avisado às 8h30 (MARES 46/46; BRINQUE FELIZ 3/23, com as 20 restantes hoje às 20h30 pelo Braço; relatórios).
+- ALTIMIX 18/18: o 7798 recebeu fornecedor ALTIMIX e marca. O Compras pôs SKU 7798 e 7745.
+- Barras gravadas no GTIN de embalagem, item por item, para o caixa achar:
+  - Lousa 16721126906;
+  - Kit Lanche 16733146487;
+  - Super Ferrovia 16733146483;
+  - fone LR-14 16721124417;
+  - Squishy Urso 16727561316.
+- Guaraná garrafa: a loja cadastrou.
+- #187: respondido ao PDV que 7888927600724 está só no SKU do Lixador (o 788 é recusado como EAN).
+- Pendentes com o Compras:
+  - SKU das 23 bonecas BRINQUE FELIZ;
+  - SKU da Lousa trocado 2 vezes (hoje 7898572412696);
+  - Squishy Urso: estoque 0 e nome "urso" para uma caixa de bolinho com coelho e gato.
+- Plantão de sexta: abertura 8h (trig_01BQQXx6UYvBxG3MfhM5TtfG) e fechamento 19h51 (agendado).
 
 ## Novidades de 11 e 12/11
 - **#212 (corte de gasto):** o Weslei decidiu manter o plantão (decisão 028). Saiu a conferência de hora em hora. Ficam:
