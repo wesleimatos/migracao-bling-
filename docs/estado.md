@@ -6,7 +6,8 @@ Atualizado: 14/11/2026, 7h55 (registro do plantão de sexta; o fechamento das 20
 - Compras avisado às 8h30; às 10h42 disseram que já ajustaram SKU das bonecas BRINQUE FELIZ, a Lousa e o Squishy.
 - VELO TECH (Compras, 10h41):
   - parte 1 feita: os 11 itens VL... passaram de FORTEMIX para o fornecedor VELO TECH (18460608703); a cópia do Braço está em copias/velotech-antes-2026-11-13.jsonl;
-  - parte 2: marca "VELO TECH" em massa no Braço, 13/11 às 20h30. Falta o relatório. Quem já tem outra marca só é listado.
+  - parte 2 feita (13/11 às 20h35): marca "VELO TECH" em 22 produtos, os 11 novos e 11 antigos, com 0 erros e nenhum com outra marca. Os espaços nos SKUs VL0337 e VL10003 sumiram.
+    Avisar o Compras na segunda às 8h30.
   - Compras avisado de 2 SKUs com espaço no fim ("VL10003 ", "VL0337 ") e de 2 itens com preço igual ao custo (VL0374, VL0337).
 - Power banks (loja, Fernanda):
   - KAPBOM KA-952 id 16735001277: SKU vazio e preço R$ 0,00. Pedido ao Compras.
