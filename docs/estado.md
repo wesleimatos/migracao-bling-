@@ -1,6 +1,19 @@
 # Estado — onde paramos (atualizar ao fim de cada tarefa)
 
-Atualizado: 12/11/2026, 19h55 (fim do plantão de quinta).
+Atualizado: 14/11/2026, 7h55 (registro do plantão de sexta; o fechamento das 20h de 13/11 não saiu por reinício da sessão, nada chegou nos grupos à noite).
+
+## Sexta 13/11, o que foi feito
+- Compras avisado às 8h30; às 10h42 disseram que já ajustaram SKU das bonecas BRINQUE FELIZ, a Lousa e o Squishy.
+- VELO TECH (Compras, 10h41):
+  - parte 1 feita: os 11 itens VL... passaram de FORTEMIX para o fornecedor VELO TECH (18460608703); a cópia do Braço está em copias/velotech-antes-2026-11-13.jsonl;
+  - parte 2: marca "VELO TECH" em massa no Braço, 13/11 às 20h30. Falta o relatório. Quem já tem outra marca só é listado.
+  - Compras avisado de 2 SKUs com espaço no fim ("VL10003 ", "VL0337 ") e de 2 itens com preço igual ao custo (VL0374, VL0337).
+- Power banks (loja, Fernanda):
+  - KAPBOM KA-952 id 16735001277: SKU vazio e preço R$ 0,00. Pedido ao Compras.
+  - H'MASTON YD57 id 16721124074: o Bling recusa o prefixo 852 no GTIN, e a barra 8520231101571 está só no SKU. A loja vende digitando. Comentado no #184 para o caixa aceitar a barra.
+- Red Bull tradicional id 16721119859 (SKU 103807): o Braço gravou a barra 611269991000 (UPC dos EUA) no GTIN de embalagem. A loja confirmou que passou.
+  O GTIN principal mudou de 9002490100490 (21/10) para 9002490100445. Anotado para o Compras conferir.
+- Agendas: abertura de sábado 8h (trig_017xFDnNidMhEKYrURDfYBuw) e fechamento de sábado 19h51 (trig_01QukEPqGjGESe3zwxifcfCt).
 
 ## Quinta 12/11, o que foi feito
 - Compras avisado às 8h30 (MARES 46/46; BRINQUE FELIZ 3/23, com as 20 restantes hoje às 20h30 pelo Braço; relatórios).
