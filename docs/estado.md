@@ -1,6 +1,16 @@
 # Estado — onde paramos (atualizar ao fim de cada tarefa)
 
-Atualizado: 14/11/2026, 7h55 (registro do plantão de sexta; o fechamento das 20h de 13/11 não saiu por reinício da sessão, nada chegou nos grupos à noite).
+Atualizado: 14/11/2026, 22h (fechamento do plantão de sábado).
+
+## Sábado 14/11, o que foi feito
+- Caderno LOVE 96 fls Credeal id 16721114788 (loja, Carol, 10h51, "Não cadastrado"):
+  - o Braço gravou 7891253254004 no GTIN de embalagem;
+  - a loja foi avisada para "Atualizar produtos".
+  - O SKU hoje é 101375 (em 21/10 era a barra) e o GTIN é 1212141234124, que parece inventado. Não mexemos; avisar o Compras na segunda.
+- A sessão reiniciou duas vezes, sem vigia de ~10h53 a 15h56 e no fechamento. O histórico dos dois grupos foi conferido e não chegou nada.
+- Domingo não tem plantão. Segunda 16/11:
+  - abertura às 8h (trig_01RiUEq9XbigKiPNPcvKaYYd), com o aviso ao Compras às 8h30 de tudo o que está em pendencias/compras.txt;
+  - fechamento às 19h51 (trig_013neuggzFHb1trYGSKhvDbh).
 
 ## Sexta 13/11, o que foi feito
 - Compras avisado às 8h30; às 10h42 disseram que já ajustaram SKU das bonecas BRINQUE FELIZ, a Lousa e o Squishy.
