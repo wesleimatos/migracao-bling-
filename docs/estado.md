@@ -1,6 +1,24 @@
 # Estado — onde paramos (atualizar ao fim de cada tarefa)
 
-Atualizado: 14/11/2026, 22h (fechamento do plantão de sábado).
+Atualizado: 16/11/2026, 20h45 (fechamento do plantão de segunda).
+
+## Segunda 16/11, o que foi feito
+- Compras avisado às 8h30 (VELO TECH, KA-952, Red Bull, caderno LOVE). Respostas: 1 ok; KA-952 eles precificam; Red Bull de propósito; caderno conferido.
+  As antigas (categoria, Wilson GB001D, 100935, 1001571, MCF-38A) foram listadas, e eles ainda não escolheram qual tratar.
+- Mantas 103389 e 103390 (loja, Carol): o caixa estava mais barato que a gôndola. O Compras disse que baixou de propósito, e a loja troca a etiqueta.
+  A Carol citou uma "promoção de seguidor" do Ryan; não mexemos (promoção proibida).
+- Peneira VL0374 (preço = custo, R$ 3,70): o Compras corrigiu para R$ 8,99 e a loja foi avisada. O rodo VL0337 ainda vai ser precificado (não está na loja).
+- Lotes de marca pedidos pelo Compras, hoje às 20h30 pelo Braço (só onde a marca está vazia; os com outra marca só listados):
+  - ROBERTO: fornecedor 18460608675, ~268 produtos;
+  - SEU LAR: nome com "SEU LAR", ~112;
+  - FENIMA: 83 produtos, dos quais 67 pela lista e os 8 duplicados nos 2 cadastros (16).
+    Ficam fora 6 itens, por OK do Compras: ducha Lorenzetti, mini mixer, betoneira BR0038, forma de gelo branca, mop AW e prato OKLA.
+    Também fica fora o FEN5669 sem A, que não existe.
+- Terça 17/11:
+  - abertura às 8h (trig_0134W1uTECHu5aFAFyWur9To): resultado das 3 marcas ao Compras e relatório "preço ≤ custo";
+  - fechamento às 19h51 (trig_01AhRNHe1Yx6mSLQ1NiUAFbm).
+
+Anterior: 14/11/2026, 22h (fechamento do plantão de sábado).
 
 ## Sábado 14/11, o que foi feito
 - Caderno LOVE 96 fls Credeal id 16721114788 (loja, Carol, 10h51, "Não cadastrado"):
