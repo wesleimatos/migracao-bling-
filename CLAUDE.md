@@ -1,14 +1,14 @@
 # CLAUDE.md — migracao-bling- (Migração Superus → Bling)
 
 Migração do Superus para o Bling (feita em 19–24/10) e, hoje, suporte do Bling à loja e ao Compras pelo
-WhatsApp. Ordem de leitura: este arquivo → `docs/estado.md` → o que a tarefa pedir.
+WhatsApp. Ordem de leitura: este arquivo → `ESTADO.md` → o que a tarefa pedir.
 
 **Língua (OBRIGATÓRIO, pedido #171):** toda comunicação em português do Brasil (topo de `padrao/PADRAO-APPS.md`).
 Outra língua só com quem começar a conversa nela; nomes técnicos ficam como são, explicados em português.
 
 ## Onde está cada coisa
 - `docs/constituicao.md`: TODAS as regras fixas (Bling, preço, horários, loja, Compras, WhatsApp, padrão).
-- `docs/estado.md`: onde paramos e pendências. Atualizar ao fim de cada tarefa.
+- `ESTADO.md` (raiz): onde paramos, próxima tarefa e o que espera resposta (formato da seção 21.3 do padrão). Atualizar ao fim de cada tarefa. `docs/estado.md` virou só um apontador.
 - `docs/decisoes/`: uma decisão por arquivo (data, decisão, por quê, alternativas). Decisão nova = arquivo novo.
 - `docs/historico.md`: pedidos antigos e entregas. `docs/MANUAL-USO.md` e `docs/MANUAL-TECNICO.md`: manuais.
 - `TROCA.md`: só um índice para quem ainda procura as regras lá (PDV, Braço, agendas).
@@ -37,7 +37,7 @@ Outra língua só com quem começar a conversa nela; nomes técnicos ficam como 
 ## Início de toda sessão
 Ler no main do `wesleimatos/projetos` o `padrao/PADRAO-APPS.md` e `briefs/migracao-bling.md` (seguir a
 versão mais nova; nunca editar aquele nem outro repositório). Ver no `wesleimatos/pedidos` os Issues
-"para: migracao-bling". Depois, `docs/estado.md`.
+"para: migracao-bling". Depois, `ESTADO.md`.
 
 ## Sessões deste projeto
 - "Migração Superus → Bling (envio pela nuvem)": sessão principal, dona do projeto e da evolução dele.

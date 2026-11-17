@@ -192,3 +192,119 @@ cadastros no Bling por comandos (`src/cli.ts`). Roteiro em `docs/EXECUCAO-NUVEM.
 
 ## Bloqueios (precisa do Weslei)
 _(nenhum)_ · 23/10/2026: Client Secret corrigido pelo Weslei e Bling reconectado com o app novo.
+
+
+## Estado diário até 17/11/2026 (copiado de docs/estado.md quando o estado passou para ESTADO.md)
+
+
+### Segunda 16/11, o que foi feito
+- Compras avisado às 8h30 (VELO TECH, KA-952, Red Bull, caderno LOVE). Respostas: 1 ok; KA-952 eles precificam; Red Bull de propósito; caderno conferido.
+  As antigas (categoria, Wilson GB001D, 100935, 1001571, MCF-38A) foram listadas, e eles ainda não escolheram qual tratar.
+- Mantas 103389 e 103390 (loja, Carol): o caixa estava mais barato que a gôndola. O Compras disse que baixou de propósito, e a loja troca a etiqueta.
+  A Carol citou uma "promoção de seguidor" do Ryan; não mexemos (promoção proibida).
+- Peneira VL0374 (preço = custo, R$ 3,70): o Compras corrigiu para R$ 8,99 e a loja foi avisada. O rodo VL0337 ainda vai ser precificado (não está na loja).
+- Lotes de marca pedidos pelo Compras, hoje às 20h30 pelo Braço (só onde a marca está vazia; os com outra marca só listados):
+  - ROBERTO: fornecedor 18460608675, ~268 produtos;
+  - SEU LAR: nome com "SEU LAR", ~112;
+  - FENIMA: 83 produtos, dos quais 67 pela lista e os 8 duplicados nos 2 cadastros (16).
+    Ficam fora 6 itens, por OK do Compras: ducha Lorenzetti, mini mixer, betoneira BR0038, forma de gelo branca, mop AW e prato OKLA.
+    Também fica fora o FEN5669 sem A, que não existe.
+- Terça 17/11:
+  - abertura às 8h (trig_0134W1uTECHu5aFAFyWur9To): resultado das 3 marcas ao Compras e relatório "preço ≤ custo";
+  - fechamento às 19h51 (trig_01AhRNHe1Yx6mSLQ1NiUAFbm).
+
+Anterior: 14/11/2026, 22h (fechamento do plantão de sábado).
+
+### Sábado 14/11, o que foi feito
+- Caderno LOVE 96 fls Credeal id 16721114788 (loja, Carol, 10h51, "Não cadastrado"):
+  - o Braço gravou 7891253254004 no GTIN de embalagem;
+  - a loja foi avisada para "Atualizar produtos".
+  - O SKU hoje é 101375 (em 21/10 era a barra) e o GTIN é 1212141234124, que parece inventado. Não mexemos; avisar o Compras na segunda.
+- A sessão reiniciou duas vezes, sem vigia de ~10h53 a 15h56 e no fechamento. O histórico dos dois grupos foi conferido e não chegou nada.
+- Domingo não tem plantão. Segunda 16/11:
+  - abertura às 8h (trig_01RiUEq9XbigKiPNPcvKaYYd), com o aviso ao Compras às 8h30 de tudo o que está em pendencias/compras.txt;
+  - fechamento às 19h51 (trig_013neuggzFHb1trYGSKhvDbh).
+
+### Sexta 13/11, o que foi feito
+- Compras avisado às 8h30; às 10h42 disseram que já ajustaram SKU das bonecas BRINQUE FELIZ, a Lousa e o Squishy.
+- VELO TECH (Compras, 10h41):
+  - parte 1 feita: os 11 itens VL... passaram de FORTEMIX para o fornecedor VELO TECH (18460608703); a cópia do Braço está em copias/velotech-antes-2026-11-13.jsonl;
+  - parte 2 feita (13/11 às 20h35): marca "VELO TECH" em 22 produtos, os 11 novos e 11 antigos, com 0 erros e nenhum com outra marca. Os espaços nos SKUs VL0337 e VL10003 sumiram.
+    Avisar o Compras na segunda às 8h30.
+  - Compras avisado de 2 SKUs com espaço no fim ("VL10003 ", "VL0337 ") e de 2 itens com preço igual ao custo (VL0374, VL0337).
+- Power banks (loja, Fernanda):
+  - KAPBOM KA-952 id 16735001277: SKU vazio e preço R$ 0,00. Pedido ao Compras.
+  - H'MASTON YD57 id 16721124074: o Bling recusa o prefixo 852 no GTIN, e a barra 8520231101571 está só no SKU. A loja vende digitando. Comentado no #184 para o caixa aceitar a barra.
+- Red Bull tradicional id 16721119859 (SKU 103807): o Braço gravou a barra 611269991000 (UPC dos EUA) no GTIN de embalagem. A loja confirmou que passou.
+  O GTIN principal mudou de 9002490100490 (21/10) para 9002490100445. Anotado para o Compras conferir.
+- Agendas: abertura de sábado 8h (trig_017xFDnNidMhEKYrURDfYBuw) e fechamento de sábado 19h51 (trig_01QukEPqGjGESe3zwxifcfCt).
+
+### Quinta 12/11, o que foi feito
+- Compras avisado às 8h30 (MARES 46/46; BRINQUE FELIZ 3/23, com as 20 restantes hoje às 20h30 pelo Braço; relatórios).
+- ALTIMIX 18/18: o 7798 recebeu fornecedor ALTIMIX e marca. O Compras pôs SKU 7798 e 7745.
+- Barras gravadas no GTIN de embalagem, item por item, para o caixa achar:
+  - Lousa 16721126906;
+  - Kit Lanche 16733146487;
+  - Super Ferrovia 16733146483;
+  - fone LR-14 16721124417;
+  - Squishy Urso 16727561316.
+- Guaraná garrafa: a loja cadastrou.
+- #187: respondido ao PDV que 7888927600724 está só no SKU do Lixador (o 788 é recusado como EAN).
+- Pendentes com o Compras:
+  - SKU das 23 bonecas BRINQUE FELIZ;
+  - SKU da Lousa trocado 2 vezes (hoje 7898572412696);
+  - Squishy Urso: estoque 0 e nome "urso" para uma caixa de bolinho com coelho e gato.
+- Plantão de sexta: abertura 8h (trig_01BQQXx6UYvBxG3MfhM5TtfG) e fechamento 19h51 (agendado).
+
+### Novidades de 11 e 12/11
+- **#212 (corte de gasto):** o Weslei decidiu manter o plantão (decisão 028). Saiu a conferência de hora em hora. Ficam:
+  - a abertura às 8h;
+  - o fechamento às 19h51 (trig_01VXq4ackTdQsb2qbnTpJFX6, quinta; trig_01BQQXx6UYvBxG3MfhM5TtfG, sexta 8h).
+- **Fechamento de 11/11 não saiu:** a sessão ficou parada das 20h57 de 11/11 até as 8h de 12/11, por reinício.
+  Nada chegou nos grupos nesse tempo.
+- **Token local do Bling** desta sessão está desconectado desde 11/11. Toda leitura do Bling vai pelo Braço.
+- **Braço:** travou às 20h36 de 11/11, esperando a aprovação de uma página. O Weslei vai liberar.
+  Os lotes MARES e BRINQUE FELIZ foram disparados antes de travar; falta o relatório dele.
+- **Guaraná garrafa 7891991014908:** sem cadastro no Bling (só a lata 103822). Pedir o cadastro ao Compras.
+- **Categorias:** o Braço mandou a lista (500 categorias, 27 na raiz) à sessão original, que pediu para o Weslei.
+
+### Onde estamos
+- A migração Superus → Bling terminou em 19–24/10: 13.001 produtos, 800 fornecedores, 500 categorias,
+  5.859 vínculos e 3.194 estoques, 0 erros. O histórico está em `docs/historico.md`.
+- Hoje o projeto é o **suporte do Bling** à loja ("Bling atacadao") e ao Compras ("Compras - suporte Ai"),
+  em plantão de segunda a sábado, 8h–20h, com o Braço do Bling gravando no Bling.
+- A sessão principal ficou fora do ar de 09/11 ~12h até 10/11 11h13. Nesse tempo ficaram sem resposta 3 casos
+  da loja (a cola, a caneta Flamingo e um print de relatório), e o resumo e a agenda de 09/11 não foram feitos.
+
+### Pendências abertas
+- **Braço, hoje à noite (10/11, a partir das 20h30):**
+  - 18 produtos ALTIMIX recebem fornecedor ALTIMIX e marca "ALTIMIX - ALTITOYS" (pedido do Compras, 17h06);
+  - barra 7898714607041 no 1004964;
+  - teste do GTIN 7888927600724 no Lixador AJ-F07-B (id 16733245597);
+  - CSVs "preço ≤ custo" e "preços alterados" (só leitura).
+- **Quarta 11/11, 8h30 (agenda criada):** avisar o Compras do resultado da noite. Depois, uma pendência por vez:
+  - categoria em ~200 produtos (João, 09/11; esperando a planilha);
+  - Wilson GB001D provisório × 101122;
+  - 100935 perdeu a barra antiga;
+  - 1001571: fornecedor diferente da embalagem e estoque −63;
+  - MCF-38A provisório;
+  - duplicados, estoque negativo e produtos sem fornecedor.
+- **Barras extras no caixa (pedido #184 ao PDV):** são 7 casos desde 07/11 e o PDV não respondeu. A lista limpa
+  `barras-extras-pdv-2026-11-07.json` está na página "Arquivos da migração". Até ela entrar, a loja vende
+  digitando o código.
+- **Webhooks do Bling para o PDV (#187):** dependem de o PDV dizer qual aplicativo tem o Client Secret no painel.
+  Foi perguntado em 08/11 e de novo em 10/11.
+- **Painel do PDV × barra no SKU (#187, 10/11):** o "Atualizar do Bling" não acha produtos cuja barra está só no
+  SKU (exemplo: o Lixador 7888927600724). Foi sugerido ao PDV procurar também pelo SKU.
+- **Pedido #9 (PDV):** ordem da atualização do PDV, com o PDV.
+
+### Depende do Weslei
+- Trocar a chave do Painel Zap. O vigia está parado desde as 20h, o que permite a troca agora.
+
+### Em andamento
+- Plano do pedido #120 (arquitetura): este projeto fica fora do monólito e espera a vez depois do ERP.
+- Os scripts do plantão estão na VPS desde 07/11, em `/opt/migracao-bling/ferramentas/zap/` (pedido #157, fechado).
+
+### Próximo passo
+- 12/11, 8h30: avisar o Compras do resultado do Braço (MARES, BRINQUE FELIZ, relatórios, sem SKU, Guaraná).
+- Fechamento de quinta às 19h51; abertura de sexta às 8h.
