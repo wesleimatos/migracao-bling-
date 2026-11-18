@@ -11,15 +11,16 @@
 - Compras, 10h25: os 6 preços que mudaram ficam (foram manuais); Lixador AJ-F07-B e KA-952 passaram para a
   marca ROBERTO (Braço, 10h52) e o Compras foi avisado às 12h16.
 - Compras, 15h13: 10 produtos novos para o fornecedor MARLUCE GOMES HOMEM (contato 18460607826) e marca MGH
-  em todos os produtos desse fornecedor. Braço conferiu (só leitura) e agendou o lote para 20h30
-  (agenda trig_01CQQZ32H5qrkcDjnLH7JPWS). Compras avisado que o resultado sai amanhã cedo.
+  em todos os produtos desse fornecedor. Braço conferiu (só leitura) e fez o lote às 20h30
+  (resultado na próxima tarefa). Compras avisado que o resultado sai amanhã cedo.
 - Trava do Claude: o Braço não consegue mandar mensagem à sessão antiga, e as agendas que caem nela
   (fechamento 19h51, lembretes) falharam com "acesso negado". O resultado do Braço se lê no registro dele.
 - A sessão nova do plantão ainda não avisou que assumiu.
 
 ## Próxima tarefa
-- Quinta 19/11, 8h30: ler o resultado do lote MARLUCE/MGH no registro do Braço e mandar ao Compras
-  (fornecedor x de 10; marca MGH: feitos, já com marca, com outra marca).
+- Quinta 19/11, 8h30: mandar ao Compras o resultado do lote (feito pelo Braço às 20h38, sem erros): os 10
+  produtos passaram de FORTEMIX para MARLUCE GOMES HOMEM com custo e código mantidos; os 34 produtos desse
+  fornecedor (24 antigos + 10 novos) estavam sem marca e agora têm MGH; nenhum tinha outra marca.
 - Plantão de quinta (8h–20h) pela sessão que estiver com o plantão.
 
 ## Espera resposta
