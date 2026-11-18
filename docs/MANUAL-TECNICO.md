@@ -17,9 +17,11 @@
 - Desenho aprovado: `docs/DESENHO.md`. Brief: `docs/BRIEF-MIGRACAO-BLING.md`.
 
 ## Plantão (fora do Git)
-- Scripts do WhatsApp (vigia dos dois grupos, envio, histórico, baixar foto): hoje só no container da sessão
-  principal; vão para o servidor (VPS), fora do GitHub (pedido #157). A chave do Painel Zap fica num arquivo
-  à parte e nunca entra em script, Git ou chat.
+- Scripts do WhatsApp (vigia dos dois grupos, envio, histórico, baixar foto): desde 18/11 em
+  `ferramentas/zap/zap.mjs` (como usar: `ferramentas/zap/LEIA-ME.md`), sem chave nem dados reais. A chave do
+  Painel Zap fica guardada no ambiente da nuvem MIGRACAOBLING como segredo de rede (o proxy a coloca nos
+  pedidos) e nunca entra em script, Git ou chat. Motivo: em 18/11 o contêiner foi trocado e o arquivo da chave
+  e os scripts antigos se perderam.
 - Braço do Bling: scripts e cópias (backups) em `dados/braco/`, no container dele, fora do Git.
 - Agendas do plantão: vigia de hora em hora, plantão das 8h, resumo das 20h e relatório de terça.
 
